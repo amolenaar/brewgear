@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fermentables>
+  <category name="Dingemans">
+    <product>
+      <name>Pilsmout 3</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>3</ebc>
+    </product>
+    <product>
+      <name>Palemout 7</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>8</ebc>
+    </product>
+    <product>
+      <name>Tarwemout</name>
+      <yield>82.23</yield>
+      <moisture>4.0</moisture>
+      <ebc>3</ebc>
+    </product>
+    <product>
+      <name>Tarwemout donker</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>31</ebc>
+    </product>
+    <product>
+      <name>Munich mout 15</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>16</ebc>
+    </product>
+    <product>
+      <name>Aromamout (Amber 50)</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>49</ebc>
+    </product>
+    <product>
+      <name>Aromamout (Amber 150)</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>150</ebc>
+    </product>
+    <product>
+      <name>Biscuit mout 50</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>58</ebc>
+    </product>
+    <product>
+      <name>Chocolademout (Mout roost 900)</name>
+      <yield>64.92</yield>
+      <moisture>4.0</moisture>
+      <ebc>900</ebc>
+    </product>
+    <product>
+      <name>Black De-bittered 1400</name>
+      <yield>64.92</yield>
+      <moisture>4.0</moisture>
+      <ebc>1456</ebc>
+    </product>
+    <product>
+      <name>CaraPils (Cara 20)</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>60</ebc>
+    </product>
+    <product>
+      <name>CaraVienne (Cara 50)</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>66</ebc>
+    </product>
+    <product>
+      <name>CaraMunich (Cara 120)</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>123</ebc>
+    </product>
+    <product>
+      <name>Special B (Cara 400)</name>
+      <yield>64.92</yield>
+      <moisture>4.0</moisture>
+      <ebc>391</ebc>
+    </product>
+  </category>
+  <category name="Weyermann">
+    <product>
+      <name>Pilsmout</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>3</ebc>
+    </product>
+    <product>
+      <name>Viennamout</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>6</ebc>
+    </product>
+    <product>
+      <name>Tarwemout licht</name>
+      <yield>84.40</yield>
+      <moisture>4.0</moisture>
+      <ebc>4</ebc>
+    </product>
+    <product>
+      <name>Tarwemout donker</name>
+      <yield>84.40</yield>
+      <moisture>4.0</moisture>
+      <ebc>20</ebc>
+    </product>
+    <product>
+      <name>Munichmout I</name>
+      <yield>82.23</yield>
+      <moisture>4.0</moisture>
+      <ebc>12</ebc>
+    </product>
+    <product>
+      <name>Munichmout II</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>17</ebc>
+    </product>
+    <product>
+      <name>CaraPils</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>4</ebc>
+    </product>
+    <product>
+      <name>CaraHell</name>
+      <yield>79.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>22</ebc>
+    </product>
+    <product>
+      <name>CaraRed</name>
+      <yield>78.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>39</ebc>
+    </product>
+    <product>
+      <name>CaraAmber</name>
+      <yield>78.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>55.01</ebc>
+    </product>
+    <product>
+      <name>CaraAroma</name>
+      <yield>77.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>256.02</ebc>
+    </product>
+    <product>
+      <name>CaraMunich I</name>
+      <yield>78.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>85</ebc>
+    </product>
+    <product>
+      <name>CaraMunich II</name>
+      <yield>78.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>91</ebc>
+    </product>
+    <product>
+      <name>CaraMunich III</name>
+      <yield>78.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>112</ebc>
+    </product>
+    <product>
+      <name>Carafa I</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>630</ebc>
+    </product>
+    <product>
+      <name>Carafa II</name>
+      <yield>70.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>1024</ebc>
+    </product>
+    <product>
+      <name>Carafa III</name>
+      <yield>71.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>1084</ebc>
+    </product>
+    <product>
+      <name>Carafa Special onttkaft I</name>
+      <yield>72.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>663.97</ebc>
+    </product>
+    <product>
+      <name>Carafa special ontkaft II</name>
+      <yield>73.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>837</ebc>
+    </product>
+    <product>
+      <name>Carafa special ontkaft III</name>
+      <yield>74.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>926</ebc>
+    </product>
+    <product>
+      <name>CaraTarwe</name>
+      <yield>77.91</yield>
+      <moisture>4.0</moisture>
+      <ebc>140</ebc>
+    </product>
+    <product>
+      <name>Melanoidin mout</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>65</ebc>
+    </product>
+    <product>
+      <name>Rauchmalz</name>
+      <yield>80.07</yield>
+      <moisture>4.0</moisture>
+      <ebc>4.01</ebc>
+    </product>
+    <product>
+      <name>Sauermalz pH 3.5</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>3</ebc>
+    </product>
+    <product>
+      <name>Roggemout</name>
+      <yield>85.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>10</ebc>
+    </product>
+    <product>
+      <name>Caramelroggemout</name>
+      <yield>75.74</yield>
+      <moisture>4.0</moisture>
+      <ebc>40</ebc>
+    </product>
+    <product>
+      <name>Chocolade roggemout</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>800</ebc>
+    </product>
+    <product>
+      <name>Chocolade speltmout</name>
+      <yield>69.25</yield>
+      <moisture>4.0</moisture>
+      <ebc>700</ebc>
+    </product>
+    <product>
+      <name>Chocolade tarwemout</name>
+      <yield>74.00</yield>
+      <moisture>4.0</moisture>
+      <ebc>1200</ebc>
+    </product>
+  </category>
+  <category name="Suiker, stroop en honing">
+    <product>
+      <name>Bruine basterdsuiker</name>
+      <yield>99.55</yield>
+      <moisture>0.0</moisture>
+      <ebc>30</ebc>
+    </product>
+    <product>
+      <name>Bruine kandijsuiker</name>
+      <yield>100.00</yield>
+      <moisture>0.0</moisture>
+      <ebc>10.01</ebc>
+    </product>
+    <product>
+      <name>Witte basterdsuiker</name>
+      <yield>99.55</yield>
+      <moisture>0.0</moisture>
+      <ebc>0</ebc>
+    </product>
+    <product>
+      <name>Witte kandijsuiker</name>
+      <yield>100.00</yield>
+      <moisture>0.0</moisture>
+      <ebc>0</ebc>
+    </product>
+    <product>
+      <name>Rietsuiker</name>
+      <yield>97.38</yield>
+      <moisture>0.0</moisture>
+      <ebc>6</ebc>
+    </product>
+    <product>
+      <name>Appelstroop</name>
+      <yield>90.38</yield>
+      <moisture>0.0</moisture>
+      <ebc>30</ebc>
+    </product>
+    <product>
+      <name>Stroop</name>
+      <yield>73.58</yield>
+      <moisture>0.0</moisture>
+      <ebc>30</ebc>
+    </product>
+    <product>
+      <name>Glucose</name>
+      <yield>100.00</yield>
+      <moisture>0.0</moisture>
+      <ebc>0</ebc>
+    </product>
+    <product>
+      <name>Honing</name>
+      <yield>90.89</yield>
+      <moisture>0.0</moisture>
+      <ebc>2</ebc>
+    </product>
+    <product>
+      <name>Kristalsuiker</name>
+      <yield>100.00</yield>
+      <moisture>0.0</moisture>
+      <ebc>0</ebc>
+    </product>
+  </category>
+  <category name="Ongemoute granen">
+    <product>
+      <name>Havervlokken</name>
+      <yield>73.58</yield>
+      <moisture>4.0</moisture>
+      <ebc>4</ebc>
+    </product>
+    <product>
+      <name>Rijstvlokken</name>
+      <yield>86.56</yield>
+      <moisture>4.0</moisture>
+      <ebc>1</ebc>
+    </product>
+    <product>
+      <name>Tarwevlokken</name>
+      <yield>73.58</yield>
+      <moisture>4.0</moisture>
+      <ebc>4</ebc>
+    </product>
+    <product>
+      <name>Gerstvlokken</name>
+      <yield>73.58</yield>
+      <moisture>4.0</moisture>
+      <ebc>4</ebc>
+    </product>
+    <product>
+      <name>Geroosterde gerst</name>
+      <yield>64.92</yield>
+      <moisture>4.0</moisture>
+      <ebc>1522.82</ebc>
+    </product>
+    <product>
+      <name>Boekweitvlokken</name>
+      <yield>73.58</yield>
+      <moisture>4.0</moisture>
+      <ebc>4</ebc>
+    </product>
+    <product>
+      <name>Maisvlokken</name>
+      <yield>74.58</yield>
+      <moisture>4.0</moisture>
+      <ebc>1</ebc>
+    </product>
+    <product>
+      <name>Roggevlokken</name>
+      <yield>75.58</yield>
+      <moisture>4.0</moisture>
+      <ebc>4</ebc>
+    </product>
+  </category>
+</fermentables>

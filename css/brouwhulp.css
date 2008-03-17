@@ -1,0 +1,235 @@
+body {
+ font: 12px Arial;
+}
+
+#wrapper {
+ background-color: #efefef;
+ border: 1px solid #bbb;
+ margin: 10px auto 0px auto;
+ width: 600px;
+}
+
+/***
+ * header
+ */
+h1 {
+ margin: 5px;
+ width: 590px;
+ /* Add extra padding at the bottom as long as brewer == Joe Sixpack */
+ padding-bottom: 15px;
+}
+
+#recipe-number {
+ display: block;
+ float: right;
+ padding: 5px;
+ margin: 0;
+ background-color: #888;
+ color: #fff;
+ border: none;
+}
+
+#brewer {
+ margin: 5px;
+}
+
+/***
+ * recipe sections
+ */
+
+h2 {
+ margin: 0;
+ padding: 0 20px;
+ background-color: #888;
+ color: #fff;
+ font-weight: bold;
+ font-size: 14px;
+ clear: both;
+}
+
+h3 {
+ margin: 0;
+ padding: 0 5px;
+ font-size: 12px;
+}
+
+p {
+ margin: 3px 5px;
+}
+
+em {
+ font-style: normal;
+ font-weight: bold;
+}
+
+table {
+ margin: 0 5px;
+ border-collapse: separate;
+ border-spacing: 8px 0;
+}
+
+th {
+ text-align: left;
+ vertical-align: bottom;
+ white-space: nowrap;
+}
+
+td {
+ white-space: nowrap;
+}
+
+.num {
+ /* Numerical data */
+ text-align: right;
+ padding: 0 0 0 0;
+}
+
+.left {
+ float: left;
+}
+
+.right {
+ margin-left: 270px;
+}
+
+#mash, #filter, #boil, #fermentation, #bottling, #notes, #judgement {
+ width: 590px;
+ border: 1px solid #888;
+ background-color: #e0e0e0;
+ margin: 5px;
+}
+
+/**
+ * #batch is split in three sections:
+ * 600px -> 5px margin + (190 + 2 border) left + (230 + 2) middle = 429px
+ * color box = 100px width + 4px border
+ *  ==> 67 px left of which are 5 border right -> margin = 62/2 = 31px. 
+ */
+#batch {
+}
+
+#batch .left {
+ float: left;
+ border: 1px solid #888;
+ background-color: #e0e0e0;
+ margin: 0 0 0 5px;
+ width: 190px;
+}
+
+#batch .middle {
+ border: 1px solid #888;
+ background-color: #e0e0e0;
+ margin: 0px 0px 0px 204px;
+ width: 230px;
+}
+
+#color-box-rgb {
+ float: right;
+ width: 100px;
+ height: 60px;
+ border: 2px solid #eee;
+ margin: 15px 18px 0px 0px;
+}
+
+#style {
+ display: none;
+ float: right;
+ width: 180px;
+ margin: 0 5px 5px 0;
+}
+
+#style dt {
+ float: left;
+ width: 100px;
+}
+
+#fermentables {
+ float: left;
+ width: 320px;
+}
+
+#mashsteps {
+ margin-left: 325px;
+}
+
+#boilstats {
+ float: right;
+ width: 170px;
+ margin: 5px 5px 5px 0;
+}
+
+#boilstats dl {
+ margin-top: 0px;
+}
+
+#boilstats dt {
+ float: left;
+ padding: 0;
+ margin: 0;
+ width: 120px;
+ clear: left;
+}
+
+#boilstats dd {
+ float: left;
+ padding: 0;
+ margin: 0;
+ width: 40px;
+}
+
+#boil .ibu {
+}
+
+#notes table {
+ display: none;
+ padding-bottom: 7pt;
+ width: 100%;
+}
+
+#judgement {
+ display: none;
+ padding-bottom: 7pt;
+}
+
+#judgement td {
+ vertical-align: bottom;
+}
+
+td.fillin {
+ border-bottom: 1px dashed #000;
+ width: 100%;
+ height: 10pt;
+}
+
+#total-ferm-title, #total-ibu-title {
+ text-align: right;
+}
+
+#total-ferm, #total-ibu {
+ border-top: 1px solid black;
+ padding-top: 2px;
+ font-weight: bold;
+}
+
+tfoot tr {
+ border-top: 1px solid black;
+}
+
+/***
+ * footer
+ */
+.clear {
+ clear: left;
+}
+
+/***
+ * Safari
+ */
+td {
+ font: 12px Arial;
+}
+
+th {
+ font: bold 12px Arial;
+ white-space: nowrap;
+}

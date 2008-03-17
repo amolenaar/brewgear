@@ -1,0 +1,359 @@
+body {
+ font: 10px Arial;
+}
+
+#wrapper {
+ background-color: #efefef;
+ border: 1px solid #bbb;
+ margin: 10px auto 0px auto;
+ width: 600px;
+}
+
+.onlyprint {
+ display: none;
+}
+
+h1 {
+ margin: 0;
+ text-align: center;
+ border-bottom: 3px solid #888;
+ font-size: 22px;
+ padding-bottom: 3px;
+}
+
+#changed {
+ display: none;
+ 
+}
+
+.changed #changed {
+ display: inline;
+}
+
+h2 {
+ margin: 4pt 0 2pt;
+ padding: 0 1em;
+ background-color: #888;
+ color: #fff;
+ font-weight: bold;
+ font-size: 14px;
+ clear: both;
+}
+
+h3 {
+ margin: 0;
+ padding: 0 5px;
+ font-size: 12px;
+}
+
+p {
+ margin: 3px 5px;
+}
+
+em {
+ font-style: normal;
+ font-weight: bold;
+}
+
+table {
+ border-collapse: collapse;
+ margin-left: 3pt;
+}
+
+tr.emptyrow button, tr.emptyrow a {
+  display: none;
+}
+
+th {
+ text-align: left;
+ vertical-align: bottom;
+ white-space: nowrap;
+ font-weight: bold;
+}
+
+th.numerical {
+ text-align: right;
+ padding-right: 3px;
+}
+
+td {
+ vertical-align: middle;
+ white-space: nowrap;
+}
+
+label {
+ display: block;
+ float: left;
+ width: 8em;
+ padding-top: 2px;
+}
+
+.primary label {
+ width: 12em;
+}
+
+label[for="name"], label[for="klasse"] {
+ width: 7em;
+}
+
+label[for="style"], label[for="brew-date"], label[for="bottle-volume"], label[for="alcohol"] {
+ float: none;
+ display: inline;
+ padding: 0 0.5em 0 2em;
+}
+
+label[for="svg"], tr.summary label {
+ padding-right: .5em;
+ width: auto;
+}
+
+#priming-name, input[name="starter-temp"] {
+ margin-left: 0.5em;
+}
+
+
+#s_judgement label {
+ clear: left;
+}
+
+input {
+ font: 12px monospace;
+ border: 1px solid gray;
+ vertical-align: baseline;
+ margin: 0;
+}
+
+select {
+ border: 1px solid gray;
+}
+
+input:focus {
+ background-color: #ffc;
+}
+
+input:disabled {
+ color: #222;
+ background-color: #eee;
+ border: 1px solid #aaa;
+}
+
+input[type="text"] {
+ width: 180px;
+}
+
+input.number, input.real {
+ width: 64px;
+ text-align: right;
+}
+
+input.date {
+ width: 100px;
+}
+
+.multistate {
+ padding: 0;
+ font-size: 100%;
+ border: 1px solid #aaa;
+ background: transparent;
+}
+
+#s_judgement input {
+ width: 510px;
+}
+
+/* Custom input fields: */
+
+#batch {
+ width: 40px;
+ margin: 0;
+}
+
+/* FF only: */
+input[name="batch"] {
+ color: #fff;
+ background-color: #888;
+ font-size: 22px;
+ float: right;
+ border: none;
+ padding: 4px 3px 3px 3px;
+ text-align: center;
+}
+
+#name {
+ width: 360px;
+}
+
+#klasse {
+ width: 20px;
+}
+
+#brew-date {
+ width: 80px;
+}
+
+a.delete {
+ color: maroon;
+ font-weight: bold;
+ text-decoration: none;
+ font-size: 110%;
+ cursor: pointer;
+}
+
+#notes {
+ font: 12px monospace;
+ margin: 1px;
+ width: 596px;
+ height: 120px;
+ border: 1px solid gray;
+}
+
+#print-notes {
+ display: none;
+}
+
+#footer p {
+ text-align: right;
+ margin: 4px;
+}
+
+#gears-logo {
+ margin: -14px -48pt -1pt 0px;
+} 
+/**
+ * General
+ */
+
+#color {
+ float: right;
+ width: 105px;
+ height: 70px;
+ margin: -30px 10px 0 0;
+ border: 1px solid black;
+}
+
+.primary {
+ float: left;
+ margin-right: 3em;
+}
+
+.clear {
+ clear: both;
+}
+
+/**
+ * Interactive feedback and errors
+ */
+
+.nfe {
+ /* number format error */
+ color: red;
+}
+
+.warning {
+ margin: 1em auto;
+ border: 1px solid red;
+ background-color: #fcc;
+}
+
+.warning p {
+ text-align: center;
+}
+
+/**
+ * Dialogs
+ */
+
+.dialog {
+ display: none;
+ background: #eee;
+ z-index: 9999;
+ position: fixed;
+ top: 0;
+ padding: 2px 6px 6px;
+ border: 1px solid #666;
+ border-top: 4px solid #444;
+}
+
+
+.buttonbar {
+ padding: 6px 0;
+ float: left;
+}
+
+.buttonbar button {
+ margin: 0 0 0 2em;
+}
+
+.dialog .buttonbar button {
+ float: right;
+}
+
+#filedialog {
+ width: 270px;
+}
+
+.dialog h2 {
+ color: black;
+ background-color: transparent;
+}
+
+#filedialog select {
+ margin: 0;
+ min-width: 270px;
+}
+
+#exportdialog {
+ width: 500px;
+}
+
+
+#statusbar {
+ position: fixed;
+ top: 0;
+ left: 0;
+ background-color: white;
+ font-size: 120%;
+}
+
+#wrapper > div {
+ margin-bottom: 4pt;
+}
+
+#s_style {
+ position: fixed;
+ left: 3px;
+ top: 220px;
+ z-index: 99;
+ background-color: #ffe6cc;
+ opacity: 0.7;
+}
+
+#s_style h2, #s_menu h2 {
+ margin: 0;
+ text-align: center;
+}
+
+#s_menu {
+ position: fixed;
+ left: 18px;
+ top: 40px;
+ z-index: 99;
+ background-color: #ffe6cc;
+ opacity: 0.7;
+ padding: 0;
+}
+
+#s_menu button {
+ display: block;
+ background-color: transparent;
+ border: none;
+ margin: 0 4pt;
+ cursor: pointer;
+}
+
+#footer {
+ position: fixed;
+ bottom: 0;
+ right: 0;
+ margin-bottom: 0;
+}

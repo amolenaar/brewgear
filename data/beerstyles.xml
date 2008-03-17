@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beerstyles>
+  <class tag="A">
+    <beerstyle>
+      <name>Berliner Weisse</name>
+      <description>Hooggegist/melkzuurgisting, nagisting op fles</description>
+      <gravity min="1028" max="1032"/>
+      <alcohol min="2.8" max="3.7"/>
+      <attenuation min="75" max="78"/>
+      <ebc min="4" max="8"/>
+      <ibu min="3" max="8"/>
+      <co2g min="0.50" max="0.65"/>
+      <co2v min="2.5" max="3.3"/>
+      <ph min="2.9" max="3.0"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Bitter</name>
+      <description>Hooggegist met dryhopping, soms nagisting op fles</description>
+      <gravity min="1033" max="1044"/>
+      <alcohol min="3.4" max="4.5"/>
+      <attenuation min="66" max="77"/>
+      <ebc min="10" max="25"/>
+      <ibu min="30" max="40"/>
+      <co2g min="0.35" max="0.47"/>
+      <co2v min="1.8" max="2.4"/>
+      <ph min="3.9" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>California Steam</name>
+      <description>Laaggegist op 16-21 graden en gefilterd</description>
+      <gravity min="1048" max="1051"/>
+      <alcohol min="4.8" max="5.2"/>
+      <attenuation min="74" max="75"/>
+      <ebc min="22" max="35"/>
+      <ibu min="30" max="35"/>
+      <co2g min="0.40" max="0.44"/>
+      <co2v min="2.0" max="2.2"/>
+      <ph min="4.3" max="4.7"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Dortmunder Export</name>
+      <description>Laaggegist, meestal gefilterd</description>
+      <gravity min="1048" max="1056"/>
+      <alcohol min="5.0" max="5.6"/>
+      <attenuation min="75" max="86"/>
+      <ebc min="7" max="22"/>
+      <ibu min="23" max="30"/>
+      <co2g min="0.43" max="0.48"/>
+      <co2v min="2.2" max="2.4"/>
+      <ph min="4.4" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Faro</name>
+      <description>Spontane gisting met nagisting op fles</description>
+      <gravity min="1040" max="1054"/>
+      <alcohol min="4.5" max="6.0"/>
+      <attenuation min="75" max="99"/>
+      <ebc min="20" max="45"/>
+      <ibu min="6" max="20"/>
+      <co2g min="0.45" max="0.50"/>
+      <co2v min="2.3" max="2.5"/>
+      <ph min="3.5" max="3.8"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Gueuze Lambic</name>
+      <description>Spontane gisting, versnijbier</description>
+      <gravity min="1051" max="1058"/>
+      <alcohol min="5.0" max="7.6"/>
+      <attenuation min="75" max="99"/>
+      <ebc min="12" max="25"/>
+      <ibu min="11" max="20"/>
+      <co2g min="0.80" max="1.00"/>
+      <co2v min="4.1" max="5.1"/>
+      <ph min="3.0" max="3.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Irish Red Ale</name>
+      <description>Hooggegist en gefilterd</description>
+      <gravity min="1040" max="1048"/>
+      <alcohol min="4.0" max="5.2"/>
+      <attenuation min="71" max="83"/>
+      <ebc min="22" max="36"/>
+      <ibu min="22" max="28"/>
+      <co2g min="0.44" max="0.52"/>
+      <co2v min="2.2" max="2.6"/>
+      <ph min="4.0" max="4.4"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Kölsch</name>
+      <description>Hooggegist met koude lagering</description>
+      <gravity min="1041" max="1048"/>
+      <alcohol min=".00" max="5.0"/>
+      <attenuation min="73" max="80"/>
+      <ebc min="10" max="17"/>
+      <ibu min="20" max="30"/>
+      <co2g min="0.42" max="0.53"/>
+      <co2v min="2.1" max="2.7"/>
+      <ph min="4.1" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Lambiek</name>
+      <description>Spontane gisting meestal alleen op fust</description>
+      <gravity min="1051" max="1056"/>
+      <alcohol min="5.1" max="6.4"/>
+      <attenuation min="75" max="99"/>
+      <ebc min="12" max="25"/>
+      <ibu min="11" max="20"/>
+      <co2g min="0.20" max="0.25"/>
+      <co2v min="1.0" max="1.3"/>
+      <ph min="3.2" max="3.8"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Märzen &amp; Oktoberfest</name>
+      <description>Laaggegist en gefilterd</description>
+      <gravity min="1050" max="1056"/>
+      <alcohol min="5.1" max="6.0"/>
+      <attenuation min="67" max="84"/>
+      <ebc min="15" max="35"/>
+      <ibu min="18" max="25"/>
+      <co2g min="0.42" max="0.50"/>
+      <co2v min="2.1" max="2.5"/>
+      <ph min="4.1" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Münchener Helles</name>
+      <description>Laaggegist en gefilterd</description>
+      <gravity min="1044" max="1049"/>
+      <alcohol min="4.7" max="5.3"/>
+      <attenuation min="69" max="73"/>
+      <ebc min="8" max="15"/>
+      <ibu min="18" max="25"/>
+      <co2g min="0.43" max="0.47"/>
+      <co2v min="2.2" max="2.4"/>
+      <ph min="4.2" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Pale Ale/Strong Bitter</name>
+      <description>Hooggegist met dryhopping, soms nagisting op fles</description>
+      <gravity min="1045" max="1056"/>
+      <alcohol min="4.5" max="5.6"/>
+      <attenuation min="69" max="76"/>
+      <ebc min="15" max="30"/>
+      <ibu min="30" max="45"/>
+      <co2g min="0.35" max="0.47"/>
+      <co2v min="1.8" max="2.4"/>
+      <ph min="4.0" max="4.4"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Pale Ale (American)</name>
+      <description>Hooggegist en gefilterd</description>
+      <gravity min="1044" max="1057"/>
+      <alcohol min="4.5" max="6.0"/>
+      <attenuation min="73" max="81"/>
+      <ebc min="8" max="22"/>
+      <ibu min="20" max="40"/>
+      <co2g min="0.42" max="0.46"/>
+      <co2v min="2.1" max="2.3"/>
+      <ph min="4.3" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Pale Ale (Belgisch)</name>
+      <description>Hooggegist en meestal gefilterd</description>
+      <gravity min="1046" max="1055"/>
+      <alcohol min="4.5" max="5.5"/>
+      <attenuation min="75" max="84"/>
+      <ebc min="15" max="27"/>
+      <ibu min="19" max="25"/>
+      <co2g min="0.37" max="0.60"/>
+      <co2v min="1.9" max="3.1"/>
+      <ph min="4.1" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Pils(ener)</name>
+      <description>Laaggegist en meestal gefilterd</description>
+      <gravity min="1042" max="1050"/>
+      <alcohol min="4.4" max="5.0"/>
+      <attenuation min="76" max="82"/>
+      <ebc min="6" max="10"/>
+      <ibu min="20" max="28"/>
+      <co2g min="0.40" max="0.45"/>
+      <co2v min="2.0" max="2.3"/>
+      <ph min="4.0" max="4.4"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Pilsener (Urtyp)</name>
+      <description>Laaggegist en soms ongefilterd</description>
+      <gravity min="1044" max="1056"/>
+      <alcohol min="4.4" max="5.5"/>
+      <attenuation min="69" max="73"/>
+      <ebc min="6" max="14"/>
+      <ibu min="28" max="45"/>
+      <co2g min="0.37" max="0.45"/>
+      <co2v min="1.9" max="2.3"/>
+      <ph min="4.1" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Saison</name>
+      <description>Hooggegist met nagisting op fles</description>
+      <gravity min="1045" max="1056"/>
+      <alcohol min="5.5" max="6.7"/>
+      <attenuation min="78" max="95"/>
+      <ebc min="10" max="35"/>
+      <ibu min="15" max="40"/>
+      <co2g min="0.65" max="0.80"/>
+      <co2v min="3.3" max="4.1"/>
+      <ph min="3.9" max="4.4"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Vienna</name>
+      <description>Laaggegist en gefilterd</description>
+      <gravity min="1046" max="1056"/>
+      <alcohol min="4.8" max="5.5"/>
+      <attenuation min="73" max="78"/>
+      <ebc min="15" max="25"/>
+      <ibu min="22" max="28"/>
+      <co2g min="0.45" max="0.47"/>
+      <co2v min="2.3" max="2.4"/>
+      <ph min="4.1" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Weizen</name>
+      <description>Hooggegist, meestal met nagisting op fles</description>
+      <gravity min="1046" max="1056"/>
+      <alcohol min="5.0" max="5.6"/>
+      <attenuation min="70" max="77"/>
+      <ebc min="6" max="22"/>
+      <ibu min="10" max="15"/>
+      <co2g min="0.55" max="0.75"/>
+      <co2v min="2.8" max="3.8"/>
+      <ph min="4.0" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Witbier</name>
+      <description>Hooggegist met nagisting op fles</description>
+      <gravity min="1042" max="1045"/>
+      <alcohol min="4.3" max="5.2"/>
+      <attenuation min="78" max="81"/>
+      <ebc min="5" max="8"/>
+      <ibu min="9" max="16"/>
+      <co2g min="0.40" max="0.60"/>
+      <co2v min="2.0" max="3.1"/>
+      <ph min="3.9" max="4.5"/>
+    </beerstyle>
+  </class>
+  <class tag="B">
+    <beerstyle>
+      <name>Alt</name>
+      <description>Hooggegist en meestal gefilterd</description>
+      <gravity min="1045" max="1050"/>
+      <alcohol min="4.5" max="5.0"/>
+      <attenuation min="75" max="79"/>
+      <ebc min="25" max="40"/>
+      <ibu min="25" max="50"/>
+      <co2g min="0.42" max="0.50"/>
+      <co2v min="2.1" max="2.5"/>
+      <ph min="4.2" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Amber-Red (American)</name>
+      <description>Hooggegist en gefilterd</description>
+      <gravity min="1048" max="1060"/>
+      <alcohol min="4.5" max="6.4"/>
+      <attenuation min="73" max="78"/>
+      <ebc min="25" max="50"/>
+      <ibu min="28" max="45"/>
+      <co2g min="0.40" max="0.44"/>
+      <co2v min="2.0" max="2.2"/>
+      <ph min="4.3" max="4.7"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Brown Ale</name>
+      <description>Hooggegist en meestal gefilterd</description>
+      <gravity min="1040" max="1050"/>
+      <alcohol min="4.2" max="6.0"/>
+      <attenuation min="72" max="78"/>
+      <ebc min="50" max="65"/>
+      <ibu min="15" max="30"/>
+      <co2g min="0.42" max="0.44"/>
+      <co2v min="2.1" max="2.2"/>
+      <ph min="4.0" max="4.3"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Dark Lager</name>
+      <description>Laaggegist</description>
+      <gravity min="1052" max="1060"/>
+      <alcohol min="4.5" max="6.0"/>
+      <attenuation min="72" max="74"/>
+      <ebc min="50" max="90"/>
+      <ibu min="20" max="30"/>
+      <co2g min="0.42" max="0.50"/>
+      <co2v min="2.1" max="2.5"/>
+      <ph min="4.0" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Frambozen-Lambiek</name>
+      <description>Spontane gisting van Lambiek. Hergisting op fles</description>
+      <gravity min="1045" max="1060"/>
+      <alcohol min="5.0" max="6.2"/>
+      <attenuation min="75" max="99"/>
+      <ebc min="" max=""/>
+      <ibu min="15" max="21"/>
+      <co2g min="0.40" max="0.60"/>
+      <co2v min="2.0" max="3.1"/>
+      <ph min="3.0" max="3.3"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Kriek-Lambiek</name>
+      <description>Spontane gisting van Lambiek. Hergisting op fles</description>
+      <gravity min="1045" max="1060"/>
+      <alcohol min="5.0" max="6.5"/>
+      <attenuation min="75" max="99"/>
+      <ebc min="" max=""/>
+      <ibu min="15" max="21"/>
+      <co2g min="0.40" max="0.60"/>
+      <co2v min="2.0" max="3.1"/>
+      <ph min="3.2" max="3.7"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Mild Ale</name>
+      <description>Hooggegist en meestal gefilterd</description>
+      <gravity min="1030" max="1038"/>
+      <alcohol min="3.3" max="4.1"/>
+      <attenuation min="75" max="85"/>
+      <ebc min="60" max="140"/>
+      <ibu min="18" max="30"/>
+      <co2g min="0.38" max="0.53"/>
+      <co2v min="1.9" max="2.7"/>
+      <ph min="4.0" max="4.3"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Münchener Dunkles</name>
+      <description>Laaggegist en gefilterd</description>
+      <gravity min="1048" max="1052"/>
+      <alcohol min="4.5" max="5.5"/>
+      <attenuation min="71" max="74"/>
+      <ebc min="40" max="80"/>
+      <ibu min="20" max="25"/>
+      <co2g min="0.44" max="0.47"/>
+      <co2v min="2.2" max="2.4"/>
+      <ph min="4.4" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Oud Bruin (NL)</name>
+      <description>Laaggegist en gefilterd</description>
+      <gravity min="1032" max="1040"/>
+      <alcohol min="2.5" max="3.5"/>
+      <attenuation min="" max=""/>
+      <ebc min="70" max="130"/>
+      <ibu min="8" max="24"/>
+      <co2g min="0.44" max="0.48"/>
+      <co2v min="2.2" max="2.4"/>
+      <ph min="4.4" max="4.9"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Porter (Brown)</name>
+      <description>Hooggegist en soms met nagisting op fles</description>
+      <gravity min="1045" max="1060"/>
+      <alcohol min="4.5" max="5.5"/>
+      <attenuation min="72" max="80"/>
+      <ebc min="50" max="90"/>
+      <ibu min="25" max="40"/>
+      <co2g min="0.40" max="0.60"/>
+      <co2v min="2.0" max="3.1"/>
+      <ph min="4.0" max="4.4"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Schwarz</name>
+      <description>Laaggegist en hooggegist</description>
+      <gravity min="1044" max="1052"/>
+      <alcohol min="4.6" max="5.2"/>
+      <attenuation min="77" max="80"/>
+      <ebc min="50" max="115"/>
+      <ibu min="22" max="30"/>
+      <co2g min="0.30" max="0.54"/>
+      <co2v min="1.5" max="2.7"/>
+      <ph min="4.2" max="4.7"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Scotch Export Ale</name>
+      <description>Hooggegist en meestal gefilterd</description>
+      <gravity min="1040" max="1052"/>
+      <alcohol min="4.0" max="5.2"/>
+      <attenuation min="68" max="70"/>
+      <ebc min="25" max="45"/>
+      <ibu min="20" max="30"/>
+      <co2g min="0.39" max="0.45"/>
+      <co2v min="2.0" max="2.3"/>
+      <ph min="4.1" max="4.3"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Stout (Irish Dry)</name>
+      <description>Hooggegist en gefilterd/gepasteuriseerd</description>
+      <gravity min="1036" max="1039"/>
+      <alcohol min="4.0" max="5.0"/>
+      <attenuation min="78" max="80"/>
+      <ebc min="117" max="124"/>
+      <ibu min="33" max="48"/>
+      <co2g min="0.45" max="0.55"/>
+      <co2v min="2.3" max="2.8"/>
+      <ph min="3.9" max="4.3"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Stout (Milk)</name>
+      <description>Hooggegist en meestal gefilterd</description>
+      <gravity min="1041" max="1059"/>
+      <alcohol min="3.0" max="5.0"/>
+      <attenuation min="59" max="71"/>
+      <ebc min="200" max="450"/>
+      <ibu min="21" max="35"/>
+      <co2g min="0.44" max="0.44"/>
+      <co2v min="2.2" max="2.2"/>
+      <ph min="4.1" max="4.1"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Stout (Oatmeal)</name>
+      <description>Hooggegist en gefilterd/gepasteuriseerd</description>
+      <gravity min="1045" max="1065"/>
+      <alcohol min="4.5" max="5.5"/>
+      <attenuation min="70" max="76"/>
+      <ebc min="50" max="165"/>
+      <ibu min="22" max="40"/>
+      <co2g min="0.40" max="0.60"/>
+      <co2v min="2.0" max="3.1"/>
+      <ph min="3.8" max="4.1"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Vlaams Bruin</name>
+      <description>Hooggegist met multi-strain gist en/of melk-azijnzuurinfectie</description>
+      <gravity min="1042" max="1056"/>
+      <alcohol min="4.0" max="6.0"/>
+      <attenuation min="66" max="81"/>
+      <ebc min="50" max="80"/>
+      <ibu min="15" max="35"/>
+      <co2g min="0.35" max="0.45"/>
+      <co2v min="1.8" max="2.3"/>
+      <ph min="3.4" max="4.0"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Vlaams Rood</name>
+      <description>Hooggegist versnijbier met multi-strain gist en/of melk-azijnzuurinfectie</description>
+      <gravity min="1050" max="1064"/>
+      <alcohol min="5.0" max="6.2"/>
+      <attenuation min="70" max="81"/>
+      <ebc min="50" max="80"/>
+      <ibu min="14" max="20"/>
+      <co2g min="0.43" max="0.56"/>
+      <co2v min="2.2" max="2.9"/>
+      <ph min="3.3" max="4.0"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Weizen (Dunkel)</name>
+      <description>Hooggegist met nagisting op fles</description>
+      <gravity min="1048" max="1056"/>
+      <alcohol min="5.0" max="5.5"/>
+      <attenuation min="70" max="77"/>
+      <ebc min="45" max="80"/>
+      <ibu min="10" max="15"/>
+      <co2g min="0.55" max="0.75"/>
+      <co2v min="2.8" max="3.8"/>
+      <ph min="4.0" max="4.5"/>
+    </beerstyle>
+  </class>
+  <class tag="C">
+    <beerstyle>
+      <name>Barley Wine (Pale)</name>
+      <description>Hooggegist, soms met meerdere culturen, meestal gefilterd</description>
+      <gravity min="1088" max="1120"/>
+      <alcohol min="8.5" max="15.0"/>
+      <attenuation min="68" max="92"/>
+      <ebc min="15" max="35"/>
+      <ibu min="15" max="35"/>
+      <co2g min="0.42" max="0.54"/>
+      <co2v min="2.1" max="2.7"/>
+      <ph min="4.0" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Bières de Garde ambrée</name>
+      <description>Hooggegist en laaggegist</description>
+      <gravity min="1060" max="1080"/>
+      <alcohol min="6.5" max="8.0"/>
+      <attenuation min="73" max="77"/>
+      <ebc min="25" max="30"/>
+      <ibu min="15" max="25"/>
+      <co2g min="0.48" max="0.55"/>
+      <co2v min="2.4" max="2.8"/>
+      <ph min="4.1" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Blond</name>
+      <description>Hooggegist, meestal met nagisting op fles</description>
+      <gravity min="1053" max="1068"/>
+      <alcohol min="6.0" max="7.4"/>
+      <attenuation min="80" max="85"/>
+      <ebc min="10" max="25"/>
+      <ibu min="15" max="30"/>
+      <co2g min="0.39" max="0.74"/>
+      <co2v min="2.0" max="3.8"/>
+      <ph min="4.1" max="4.4"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Dortmunder (strong)</name>
+      <description>Laaggegist en gefilterd</description>
+      <gravity min="1064" max="1074"/>
+      <alcohol min="6.5" max="7.7"/>
+      <attenuation min="80" max="85"/>
+      <ebc min="10" max="26"/>
+      <ibu min="13" max="35"/>
+      <co2g min="0.41" max="0.48"/>
+      <co2v min="2.1" max="2.4"/>
+      <ph min="4.4" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Dubbelbok (licht)</name>
+      <description>Laaggegist en gefilterd</description>
+      <gravity min="1064" max="1092"/>
+      <alcohol min="7.0" max="10.0"/>
+      <attenuation min="73" max="83"/>
+      <ebc min="10" max="35"/>
+      <ibu min="17" max="30"/>
+      <co2g min="0.42" max="0.43"/>
+      <co2v min="2.1" max="2.2"/>
+      <ph min="4.6" max="4.7"/>
+    </beerstyle>
+    <beerstyle>
+      <name>India Pale Ale</name>
+      <description>Hooggegist</description>
+      <gravity min="1056" max="1070"/>
+      <alcohol min="5.6" max="7.5"/>
+      <attenuation min="72" max="78"/>
+      <ebc min="15" max="35"/>
+      <ibu min="38" max="65"/>
+      <co2g min="0.42" max="0.69"/>
+      <co2v min="2.1" max="3.5"/>
+      <ph min="4.0" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Meibock &amp; Blonde bock</name>
+      <description>Laaggegist en hooggegist</description>
+      <gravity min="1060" max="1070"/>
+      <alcohol min="6.5" max="7.5"/>
+      <attenuation min="70" max="77"/>
+      <ebc min="14" max="35"/>
+      <ibu min="20" max="40"/>
+      <co2g min="0.42" max="0.55"/>
+      <co2v min="2.1" max="2.8"/>
+      <ph min="4.4" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Saison (Sterke)</name>
+      <description>Hooggegist, meestal met spontane verzuring</description>
+      <gravity min="1065" max="1074"/>
+      <alcohol min="7.5" max="9.0"/>
+      <attenuation min="78" max="100"/>
+      <ebc min="10" max="35"/>
+      <ibu min="15" max="40"/>
+      <co2g min="0.37" max="0.62"/>
+      <co2v min="1.9" max="3.2"/>
+      <ph min="4.2" max="4.3"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Sterke Blonde</name>
+      <description>Hooggegist met nagisting op fles</description>
+      <gravity min="1066" max="1080"/>
+      <alcohol min="8.5" max="9.0"/>
+      <attenuation min="77" max="93"/>
+      <ebc min="7" max="18"/>
+      <ibu min="25" max="30"/>
+      <co2g min="0.44" max="0.79"/>
+      <co2v min="2.2" max="4.0"/>
+      <ph min="3.9" max="4.4"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Tripel</name>
+      <description>Hooggegist, meestal met nagisting op fles</description>
+      <gravity min="1065" max="1080"/>
+      <alcohol min="7.5" max="9.5"/>
+      <attenuation min="73" max="90"/>
+      <ebc min="10" max="25"/>
+      <ibu min="15" max="40"/>
+      <co2g min="0.55" max="0.80"/>
+      <co2v min="2.8" max="4.1"/>
+      <ph min="4.0" max="4.5"/>
+    </beerstyle>
+  </class>
+  <class tag="D">
+    <beerstyle>
+      <name>Barley Wine</name>
+      <description>Hooggegist</description>
+      <gravity min="1088" max="1120"/>
+      <alcohol min="8.0" max="12.0"/>
+      <attenuation min="68" max="85"/>
+      <ebc min="40" max="100"/>
+      <ibu min="35" max="120"/>
+      <co2g min="0.27" max="0.64"/>
+      <co2v min="1.4" max="3.3"/>
+      <ph min="4.2" max="4.8"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Bockbier</name>
+      <description>Laaggegist en hooggegist</description>
+      <gravity min="1062" max="1068"/>
+      <alcohol min="6.0" max="7.0"/>
+      <attenuation min="75" max="80"/>
+      <ebc min="40" max="100"/>
+      <ibu min="15" max="35"/>
+      <co2g min="0.39" max="0.69"/>
+      <co2v min="2.0" max="3.5"/>
+      <ph min="4.0" max="4.8"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Dubbel</name>
+      <description>Hooggegist met nagisting op fles</description>
+      <gravity min="1062" max="1070"/>
+      <alcohol min="6.0" max="7.5"/>
+      <attenuation min="84" max="91"/>
+      <ebc min="45" max="80"/>
+      <ibu min="15" max="30"/>
+      <co2g min="0.52" max="0.70"/>
+      <co2v min="2.6" max="3.6"/>
+      <ph min="4.1" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Dubbelbock</name>
+      <description>Laaggegist en hooggegist</description>
+      <gravity min="1068" max="1080"/>
+      <alcohol min="7.1" max="8.0"/>
+      <attenuation min="75" max="80"/>
+      <ebc min="50" max="100"/>
+      <ibu min="20" max="35"/>
+      <co2g min="0.40" max="0.50"/>
+      <co2v min="2.0" max="2.5"/>
+      <ph min="4.3" max="4.9"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Eisbock/Ijsbok</name>
+      <description>Laaggegist en hooggegist</description>
+      <gravity min="1061" max="1068"/>
+      <alcohol min="7.5" max="9.5"/>
+      <attenuation min="75" max="80"/>
+      <ebc min="80" max="130"/>
+      <ibu min="20" max="35"/>
+      <co2g min="0.47" max="0.65"/>
+      <co2v min="2.4" max="3.3"/>
+      <ph min="4.4" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Old Ale</name>
+      <description>Hooggegist</description>
+      <gravity min="1058" max="1092"/>
+      <alcohol min="5.6" max="9.0"/>
+      <attenuation min="75" max="80"/>
+      <ebc min="90" max="95"/>
+      <ibu min="29" max="53"/>
+      <co2g min="0.26" max="0.40"/>
+      <co2v min="1.3" max="2.0"/>
+      <ph min="3.8" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Porter (Robust)</name>
+      <description>Hooggegist en laaggegist</description>
+      <gravity min="1062" max="1076"/>
+      <alcohol min="6.0" max="8.0"/>
+      <attenuation min="65" max="78"/>
+      <ebc min="60" max="250"/>
+      <ibu min="30" max="50"/>
+      <co2g min="0.37" max="0.52"/>
+      <co2v min="1.9" max="2.6"/>
+      <ph min="4.0" max="4.5"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Quadrupel</name>
+      <description>Hooggegist met nagisting op fles</description>
+      <gravity min="1070" max="1094"/>
+      <alcohol min="8.5" max="12.0"/>
+      <attenuation min="82" max="90"/>
+      <ebc min="60" max="95"/>
+      <ibu min="17" max="40"/>
+      <co2g min="0.54" max="0.76"/>
+      <co2v min="2.7" max="3.9"/>
+      <ph min="4.2" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Scotch Ale (Strong)</name>
+      <description>Hooggegist en laaggegist</description>
+      <gravity min="1065" max="1090"/>
+      <alcohol min="6.0" max="8.6"/>
+      <attenuation min="69" max="74"/>
+      <ebc min="25" max="55"/>
+      <ibu min="30" max="50"/>
+      <co2g min="0.39" max="0.56"/>
+      <co2v min="2.0" max="2.9"/>
+      <ph min="4.0" max="4.6"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Stout (Export)</name>
+      <description>Hooggegist en laaggegist</description>
+      <gravity min="1068" max="1093"/>
+      <alcohol min="6.5" max="8.5"/>
+      <attenuation min="77" max="92"/>
+      <ebc min="190" max="250"/>
+      <ibu min="30" max="80"/>
+      <co2g min="0.39" max="0.70"/>
+      <co2v min="2.0" max="3.6"/>
+      <ph min="3.8" max="4.3"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Stout (Imperial Russian)</name>
+      <description>Hooggegist</description>
+      <gravity min="1075" max="1105"/>
+      <alcohol min="7.5" max="11.0"/>
+      <attenuation min="68" max="76"/>
+      <ebc min="80" max="300"/>
+      <ibu min="50" max="90"/>
+      <co2g min="0.32" max="0.45"/>
+      <co2v min="1.6" max="2.3"/>
+      <ph min="3.9" max="4.9"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Vlaams Bruin (Sterk)</name>
+      <description>Hooggegist met een giststam oorspronkelijk afkomstig van Rodenbach</description>
+      <gravity min="1075" max="1090"/>
+      <alcohol min="7.5" max="8.4"/>
+      <attenuation min="76" max="85"/>
+      <ebc min="50" max="80"/>
+      <ibu min="20" max="33"/>
+      <co2g min="0.45" max="0.65"/>
+      <co2v min="2.3" max="3.3"/>
+      <ph min="3.8" max="3.9"/>
+    </beerstyle>
+    <beerstyle>
+      <name>Weizen(doppel)bock</name>
+      <description>Hooggegist met nagisting op fles</description>
+      <gravity min="1062" max="1074"/>
+      <alcohol min="6.0" max="8.0"/>
+      <attenuation min="70" max="81"/>
+      <ebc min="40" max="80"/>
+      <ibu min="10" max="15"/>
+      <co2g min="0.51" max="0.82"/>
+      <co2v min="2.6" max="4.2"/>
+      <ph min="4.2" max="4.5"/>
+    </beerstyle>
+  </class>
+  <class tag="O">
+    <beerstyle>
+      <name>Overige bieren</name>
+      <description>Hooggegist of laaggegist</description>
+      <gravity min="1028" max="1120"/>
+      <alcohol min="2.5" max="15.0"/>
+      <attenuation min="59" max="100"/>
+      <ebc min="4" max="450"/>
+      <ibu min="3" max="120"/>
+      <co2g min="" max=""/>
+      <co2v min="1.0" max="5.1"/>
+      <ph min="2.9" max="4.9"/>
+    </beerstyle>
+  </class>
+</beerstyles>

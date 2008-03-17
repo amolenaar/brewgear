@@ -1,0 +1,57 @@
+.ac_results {
+        padding: 0px;
+        border: 1px solid WindowFrame;
+        background-color: Window;
+        overflow: auto;
+        z-index: 9999;
+	max-height: 400px;
+}
+
+.ac_results ul {
+        width: 98%;
+        list-style-position: outside;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+}
+
+.ac_results li {
+        margin: 0px;
+        padding: 1px 1px;
+        cursor: default;
+        display: block;
+        width: 100%;
+        font: menu;
+        font-size: 10px;
+        overflow: hidden;
+}
+
+.ac_results li .descr {
+        font-style: italic;
+	font-size: 80%;
+	padding-left: 2em;
+}
+
+.ac_loading {
+        background : Window url('indicator.gif') right center no-repeat;
+}
+
+.ac_over {
+        background-color: Highlight;
+        color: HighlightText;
+}
+
+.ac_moreItems {
+        text-align: center;
+        background-color: InactiveCaption;
+        color: InactiveCaptionText;
+        margin: 0px;
+        padding: 0px 5px;
+        cursor: default;
+        display: block;
+        width: 100%;
+        font: bold menu 12px;
+        overflow: hidden;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+}

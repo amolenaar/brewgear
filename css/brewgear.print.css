@@ -1,0 +1,119 @@
+#wrapper {
+ background-color: white;
+ font-size: 10px;
+ border: none;
+ width: 640px;
+}
+
+#no-mozilla, #no-google-gears {
+ display: none;
+}
+
+h2 {
+ margin: 0 2pt;
+}
+
+.noprint {
+ display: none;
+}
+
+.onlyprint {
+ display: block;
+}
+
+.changed #changed {
+ display: none;
+}
+
+#color {
+ opacity: 1.0;
+}
+
+table {
+ border-collapse: collapse;
+}
+
+tr.emptyrow {
+ display: none;
+}
+
+td {
+ padding: 0;
+}
+
+.primary label, #s_hops label, #s_mash label, #s_filter label, #s_boil label, #s_fermentation label {
+ width: 14em;
+}
+
+input[name="malt-name"] {
+  width: 170px;
+}
+
+input[name="hop-name"], input[name="step-name"] {
+  width: 130px;
+}
+
+input.number, input.real {
+ width: 40px;
+}
+
+
+input, input:disabled {
+ font-size: 12px;
+ background: transparent;
+ border: none;
+ padding: 0 0 -4px 0;
+ border-bottom: 1px solid #e8e8ff;
+}
+
+.summary input {
+ border-top: 1px solid #888888;
+}
+
+#s_hops, #s_mash, #s_filter, #s_boil, #s_yeast, #s_fermentation {
+ float: left;
+ width: 320px;
+}
+
+#s_filter {
+ clear: left;
+}
+
+#s_mash .primary, #s_filter .primary, #s_boil .primary {
+ float: none;
+}
+
+/*
+#s_judgement input {
+ padding-top: 1pt;
+ font-size: 11px;
+}
+*/
+
+#notes {
+ display: none;
+}
+
+#print-notes {
+ display: block;
+ white-space: normal;
+ font: 12px monospace;
+}
+
+button, button.multistate {
+ border: none;
+ background: transparent;
+ font-size: 10px;
+}
+
+a.delete {
+ display: none;
+ /* Also change color, as the display property
+    is defined on the element itself */
+ color: white;
+}
+
+#s_menu, #s_style, #footer {
+ display: none;
+}
+
