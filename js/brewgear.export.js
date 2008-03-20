@@ -13,15 +13,22 @@ function export_xml_to_new_window() {
 
 function export_xml(write) {
   function F(q, context) {
-    return $(q, context).field();
+    var f = $(q, context).field();
+    return f;
   }
-  function date_format(d) {
+  function format_date(d) {
+    if (!d['getDate'] || isNaN(d.getDate())) {
+      return '';
+    }
     var date = '' + d.getDate();
     if (date.length < 2) { date = '0' + date; }
     var month = '' + (d.getMonth() + 1);
     if (month.length < 2) { month = '0' + month; }
     
     return date + '-' + month + '-' + (d.getYear() + 1900);
+  }
+  function format_number(n, fixed) {
+    return (typeof n == 'number' && isFinite(n)) ? n.toFixed((typeof fixed == 'number') ? fixed : 0) : '';
   }
   
   write("<?xml version='1.0' encoding='UTF-8'?>\n");
@@ -31,35 +38,37 @@ function export_xml(write) {
   write("  <NAME>" + F('#name') + "</NAME>\n");
   write("  <VERSION>1</VERSION>\n");
   write("  <TYPE>All Grain</TYPE>\n");
-  write("  <STYLE>\n");
-  write("   <NAME>" + F('#style') + "</NAME>\n");
-  write("   <CATEGORY>none</CATEGORY>\n");
-  write("   <VERSION>1</VERSION>\n");
-  write("   <CATEGORY_NUMBER>1</CATEGORY_NUMBER>\n");
-  write("   <STYLE_LETTER>" + F('#klasse') + "</STYLE_LETTER>\n");
-  write("   <STYLE_GUIDE>Biertypengids Derek Walsh</STYLE_GUIDE>\n");
-  write("   <TYPE>beer</TYPE>\n");
-  write("   <OG_MIN>1.065</OG_MIN>\n");
-  write("   <OG_MAX>1.080</OG_MAX>\n");
-  write("   <FG_MIN>1.008</FG_MIN>\n");
-  write("   <FG_MAX>1.018</FG_MAX>\n");
-  write("   <IBU_MIN>15</IBU_MIN>\n");
-  write("   <IBU_MAX>40</IBU_MAX>\n");
-  write("   <COLOR_MIN>4</COLOR_MIN>\n");
-  write("   <COLOR_MAX>0</COLOR_MAX>\n");
-  write("   <CARB_MIN>2.8</CARB_MIN>\n");
-  write("   <CARB_MAX>4.1</CARB_MAX>\n");
-  write("   <ABV_MIN>7.5</ABV_MIN>\n");
-  write("   <ABV_MAX>9.5</ABV_MAX>\n");
-  write("  </STYLE>\n");
+  if (F('#style')) {
+    write("  <STYLE>\n");
+    write("   <NAME>" + F('#style') + "</NAME>\n");
+    write("   <CATEGORY>none</CATEGORY>\n");
+    write("   <VERSION>1</VERSION>\n");
+    write("   <CATEGORY_NUMBER>1</CATEGORY_NUMBER>\n");
+    write("   <STYLE_LETTER>" + F('#klasse') + "</STYLE_LETTER>\n");
+    write("   <STYLE_GUIDE>Biertypengids Derek Walsh</STYLE_GUIDE>\n");
+    write("   <TYPE>beer</TYPE>\n");
+    write("   <OG_MIN>" + format_number(F('#style-og-min') / 1000, 3) + "</OG_MIN>\n");
+    write("   <OG_MAX>" + format_number(F('#style-og-max') / 1000, 3) + "</OG_MAX>\n");
+    write("   <FG_MIN>1.008</FG_MIN>\n");
+    write("   <FG_MAX>1.018</FG_MAX>\n");
+    write("   <IBU_MIN>" + format_number(F('#style-ibu-min')) + "</IBU_MIN>\n");
+    write("   <IBU_MAX>" + format_number(F('#style-ibu-max')) + "</IBU_MAX>\n");
+    write("   <COLOR_MIN>" + format_number(ebc_to_srm(F('#style-ebc-min'))) + "</COLOR_MIN>\n");
+    write("   <COLOR_MAX>" + format_number(ebc_to_srm(F('#style-ebc-max'))) + "</COLOR_MAX>\n");
+    write("   <CARB_MIN>" + format_number(ebc_to_srm(F('#style-c02v-min')), 1) + "</CARB_MIN>\n");
+    write("   <CARB_MAX>" + format_number(ebc_to_srm(F('#style-c02v-max')), 1) + "</CARB_MAX>\n");
+    write("   <ABV_MIN>" + format_number(ebc_to_srm(F('#style-alcohol-min')), 1) + "</ABV_MIN>\n");
+    write("   <ABV_MAX>" + format_number(ebc_to_srm(F('#style-alcohol-max')), 1) + "</ABV_MAX>\n");
+    write("  </STYLE>\n");
+  }
   write("  <EQUIPMENT>\n");
   write("    <NAME>My equipment</NAME>\n");
   write("    <VERSION>1</VERSION>\n");
-  write("    <BOIL_SIZE>" + F('#volume-before-boil') + "</BOIL_SIZE>\n");
-  write("    <BATCH_SIZE>" + F('#batch-size') + "</BATCH_SIZE>\n");
-  write("    <TRUB_CHILLER_LOSS>" + F('#loss-after-boil') + "</TRUB_CHILLER_LOSS>\n");
-  write("    <EVAP_RATE>" + 3 + "</EVAP_RATE>\n");
-  write("    <BOIL_TIME>" + F('#boiltime') + "</BOIL_TIME>\n");
+  write("    <BOIL_SIZE>" + format_number(F('#volume-before-boil'), 1) + "</BOIL_SIZE>\n");
+  write("    <BATCH_SIZE>" + format_number(F('#batch-size'), 1) + "</BATCH_SIZE>\n");
+  write("    <TRUB_CHILLER_LOSS>" + format_number(F('#loss-after-boil'), 1) + "</TRUB_CHILLER_LOSS>\n");
+  write("    <EVAP_RATE>" + format_number(F('#evaporation'), 1) + "</EVAP_RATE>\n");
+  write("    <BOIL_TIME>" + format_number(F('#boiltime')) + "</BOIL_TIME>\n");
   write("    <LAUTER_DEADSPACE>0.0</LAUTER_DEADSPACE>\n");
   //write("    <TYPE_ENERGY>Propane/butane</TYPE_ENERGY>\n");
   //write("    <COST_ENERGY>2.90</COST_ENERGY>\n");
@@ -69,20 +78,20 @@ function export_xml(write) {
   //write("   <DEBIT_INSTALLATION>13.00</DEBIT_INSTALLATION>\n");
   write("  </EQUIPMENT>\n");
   write("  <BREWER>Joe Sixpack</BREWER>\n");
-  write("  <BATCH_SIZE>" + F('#batch-size') + "</BATCH_SIZE>\n");
-  write("  <BOIL_SIZE>" + F('#volume-before-boil') + "</BOIL_SIZE>\n");
-  write("  <BOIL_TIME>" + F('#boiltime') + "</BOIL_TIME>\n");
-  write("  <EFFICIENCY>" + F('#brewhouse-efficiency') + "</EFFICIENCY>\n");
+  write("  <BATCH_SIZE>" + format_number(F('#batch-size'), 1) + "</BATCH_SIZE>\n");
+  write("  <BOIL_SIZE>" + format_number(F('#volume-before-boil'), 1) + "</BOIL_SIZE>\n");
+  write("  <BOIL_TIME>" + format_number(F('#boiltime')) + "</BOIL_TIME>\n");
+  write("  <EFFICIENCY>" + format_number(F('#brewhouse-efficiency')) + "</EFFICIENCY>\n");
   write("  <HOPS>\n");
   $('.hop').each(function() {
     if (F('[name=hop-name]', this)) {
       write("    <HOP>\n");
       write("      <NAME>" + F('[name=hop-name]', this) + "</NAME>\n");
       write("      <VERSION>1</VERSION>\n");
-      write("      <ALPHA>" + F('[name=hop-alpha]', this) + "</ALPHA>\n");
-      write("      <AMOUNT>" + (F('[name=hop-amount]', this) / 1000) + "</AMOUNT>\n");
+      write("      <ALPHA>" + format_number(F('[name=hop-alpha]', this), 1) + "</ALPHA>\n");
+      write("      <AMOUNT>" + format_number(F('[name=hop-amount]', this) / 1000, 1) + "</AMOUNT>\n");
       write("      <USE>Boil</USE>\n");
-      write("      <TIME>" + F('[name=hop-boiltime]', this) + "</TIME>\n");
+      write("      <TIME>" + format_number(F('[name=hop-boiltime]', this)) + "</TIME>\n");
       write("      <FORM>Pellet</FORM>\n");
       //write("      <COST>0.00</COST>\n");
       write("    </HOP>\n");
@@ -90,17 +99,18 @@ function export_xml(write) {
   });
   write("  </HOPS>\n");
   write("  <FERMENTABLES>\n");
-  $('.ferm').each(function() {
-    if (F('[name=ferm-id]', this)) {
+  $('.malt').each(function() {
+    console.log(F('[name=malt-id]', this));
+    if (F('[name=malt-id]', this)) {
       write("    <FERMENTABLE>\n");
-      write("      <NAME>" + F('[name=ferm-name]', this) + "</NAME>\n");
+      write("      <NAME>" + F('[name=malt-name]', this) + "</NAME>\n");
       write("      <VERSION>1</VERSION>\n");
       write("      <TYPE>Grain</TYPE>\n");
-      write("      <AMOUNT>" + (F('[name=ferm-amount]', this) / 1000) + "</AMOUNT>\n");
-      write("      <YIELD>" + F('[name=ferm-yield]', this) + "</YIELD>\n");
-      write("      <COLOR>" + ebc_to_srm(F('[name=ferm-ebc]', this)) + "</COLOR>\n");
+      write("      <AMOUNT>" + (F('[name=malt-amount]', this) / 1000) + "</AMOUNT>\n");
+      write("      <YIELD>" + F('[name=malt-yield]', this) + "</YIELD>\n");
+      write("      <COLOR>" + ebc_to_srm(F('[name=malt-ebc]', this)) + "</COLOR>\n");
       //write("      <ORIGIN>Belgium</ORIGIN>\n");
-      write("      <MOISTURE>" + F('[name=ferm-moisture]', this) + "</MOISTURE>\n");
+      write("      <MOISTURE>" + F('[name=malt-moisture]', this) + "</MOISTURE>\n");
       //write("      <COST>0.00</COST>\n");
       write("    </FERMENTABLE>\n");
     }
@@ -114,13 +124,14 @@ function export_xml(write) {
   write("      <VERSION>1</VERSION>\n");
   //write("      <FORM>Liquid</FORM>\n");
   write("      <TYPE>Ale</TYPE>\n");
-  write("      <AMOUNT>" + F('#starter') + "</AMOUNT>\n");
+  write("      <AMOUNT>" + format_number(F('#starter'), 1) + "</AMOUNT>\n");
   //write("      <AMOUNT_IS_WEIGHT>FALSE</AMOUNT_IS_WEIGHT>\n");
   //write("      <STARTER_MADE>TRUE</STARTER_MADE>\n");
   //write("      <OG_STARTER>1.040</OG_STARTER>\n");
   write("      <DATE_MADE></DATE_MADE>\n");
   write("      <TIME_AERATED>0.0</TIME_AERATED>\n");
-  write("      <TEMP>" + F('[name=starter-temp]') + "</TEMP>\n");
+  g = F('[name=starter-temp]');
+  write("      <TEMP>" + isFinite(g) ? g : 20 + "</TEMP>\n");
   //write("      <NUTRIENTS_ADDED>FALSE</NUTRIENTS_ADDED>\n");
   //write("      <NAME_NUTRIENTS></NAME_NUTRIENTS>\n");
   //write("      <AMOUNT_NUTRIENTS>0.0000</AMOUNT_NUTRIENTS>\n");
@@ -181,9 +192,9 @@ function export_xml(write) {
       write("        <NAME>" + F('[name=step-name]', this) + "</NAME>\n");
       write("        <VERSION>1</VERSION>\n");
       write("        <TYPE>Infusion</TYPE>\n");
-      write("        <INFUSE_AMOUNT>" + F('#volume-mash') + "</INFUSE_AMOUNT>\n");
-      write("        <STEP_TEMP>" + F('[name=step-temp]', this) + "</STEP_TEMP>\n");
-      write("        <STEP_TIME>" + F('[name=step-time]', this) + "</STEP_TIME>\n");
+      write("        <INFUSE_AMOUNT>" + format_number(F('#volume-mash'), 1) + "</INFUSE_AMOUNT>\n");
+      write("        <STEP_TEMP>" + format_number(F('[name=step-temp]', this), 1) + "</STEP_TEMP>\n");
+      write("        <STEP_TIME>" + format_number(F('[name=step-time]', this)) + "</STEP_TIME>\n");
       //write("        <RAMP_TIME>1</RAMP_TIME>\n");
       //write("        <END_TEMP>60.0</END_TEMP>\n");
       write("      </MASH_STEP>\n");
@@ -194,9 +205,10 @@ function export_xml(write) {
   write("    <SPARGE_TEMP>75.0</SPARGE_TEMP>\n");
   write("  </MASH>\n");
   write("  <NOTES>" + escape(F('#notes')) + "</NOTES>\n");
-  write("  <OG>" + F('#og') + "</OG>\n");
-  write("  <FG>" + F('#fg-secundary') + "</FG>\n");
-
+  g = F('#og') / 1000;
+  write("  <OG>" + (isFinite(g) ?g.toFixed(3) : '') + "</OG>\n");
+  g = F('#fg-secundary') / 1000;
+  write("  <FG>" + (isFinite(g) ?g.toFixed(3) : '') + "</FG>\n");
   age = F('[name=start-secundary]') - F('[name=start-primary]');
   age /= 24*60*60*1000;
   write("  <PRIMARY_AGE>" + (isFinite(age) ? age : 0) + "</PRIMARY_AGE>\n");
@@ -204,16 +216,20 @@ function export_xml(write) {
   age /= 24*60*60*1000;
   write("  <SECONDARY_AGE>" + (isFinite(age) ? age : 0) + "</SECONDARY_AGE>\n");
   write("  <AGE_TEMP>23.0</AGE_TEMP>\n");
-  write("  <DATE>" + date_format(F('#brew-date')) +  "</DATE>\n");
+  write("  <DATE>" + format_date(F('#brew-date')) +  "</DATE>\n");
   write("  <PRIMING_SUGAR_NAME>" + F('#priming-name') + "</PRIMING_SUGAR_NAME>\n");
-  write("  <CARBONATION>" + F('#co2v') + "</CARBONATION>\n");
+  write("  <CARBONATION>" + format_date(F('#co2v'), 1) + "</CARBONATION>\n");
   write("  <CARBONATION_TEMP>20.0</CARBONATION_TEMP>\n");
-  write("  <PLANNED_OG>" + F('#planned-og') + "</PLANNED_OG>\n");
+
+  g = F('#planned-og') / 1000;
+  write("  <PLANNED_OG>" + (isFinite(g) ? g.toFixed(3) : '') + "</PLANNED_OG>\n");
   write("  <VOLUME_AFTER_BOIL>" + F('#volume-after-boil') + "</VOLUME_AFTER_BOIL>\n");
   write("  <VOLUME_FERMENTER>" + F('#volume-fermenter') + "</VOLUME_FERMENTER>\n");
-  write("  <DATE_BOTTLING>" + date_format(F('#bottle-date')) + "</DATE_BOTTLING>\n");
-  write("  <AMOUNT_BOTTLING>" + F('#bottle-volume') + "</AMOUNT_BOTTLING>\n");
-  write("  <AMOUNT_PRIMING>" + F('#priming-amount') + "</AMOUNT_PRIMING>\n");
+  write("  <DATE_BOTTLING>" + format_date(F('#bottle-date')) + "</DATE_BOTTLING>\n");
+  g = F('#bottle-volume');
+  write("  <AMOUNT_BOTTLING>" + (isFinite(g) ? g : '') + "</AMOUNT_BOTTLING>\n");
+  g = F('#priming-amount');
+  write("  <AMOUNT_PRIMING>" +  (isFinite(g) ? g : '') + "</AMOUNT_PRIMING>\n");
   write(" </RECIPE>\n");
   write("</RECIPES>");
 

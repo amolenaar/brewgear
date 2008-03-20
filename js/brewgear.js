@@ -247,7 +247,7 @@ $(function() {
     $('#mash-amount').val(total_mash);
     $('#boil-amount').val(total_boil);
     $('#ferm-amount').val(total_ferm);
-    $('#total-amount').val(total_amount);
+    $('#total-amount').val(isFinite(total_amount) ? total_amount : '');
 
   }).observe('#brewhouse-efficiency,#total-yield,input[name=malt-yield],input[name=malt-moisture],input[name=malt-percentage],button[name=malt-added]')
   
@@ -299,7 +299,7 @@ $(function() {
     $('#mash-amount').val(total_mash);
     $('#boil-amount').val(total_boil);
     $('#ferm-amount').val(total_ferm);
-    $('#total-amount').val(total_amount);
+    $('#total-amount').val(isFinite(total_amount) ? total_amount : '');
 
     var bhe = $('#brewhouse-efficiency').field() / 100;
     var factor_mash = 0, factor_boil = 0, factor_ferm = 0;
