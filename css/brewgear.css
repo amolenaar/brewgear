@@ -302,6 +302,10 @@ a.delete {
  min-width: 270px;
 }
 
+#importdialog {
+ width: 500px;
+}
+
 #exportdialog {
  width: 500px;
 }

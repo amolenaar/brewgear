@@ -39,7 +39,7 @@ $(function() {
   }
 
   try {
-    rs = db.execute("select value from brewgear where key='db'");
+    rs = db.execute("SELECT value FROM brewgear WHERE key = 'db'");
     if (rs.isValidRow()) {
         db_version = rs.field(0);
     }
@@ -58,7 +58,7 @@ $(function() {
     db_version = 1;
   }
 
-  rs = db.execute('select count(*) from style');
+  rs = db.execute('SELECT count(*) FROM style');
   c = rs.field(0);
   rs.close();
   if (c === 0) {
@@ -66,7 +66,7 @@ $(function() {
     $.ajax({ url: "data/beerstyles.xml", dataType: "xml", async: false, success:
       function(xml) {
         // xml is a Document
-        db.execute('begin transaction');
+        db.execute('BEGIN TRANSACTION');
         $('class', xml).each(function() {
           tag = $(this).attr('tag');
           $('beerstyle', this).each(function() {
@@ -88,12 +88,12 @@ $(function() {
                      $('ph', this).attr('min'), $('ph', this).attr('max') ]);
           });
         }); // class
-        db.execute('commit');
+        db.execute('COMMIT');
       }
     }); // ajax
   }
   
-  rs = db.execute('select count(*) from fermentable');
+  rs = db.execute('SELECT count(*) FROM fermentable');
   c = rs.field(0);
   rs.close();
   if (c === 0) {
@@ -101,7 +101,7 @@ $(function() {
     $.ajax({ url: "data/fermentables.xml", dataType: "xml", async: false, success:
       function(xml) {
         // xml is a Document
-        db.execute('begin transaction');
+        db.execute('BEGIN TRANSACTION');
         $('category', xml).each(function() {
           var category = $(this).attr('name');
           $('product', this).each(function() {
@@ -114,7 +114,7 @@ $(function() {
                         $('moisture', this).text(), $('ebc', this).text() ]);
           }); // product
         }); // category
-        db.execute('commit');
+        db.execute('COMMIT');
       }
     }); // ajax
   }

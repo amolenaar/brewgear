@@ -651,31 +651,32 @@ $(function() {
   $('#load').click(function() {
     var fileselect = $('#filedialog select');
     fileselect.empty();
+    fileselect.append('<option value="">laden...</option>');
 
-    $(storage.list()).each(function() {
-      fileselect.append('<option value="' + this.recipe_id + '"' + 
-          '>' + this.name + ' (' + this.brew_date + ')</option>');
+    $('#filedialog').showDialog(function() {
+      fileselect.empty();
+      $(storage.list()).each(function() {
+        fileselect.append('<option value="' + this.recipe_id + '"' + 
+            '>' + this.name + ' (' + this.brew_date + ')</option>');
+      });
+
+      $('option:first', fileselect).attr('selected', 'selected');
     });
-
-    $('option:first', fileselect).attr('selected', 'selected');
     
-    // Placement:
-    $('#filedialog').showDialog();
-    set_unchanged();
   });
 
   $('#filedialog button[name=open]').click(function() {
     storage.load($('#filedialog select').val());
-    $('#filedialog').hideDialog();
     set_status('Recept geladen');
     set_unchanged();
+    $('#filedialog').hideDialog();
   });
 
   $('#filedialog select').dblclick(function() {
     storage.load($(this).val());
-    $('#filedialog').hideDialog();
     set_status('Recept geladen');
     set_unchanged()
+    $('#filedialog').hideDialog();
   });
 
   $('#filedialog button[name=delete]').click(function() {
@@ -710,20 +711,47 @@ $(function() {
   });
 
 
+  $('#import').click(function() {
+    $('#importdialog').showDialog();
+  });
+
+  $('#importdialog button[name=import]').click(function() {
+    var file_name = $('#importfile').val();
+    var doc;
+    
+    // Step 1: import file
+    if (!file_name) {
+      return;
+    }
+    doc = load_document(file_name);
+    
+    // Step 2: import type and check with styles
+    // Step 3: import FERMENTABLES and compare with malts in fermentable table
+    // Step 4: change fermentables/import
+    // Step 5: import recipe
+    import_xml(doc);
+  });
+
+  $('#importdialog button[name=close]').click(function() {
+    $('#importdialog').hideDialog();
+  });
+
+
   $('#print').click(function() {
     window.print();
   });
 
 
   $('#export').click(function() {
-    //export_xml_to_new_window();
     var textarea = $('#exportdialog textarea');
-    $('#exportdialog').showDialog();
-    var exp = '';
-    export_xml(function (txt) {
-      exp += txt;
+    textarea.val("momentje...");
+    $('#exportdialog').showDialog(function() {
+      var exp = '';
+      export_xml(function (txt) {
+        exp += txt;
+      });
+      textarea.val(exp);
     });
-    textarea.val(exp);
   });
 
   $('#exportdialog button[name=close]').click(function() {

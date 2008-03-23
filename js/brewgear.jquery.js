@@ -52,17 +52,17 @@
       $(this).removeAttr('disabled');
     },
 
-    showDialog: function() {
+    showDialog: function(callback) {
       var d = $(this);
       $.block(function() {
         d.css('left', (window.innerWidth - d.outerWidth()) / 2 + 'px');
-        $(d).slideDown();
+        $(d).slideDown(callback);
       });
     },
     
-    hideDialog: function() {
+    hideDialog: function(callback) {
       $(this).slideUp(function() {
-        $.unblock();
+        $.unblock(callback);
       });
     },
     

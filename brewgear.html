@@ -24,6 +24,7 @@
   <script type="text/javascript" src="js/brewgear.math.js"></script>
   <script type="text/javascript" src="js/brewgear.storage.js"></script>
   <script type="text/javascript" src="js/brewgear.export.js"></script>
+  <script type="text/javascript" src="js/brewgear.import.js"></script>
   <script type="text/javascript" src="js/brewgear.js"></script>
 
   <script type="text/javascript" src="data/ebc2rgb.js"></script>
@@ -447,6 +448,7 @@
     <button id="load">Open...</button><hr />
     <button id="save">Opslaan</button>
     <button id="copy">Opslaan (kopie)</button><hr />
+    <button id="import">Importeren...</button><hr />
     <button id="print">Afdrukken...</button>
     <button id="export">Exporteren...</button>
    </div>
@@ -479,15 +481,21 @@
    </div>
   </div>
   
-  <div id="confirmdialog" class="dialog" title="Bevestig">
-   <h2>Bevestig uw keuze</h2>
-   <p></p>
+  <div id="importdialog" class="dialog" title="Import">
+   <h2>Importeer BeerXml</h2>
+   <ol>
+    <li id="importstep1">Selecteer een bestand om te importeren:<br />
+     <input type="file" name="importfile" id="importfile" /></li>
+    <li id="importstep2">Klik daarna op "Import"</li>
+    <li id="importstep3">Match
+    </li>
+   </ol>
    <div class="buttonbar">
-    <button type="submit" name="ok">OK</button>
-    <button name="cancel">Annuleren</button>
+    <button type="submit" name="import">Import</button>
+    <button name="close">Sluit</button>
    </div>
   </div>
-  
+
  </body>
 <!--
   vim:sw=1:et:ai

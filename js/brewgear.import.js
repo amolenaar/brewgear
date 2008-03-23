@@ -1,68 +1,52 @@
-/**
- * Standard method to export BrewGear data as BeerXML/BrouwHulpXML
+/*
+ * Import BeerXML/BrouwHulpXML/BrouwVisieXML into the model.
+ *
  */
-
-function export_xml_to_new_window() {
-  win = window.open('newfile'); //$('#name').val() + ".xml");
-  doc = win.document;
-  doc.open("text/plain");
-  export_xml(function(txt) {
-    doc.write(txt);
+ 
+function load_document(file_name) {
+  var doc;
+  $.ajax({ url: file_name, dataType: "xml", async: false, success:
+    function(xml) {
+      doc = xml;
+    }
   });
+  return doc;
 }
 
-function export_xml(write) {
-  function F(q, context) {
-    var f = $(q, context).field();
-    return f;
-  }
-  
-  function T(q, context) {
-    var f = $(q, context).text();
-    return parseFloat(f);
-  }
-  
-  function format_date(d) {
-    if (!d['getDate'] || isNaN(d.getDate())) {
-      return '';
+/**
+ * Match style defined in import XML with styles defined in the database
+ * Returns the style ID or undefined if none found.
+ */
+function match_style(style) {
+  rs = db.execute('SELECT style_id FROM style WHERE name = ?', [ $('NAME', style).text() ]);
+  try {
+    if (rs.isValidRow()) {
+      return rs.field(0);  
     }
-    var date = '' + d.getDate();
-    if (date.length < 2) { date = '0' + date; }
-    var month = '' + (d.getMonth() + 1);
-    if (month.length < 2) { month = '0' + month; }
-    
-    return date + '-' + month + '-' + (d.getYear() + 1900);
+  } finally {
+    rs.close();
   }
-  
-  function format_number(n, fixed) {
-    return (typeof n == 'number' && isFinite(n)) ? n.toFixed((typeof fixed == 'number') ? fixed : 0) : '';
-  }
-  
-  var tagDepth = 0;
-  function tag_padding() {
-    for (var i = 0; i < tagDepth; i++) { write(' '); }
-  }
+}
 
-  function tag(name, value) {
-    if (typeof value == 'function') {
-      tag_padding();
-      write("<" + name + ">\n");
-      tagDepth++;
-      value();
-      tagDepth--;
-      tag_padding();
-      write("</" + name + ">\n");
-    } else if (value) {
-      tag_padding();
-      write("<" + name + ">" + value + "</" + name + ">\n");
-    }
+function match_fermentables(fermentable) {
+}
+
+function import_xml(doc) {
+  function R(q) {
+    var v = $(q, doc).text();
+    return parseFloat(v);
   }
   
-  write("<?xml version='1.0' encoding='UTF-8'?>\n");
-  write("<?xml-stylesheet type='text/xsl' href='brouwhulp.xsl'?>\n");
-  tag("RECIPES", function() {
-    tag("RECIPE", function() {
-      tag("NAME", F('#name'));
+  function tag(rtag, xmltag) {
+    var v = $(xmltag, doc).text();
+    $(rtag).val(v);
+  }
+  
+  tag('#name', "RECIPE > NAME");
+  
+  tag('#klasse', "RECIPE > STYLE > STYLE_LETTER");
+  
+  /*
       tag("VERSION", 1);
       tag("TYPE", "All Grain");
       if (F('#style')) {
@@ -198,25 +182,36 @@ function export_xml(write) {
           });
         });
         
-        //tag("SPARGE_TEMP", "75.0");
+        tag("SPARGE_TEMP", "75.0");
       });
-      tag("NOTES", F('#notes'));
-      g = F('#og') / 1000;
-      tag("OG", (isFinite(g) ?g.toFixed(3) : ''));
-      g = F('#fg-secundary') / 1000;
-      tag("FG", (isFinite(g) ?g.toFixed(3) : ''));
+      */
+      
+    tag('#notes', "RECIPE > NOTES");
+    
+    g = R('RECIPE > OG') * 1000;
+    $('#og').val(g);
+    
+    g = R('RECIPE > FG') * 1000;
+    
+    $('#fg-secundary').val(g);
+    
+    tag('#brew-date', "RECIPE > DATE");
+    
+    tag('#priming-name', "RECIPE > PRIMING_SUGAR_NAME");
+     /*
       age = F('[name=start-secundary]') - F('[name=start-primary]');
       age /= 24*60*60*1000;
-      tag("PRIMARY_AGE", (isFinite(age) ? age : 0));
+    tag("PRIMARY_AGE", (isFinite(age) ? age : 0));
       age = F('#bottle-date') - F('[name=start-secundary');
       age /= 24*60*60*1000;
       tag("SECONDARY_AGE", (isFinite(age) ? age : 0));
       tag("AGE_TEMP", "23.0");
-      tag("DATE", format_date(F('#brew-date')));
       tag("PRIMING_SUGAR_NAME", F('#priming-name'));
       tag("CARBONATION", format_date(F('#co2v'), 1));
       tag("CARBONATION_TEMP", "20.0");
-
+     */
+     
+     /*
       g = F('#planned-og') / 1000;
       tag("PLANNED_OG", (isFinite(g) ? g.toFixed(3) : ''));
       tag("VOLUME_AFTER_BOIL", F('#volume-after-boil'));
@@ -226,11 +221,8 @@ function export_xml(write) {
       tag("AMOUNT_BOTTLING", (isFinite(g) ? g : ''));
       g = F('#priming-amount') / 1000;
       tag("AMOUNT_PRIMING",  (isFinite(g) ? g : ''));
-    });
+  
   });
-
-  //close();
+  });
+  */
 }
-
-
-// vim: sw=2:et:ai

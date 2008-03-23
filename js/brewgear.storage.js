@@ -11,7 +11,6 @@ storage = {
     if (!db) { return; }
     if (typeof value == "undefined")
       db.execute('DELETE FROM brewgear WHERE key = ?', [ name ]);
-      
     else if (this.getProperty(name))
       db.execute('UPDATE brewgear SET value = ? where key = ?', [ value, name ]);
     else
@@ -334,10 +333,13 @@ storage = {
   prune: function(recipe_id) {
     var tables = [ 'recipe_fermentable', 'hop', 'mash', 'filter', 'boil', 'fermentation', 'bottling', 'judgement', 'recipe' ];
 
+    db.execute('BEGIN TRANSACTION');
+    
     for (i in tables) {
       db.execute('DELETE FROM ' + tables[i]+ ' WHERE recipe_id = ?', [ recipe_id ]);
     }
 
+    db.execute('COMMIT');
     if (this.recipe_id == recipe_id)
       this.recipe_id = undefined;
   },
@@ -346,8 +348,32 @@ storage = {
     $('input,textarea').val('');
     $('.malt,.hop').update();
     this.recipe_id = undefined;
-  }
+  },
 
+  add_style_from_xml: function(style_xml) {
+    db.execute('BEGIN TRANSACTION');
+    
+            db.execute('INSERT INTO style (class, name, description, gravity_min, gravity_max,' +
+                    'alcohol_min, alcohol_max, attenuation_min, attenuation_max, ebc_min, ebc_max,' +
+                    'ibu_min, ibu_max, co2g_min, co2g_max, co2v_min, co2v_max, ph_min, ph_max)' +
+                    'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                    [$('STYLE_LETTER', style_xml).text(), $('NAME', style_xml).text(), $('NOTES', style_xml).text(),
+                     $('OG_MIN', style_xml).text(), $('OG_MAX', style_xml).text(),
+                     $('ABV_MIN', style_xml).text(), $('ABV_MAX', style_xml).text(),
+                     0, 0, //$('attenuation', style_xml).attr('min'), $('attenuation', style_xml).attr('max'),
+                     srm_to_ebc(parseFloat($('COLOR_MIN', style_xml).text())), 
+                     srm_to_ebc(parseFloat($('COLOR_MAX', style_xml).text())),
+                     $('IBU_MIN', style_xml).text(), $('IBU_MAX', style_xml).text(),
+                     0, 0, //$('co2g', style_xml).attr('min'), $('co2g', style_xml).attr('max'),
+                     $('CARB_MIN', style_xml).text(), $('CARB_MAX', style_xml).text(),
+                     0, 0 ]); //$('ph', style_xml).attr('min'), $('ph', style_xml).attr('max')
+	
+    var rs = db.execute('SELECT style_id FROM style WHERE rowid=?', [ db.lastInsertRowId ]);
+    style_id = rs.field(0);
+    rs.close();
+
+    db.execute('COMMIT');
+  }
 }
 
 // vim:sw=2:et:ai
