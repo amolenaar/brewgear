@@ -211,14 +211,18 @@ function export_xml(write) {
       age = F('#bottle-date') - F('[name=start-secundary');
       age /= 24*60*60*1000;
       tag("SECONDARY_AGE", (isFinite(age) ? age : 0));
+      tag('SG_END_PRIMARY', '[name=fg-primary]');
       tag("AGE_TEMP", "23.0");
       tag("DATE", format_date(F('#brew-date')));
       tag("PRIMING_SUGAR_NAME", F('#priming-name'));
-      tag("CARBONATION", format_date(F('#co2v'), 1));
+      tag("CARBONATION", format_number(F('#co2v'), 1));
       tag("CARBONATION_TEMP", "20.0");
 
       g = F('#planned-og') / 1000;
       tag("PLANNED_OG", (isFinite(g) ? g.toFixed(3) : ''));
+      tag("VOLUME_FILTER", F('#volume-filter'));
+      tag("OG_BEFORE_BOIL", F('#og-before-boil'));
+      tag("VOLUME_BEFORE_BOIL", F('#volume-before-boil'));
       tag("VOLUME_AFTER_BOIL", F('#volume-after-boil'));
       tag("VOLUME_FERMENTER", F('#volume-fermenter'));
       tag("DATE_BOTTLING", format_date(F('#bottle-date')));

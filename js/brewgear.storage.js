@@ -310,7 +310,15 @@ storage = {
     d('#judge-remark', 'remark');
     rs.close();
     */
+    
+    this.after_load();
 
+    this.recipe_id = recipe_id;
+    
+    return recipe_id;
+  },
+  
+  after_load: function() {
     $('#stamwort,#klasse,#ebc,#total-yield,#color').update();
 
     $('#total-amount').update();
@@ -324,10 +332,6 @@ storage = {
     $('#efficiency,#bu-gu-ratio,#svg,#co2v,#priming-total,#alcohol').update();
 
     $('#print-notes,#print-ebc,#print-color-method,#print-bitterness,#print-bitterness-method').update();
-
-    this.recipe_id = recipe_id;
-    
-    return recipe_id;
   },
 
   prune: function(recipe_id) {
@@ -346,6 +350,7 @@ storage = {
 
   clear: function () {
     $('input,textarea').val('');
+    $('[name=malt-added]').multistate('_default_');
     $('.malt,.hop').update();
     this.recipe_id = undefined;
   },

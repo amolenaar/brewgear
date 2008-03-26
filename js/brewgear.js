@@ -725,11 +725,15 @@ $(function() {
     }
     doc = load_document(file_name);
     
+    storage.clear();
+    
     // Step 2: import type and check with styles
     // Step 3: import FERMENTABLES and compare with malts in fermentable table
     // Step 4: change fermentables/import
     // Step 5: import recipe
     import_xml(doc);
+    storage.after_load();
+    $('#importdialog').hideDialog();
   });
 
   $('#importdialog button[name=close]').click(function() {

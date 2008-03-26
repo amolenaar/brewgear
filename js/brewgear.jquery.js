@@ -10,6 +10,20 @@
     update_queue: [],
     _change_count: 0,
     
+    process_update_queue: function() {
+      var q = $.unique($.update_queue.reverse());
+      //console.log('Had', $.update_queue.length, 'items. Now only have to update', q.length);
+      try {
+        q.reverse();
+        for (i in q) {
+          $(q[i]).update();
+        }
+      } finally {
+        $.update_queue = [];
+      }
+    },
+    
+
     block: function(callback) {
       var blocker = $('#_jq_blocker');
       if (!blocker.length) {
@@ -93,16 +107,7 @@
           --$._change_count;
         }
         if($._change_count === 0) {
-          var q = $.unique($.update_queue.reverse());
-          //console.log('Had', $.update_queue.length, 'items. Now only have to update', q.length);
-          try {
-            q.reverse();
-            for (i in q) {
-              $(q[i]).update();
-            }
-          } finally {
-            $.update_queue = [];
-          }
+          $.process_update_queue();
         }
       }) : this.trigger("change");
     },
@@ -127,7 +132,7 @@
       $.update_queue.push(this);
       return this;
     },
-    
+
     /**
      * This (custom) trigger is used to update specific fields. The data used
      * may be obtained from other fields on the page.
@@ -162,21 +167,21 @@
     },
 
     multistate: function(state) {
-      if (state) {
-        var items = $(this).attr('rel').split(/,/);
-        for (i in items) {
-          var kv = items[i].split(/:/);
-          if (kv[0] == state) {
-            $(this).val(kv[0]).text(kv[1]);
-            break;
-          }
+      if (typeof state == "string") {
+        var e = $(this);
+        var map = e.data('multistate');
+        if (!map) {
+          throw "Element not defined as multistate object";
         }
+        var kv = map[state || '_default_'];
+        $(this).val(kv[0]).text(kv[1]);
         return this;
       }
       
+      // Default: initialize multistate input
       $(this).each(function() {
         var e = $(this);
-        var map = {};
+        var map = { };
         var items = e.attr('rel').split(/,/);
         var last = '_default_';
         for (i in items) {
@@ -186,15 +191,17 @@
         }
         // make the reference cyclic:
         map[last] = map._default_;
-
+        
         var val = e.val();
         if (!val || val == map._default_[0]) {
           e.val(map._default_[0]).text(map._default_[1]);
         }
         e.click(function() {
+          var map = e.data('multistate');
           var kv = map[e.val() || '_default_'];
           e.val(kv[0]).text(kv[1]).change();
         });
+        e.data('multistate', map);
       });
       return this;
     }
