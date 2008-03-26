@@ -244,6 +244,12 @@ a.delete {
  * Interactive feedback and errors
  */
 
+#spinner {
+ position: fixed;
+ top: 8px;
+ right: 8px;
+}
+
 .nfe {
  /* number format error */
  color: red;

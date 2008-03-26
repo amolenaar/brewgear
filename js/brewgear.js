@@ -769,6 +769,9 @@ $(function() {
     $('#name').focus();
   });
 
+
+  // Everything is loaded, hide the spinner.
+  $('#spinner').css('display', 'none');
 });
 
 // vim:sw=2:et:ai
