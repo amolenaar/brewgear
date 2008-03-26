@@ -15,9 +15,16 @@
       //console.log('Had', $.update_queue.length, 'items. Now only have to update', q.length);
       try {
         q.reverse();
-        for (i in q) {
-          $(q[i]).update();
-        }
+        var i = 0;
+        var ival_id = setInterval(function() {
+          $(q[i++]).update();
+          if (i == q.length) {
+            clearInterval(ival_id);
+          }
+        }, 50);
+        //for (i in q) {
+        //  $(q[i]).update();
+        //}
       } finally {
         $.update_queue = [];
       }
