@@ -19,7 +19,7 @@ $.extend({
      * take place.
      */
     if ($._update_timer === 0) {
-      $('#spinner').css('visibility', 'visible');
+      $('#spinner').css('display', 'block');
       $._update_timer = setTimeout(function() {
         //console.log('start processing of update queue');
         try {
@@ -31,7 +31,7 @@ $.extend({
             $(q[i++]).update();
             //console.log('updated element', i, 'of', q.length, ':', q[i]);
             if (i >= q.length) {
-              $('#spinner').css('visibility', 'hidden');
+              $('#spinner').css('display', 'none');
               clearInterval(ival_id);
             }
           }, 1);

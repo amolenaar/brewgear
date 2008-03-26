@@ -126,6 +126,7 @@ function import_xml(doc) {
     $('[name=hop-alpha]', m).val($('ALPHA', h).text());
     var g = R('AMOUNT', h) * 1000;
     $('[name=hop-amount]', m).val(g);
+    // TODO: check <USE>: Boil, Aroma, Dry Hop
     $('[name=hop-boiltime]', m).val($('TIME', h).text());
   }
       /*

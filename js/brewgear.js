@@ -772,7 +772,7 @@ $(function() {
 
   // Everything is loaded, hide the spinner.
   // (use visibility, so images are loaded)
-  $('#spinner').css('visibility', 'hidden');
+  $('#spinner').css('display', 'none');
 });
 
 // vim:sw=2:et:ai
