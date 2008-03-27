@@ -7,19 +7,22 @@ var db;
  */
 $(function() {
   // Skip this part if Google Gears is not present
-  if (!(window.google && google.gears)) {
+  if (window.openDatabase) {
+    // TODO: implement and wrap google gears in HTML 5 compliant spec.
+    return;
+  } else if (window.google && google.gears) {
+    db = google.gears.factory.create('beta.database', '1.0');
+   
+    db.open('brewgear');
+  
+    $(window).unload(function() {
+      db.close();
+    });
+  } else {
     return;
   }
 
   var db_version = 0;
-  
-  db = google.gears.factory.create('beta.database', '1.0');
-   
-  db.open('brewgear');
-  
-  $(window).unload(function() {
-    db.close();
-  });
   
   function load_ddl(filename) {
     $.ajax({ url: filename,  dataType: "plain", async: false, success:
