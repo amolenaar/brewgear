@@ -11,9 +11,11 @@ function set_status(msg) {
 
 $(function() {
 
+  //if ($.browser.mozilla || $.browser.safari) {
   if ($.browser.mozilla) {
     $('#no-mozilla').css('display', 'none');
   }
+  //if (window.openDatabase || (window.google && google.gears)) {
   if (window.google && google.gears) {
     $('#no-google-gears').css('display', 'none');
   }
@@ -353,6 +355,7 @@ $(function() {
   $('.malt a.delete').click(function() {
     var malt = this.parentNode.parentNode;
     $('input', malt).val('');
+    $('input[name=malt-name]', malt).change();
     $('input[name=malt-percentage]', malt).change();
   }).removeAttr('href');
 
