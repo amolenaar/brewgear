@@ -24,13 +24,8 @@ verzoekt tijdelijke bestanden op te ruimen.
 TODO's
 ======
 
-- Toevoegen: CO_2 berekening voor bottel suiker
 - toevoegen: SG/IBU coefficient
-- maak selectie van fermentables voor bottelsuiker
-- Integreer bierstijl informatie in de pagina (waar?)
 - sla maischwater op, ook als er geen maischschema velden zijn
 - verbeter bestandsbeheer (zit ik in een nieuw of bestaand recept?)
-- verberg maisch/koken/vergisting knop als er geen moutnaam is ingevult
-- verberg verwijderen knop als een rij helemaal leeg is
 
 </remainder>

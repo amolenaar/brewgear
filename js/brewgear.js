@@ -11,19 +11,19 @@ function set_status(msg) {
 
 $(function() {
 
-  //if ($.browser.mozilla || $.browser.safari) {
+  // Fix padding for FireFox
   if ($.browser.mozilla) {
-    $('#no-mozilla').css('display', 'none');
+    $('.multistate').css('padding', '0 3px');
   }
-  //if (window.openDatabase || (window.google && google.gears)) {
-  if (window.google && google.gears) {
-    $('#no-google-gears').css('display', 'none');
+
+  if (window.openDatabase) {
+    $('#no-database').css('display', 'none');
   }
 
   if (!db) {
     $('#load,#save,#copy').disable();
   }
-
+  
   /*
    * Fill in some defaults.
    */
@@ -56,7 +56,7 @@ $(function() {
    * General
    */
   $('#stamwort').update(function() {
-    $(this).val(Math.round(sg_to_plato($('#planned-og').field())));
+    $('#stamwort').val(Math.round(sg_to_plato($('#planned-og').field())));
   }).observe('#planned-og');
 
   $('#total-yield').update(function() {
@@ -92,12 +92,13 @@ $(function() {
   });
   
   try {
-    var m = storage.getProperty('color-method');
-    if (m) {
-      $('#color-method').multistate(m);
-      color_method = eval('color_' + m);
-      $('#print-color-method').update();
-    }
+    storage.getProperty('color-method', null, function(m) {
+      if (m) {
+        $('#color-method').multistate(m);
+        color_method = eval('color_' + m);
+        $('#print-color-method').update();
+      }
+    });
   } catch (e) {
   }
   
@@ -354,15 +355,24 @@ $(function() {
 
   $('.malt a.delete').click(function() {
     var malt = this.parentNode.parentNode;
-    $('input', malt).val('');
-    $('input[name=malt-name]', malt).change();
-    $('input[name=malt-percentage]', malt).change();
+    $('input', malt).val('').change();
+    //$('input[name=malt-percentage]', malt).change();
+    //$(malt).queue_for_update();
+    $(malt).change();
   }).removeAttr('href');
 
 
   /*
    * Mash
    */
+   
+  $('.step a.delete').click(function() {
+    var step = this.parentNode.parentNode;
+    $('input', step).val('').change();
+    $(step).change();
+  }).removeAttr('href');
+
+
   $('#beslagdikte').update(function() {
     $(this).val(($('#volume-mash').field() / ($('#mash-amount').field() / 1000.0)).toFixed(2));
   }).observe('#mash-amount,#volume-mash');
@@ -442,12 +452,13 @@ $(function() {
   });
   
   try {
-    var m = storage.getProperty('bitterness-method');
-    if (m) {
-      $('#bitterness-method').multistate(m);
-      bitterness_method = eval('bitterness_' + m);
-      $('#print-bitterness-method').update();
-    }
+    storage.getProperty('bitterness-method', null, function(m) {
+      if (m) {
+        $('#bitterness-method').multistate(m);
+        bitterness_method = eval('bitterness_' + m);
+        $('#print-bitterness-method').update();
+      }
+    });
   } catch (e) {
   }
   
@@ -487,8 +498,9 @@ $(function() {
 
   $('.hop a.delete').click(function() {
     var hop = this.parentNode.parentNode;
-    $('input', hop).val('');
-    $(hop).change();
+    $('input', hop).val('').change();
+//    $(hop).queue_for_update();
+//    $(hop).change();
   }).removeAttr('href');
 
 
@@ -648,7 +660,9 @@ $(function() {
   /*
    * Dialog windows, Mac style.
    */
-   
+
+  var current_recipe_id;
+  
   $('.dialog').hide();
 
   $('#load').click(function() {
@@ -657,37 +671,41 @@ $(function() {
     fileselect.append('<option value="">laden...</option>');
 
     $('#filedialog').showDialog(function() {
-      fileselect.empty();
-      $(storage.list()).each(function() {
-        fileselect.append('<option value="' + this.recipe_id + '"' + 
+      storage.list(function(items) {
+        fileselect.empty();
+        $(items).each(function() {
+          fileselect.append('<option value="' + this.recipe_id + '"' + 
             '>' + this.name + ' (' + this.brew_date + ')</option>');
+        });
+        $('option:first', fileselect).attr('selected', 'selected');
       });
-
-      $('option:first', fileselect).attr('selected', 'selected');
     });
     
   });
 
-  $('#filedialog button[name=open]').click(function() {
-    storage.load($('#filedialog select').val());
+  load_callback = function(recipe_id) {
     set_status('Recept geladen');
     set_unchanged();
     $('#filedialog').hideDialog();
+    storage.after_load();
+    current_recipe_id = recipe_id;
+  }
+  
+  $('#filedialog button[name=open]').click(function() {
+    storage.load($('#filedialog select').val(), load_callback);
   });
 
   $('#filedialog select').dblclick(function() {
-    storage.load($(this).val());
-    set_status('Recept geladen');
-    set_unchanged()
-    $('#filedialog').hideDialog();
+    storage.load($(this).val(), load_callback);
   });
 
   $('#filedialog button[name=delete]').click(function() {
     if (confirm("Are you sure?")) {
       var s = $('#filedialog select');
       var recipe_id = s.val();
-      storage.prune(recipe_id);
-      $('option[value=' + recipe_id + ']', s).remove();
+      storage.prune(recipe_id, function() {
+        $('option[value=' + recipe_id + ']', s).remove();
+      });
     }
   });
 
@@ -698,19 +716,22 @@ $(function() {
 
   $('#save').click(function() {
     var msg = 'Opgeslagen als nieuw recept';
-    if (storage.recipe_id) {
+    if (current_recipe_id) {
       msg = 'Recept bijgewerkt';
     }
-    storage.save();
-    set_status(msg + ' (' + storage.recipe_id + ')');
-    set_unchanged();
+    storage.save(current_recipe_id, function(recipe_id) {
+      set_status(msg + ' (' + recipe_id + ')');
+      set_unchanged();
+      current_recipe_id = recipe_id;
+    });
   });
 
   $('#copy').click(function() {
-    storage.recipe_id = undefined;
-    storage.save();
-    set_status('Recept opgeslagen als kopie (' + storage.recipe_id + ')');
-    set_unchanged();
+    storage.saveNew(function(recipe_id) {
+      set_status('Recept opgeslagen als kopie (' + current_recipe_id + ')');
+      set_unchanged();
+      current_recipe_id = recipe_id;
+    });
   });
 
 
@@ -769,6 +790,7 @@ $(function() {
   $('#clear').click(function() {
     storage.clear();
     set_unchanged();
+    current_recipe_id = undefined;
     $('#name').focus();
   });
 

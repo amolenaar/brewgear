@@ -268,30 +268,35 @@
       <yield>99.55</yield>
       <moisture>0.0</moisture>
       <ebc>30</ebc>
+      <priming>1.0</priming>
     </product>
     <product>
       <name>Bruine kandijsuiker</name>
       <yield>100.00</yield>
       <moisture>0.0</moisture>
       <ebc>10.01</ebc>
+      <priming>1.0</priming>
     </product>
     <product>
       <name>Witte basterdsuiker</name>
       <yield>99.55</yield>
       <moisture>0.0</moisture>
       <ebc>0</ebc>
+      <priming>1.0</priming>
     </product>
     <product>
       <name>Witte kandijsuiker</name>
       <yield>100.00</yield>
       <moisture>0.0</moisture>
       <ebc>0</ebc>
+      <priming>1.0</priming>
     </product>
     <product>
       <name>Rietsuiker</name>
       <yield>97.38</yield>
       <moisture>0.0</moisture>
       <ebc>6</ebc>
+      <priming>1.0</priming>
     </product>
     <product>
       <name>Appelstroop</name>
@@ -310,18 +315,21 @@
       <yield>100.00</yield>
       <moisture>0.0</moisture>
       <ebc>0</ebc>
+      <priming>0.95</priming>
     </product>
     <product>
       <name>Honing</name>
       <yield>90.89</yield>
       <moisture>0.0</moisture>
       <ebc>2</ebc>
+      <priming>0.95</priming>
     </product>
     <product>
       <name>Kristalsuiker</name>
       <yield>100.00</yield>
       <moisture>0.0</moisture>
       <ebc>0</ebc>
+      <priming>1.0</priming>
     </product>
   </category>
   <category name="Ongemoute granen">

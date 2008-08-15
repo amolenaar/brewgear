@@ -1,57 +1,54 @@
 .ac_results {
-        padding: 0px;
-        border: 1px solid WindowFrame;
-        background-color: Window;
-        overflow: auto;
-        z-index: 9999;
-	max-height: 400px;
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
 }
 
 .ac_results ul {
-        width: 98%;
-        list-style-position: outside;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .ac_results li {
-        margin: 0px;
-        padding: 1px 1px;
-        cursor: default;
-        display: block;
-        width: 100%;
-        font: menu;
-        font-size: 10px;
-        overflow: hidden;
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 10px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 12px;
+	overflow: hidden;
 }
 
 .ac_results li .descr {
-        font-style: italic;
-	font-size: 80%;
-	padding-left: 2em;
+   font-style: italic;
+   font-size: 80%;
+   padding-left: 2em;
 }
 
 .ac_loading {
-        background : Window url('indicator.gif') right center no-repeat;
+	background: white url('../images/indicator.gif') right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
 }
 
 .ac_over {
-        background-color: Highlight;
-        color: HighlightText;
-}
-
-.ac_moreItems {
-        text-align: center;
-        background-color: InactiveCaption;
-        color: InactiveCaptionText;
-        margin: 0px;
-        padding: 0px 5px;
-        cursor: default;
-        display: block;
-        width: 100%;
-        font: bold menu 12px;
-        overflow: hidden;
-        -moz-user-select: none;
-        -khtml-user-select: none;
+	background-color: #0A246A;
+	color: white;
 }

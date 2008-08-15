@@ -211,7 +211,7 @@ function export_xml(write) {
       age = F('#bottle-date') - F('[name=start-secundary');
       age /= 24*60*60*1000;
       tag("SECONDARY_AGE", (isFinite(age) ? age : 0));
-      tag('SG_END_PRIMARY', F('[name=fg-primary]'));
+      tag('SG_END_PRIMARY', '[name=fg-primary]');
       tag("AGE_TEMP", "23.0");
       tag("DATE", format_date(F('#brew-date')));
       tag("PRIMING_SUGAR_NAME", F('#priming-name'));

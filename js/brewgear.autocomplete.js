@@ -4,96 +4,69 @@
 $(function() {
 
   // Skip this part if Google Gears is not present
-  if (!(window.google && google.gears)) {
+  if (!(window.openDatabase)) {
     return;
   }
 
-  $('#style').autocomplete(function(term) {
-    var rs = db.execute('select style_id, name from style where name like ?', [ '%' + term + '%' ]);
-    var data = [];
-    while (rs.isValidRow()) {
-      data.push({
-		data: [ rs.field(1), rs.field(0) ],
-		value: rs.field(1),
-		result: rs.field(1)
-      });
-      rs.next();
-    }
-    rs.close();
-    return data;
+  $('#style').autocomplete(function(term, callback) {
+    storage.findStyles(term, function(rows) {
+      var data = [];
+      for (var i = 0; i < rows.length; i++) {
+        var field = rows[i];
+        data.push({
+          value: field.name,
+          style_id: field.style_id
+        });
+      }
+      callback(data);
+    });
   }, {
     matchContains: true,
     mustMatch: true,
-    moreItems: false,
-    max: -1
-//    formatItem: function(row, i, max) {
-//      console.log(String(row));
-//      return row[0];
-//    },
-//    formatResult: function(row) {
-//      console.log(String(row));
-//      return row.name;
-//    }
+    moreItems: false
   }); // autocomplete
 
   $('#style').result(function(event, style) {
-    var rs = db.execute('select * from style where style_id = ?', [ style[1] ]);
-    //assert rs.isValidRow();
-    $('#style-id').val(rs.fieldByName('style_id'));
-    $('#klasse').val(rs.fieldByName('class'));
-    $('#style-og-min').text(rs.fieldByName('gravity_min'));
-    $('#style-og-max').text(rs.fieldByName('gravity_max'));
-    $('#style-alcohol-min').text(rs.fieldByName('alcohol_max'));
-    $('#style-alcohol-max').text(rs.fieldByName('alcohol_max'));
-    $('#style-attenuation-min').text(rs.fieldByName('attenuation_min'));
-    $('#style-attenuation-max').text(rs.fieldByName('attenuation_max'));
-    $('#style-ebc-min').text(rs.fieldByName('ebc_min'));
-    $('#style-ebc-max').text(rs.fieldByName('ebc_max'));
-    $('#style-ibu-min').text(rs.fieldByName('ibu_min'));
-    $('#style-ibu-max').text(rs.fieldByName('ibu_max'));
-    $('#style-co2g-min').text(rs.fieldByName('co2g_min'));
-    $('#style-co2g-max').text(rs.fieldByName('co2g_max'));
-    $('#style-co2v-min').text(rs.fieldByName('co2v_min'));
-    $('#style-co2v-max').text(rs.fieldByName('co2v_max'));
-    rs.close();
-    $(event.target).change();
+    storage.loadStyle(style.style_id, function() {
+      $(event.target).change();
+    });
   });
 
-    
+
   // Autocompleter for fermentables:
-  $('input[name=malt-name]').autocomplete(function(term) {
-    var rs = db.execute('select fermentable_id, name, category, ebc from fermentable where name like ? and yield is not null', [ '%' + term + '%' ]);
-    var data = [];
-    while (rs.isValidRow()) {
-      data.push({
-		data: [ rs.field(1), rs.field(0), rs.field(2), rs.field(3) ],
-		value: rs.field(1),
-		result: rs.field(1)
-      });
-      rs.next();
-    }
-    rs.close();
-    return data;
+  $('input[name=malt-name]').autocomplete(function(term, callback) {
+    storage.findFermentables(term, function(rows) {
+      var data = [];
+      for (var i = 0; i < rows.length; i++) {
+        var field = rows[i];
+        data.push({
+          value: field.name,
+          id: field.fermentable_id,
+          name: field.name,
+          category: field.category,
+          yield: field.yield,
+          moisture: field.moisture,
+          ebc: field.ebc
+        });
+      }
+      callback(data);
+    });
   }, {
     matchContains: true,
     mustMatch: true,
     moreItems: false,
-    max: -1,
     formatItem: function(row, i, max) {
-      return row[0] + '<br /><span class="descr">' + row[2] + ' [' + row[3] + ' EBC]</span>';
+      return row.name + '<br /><span class="descr">' + row.category + ' [' + row.ebc + ' EBC]</span>';
     }
   }); // autocomplete
 
   // Update 
   $('input[name=malt-name]').result(function(event, fermentable) {
     var ferm = event.target.parentNode.parentNode;
-    var rs = db.execute('select * from fermentable where fermentable_id = ?', [ fermentable[1] ]);
-
-    $('[name=malt-id]', ferm).val(rs.fieldByName('fermentable_id'));
-    $('[name=malt-yield]', ferm).val(rs.fieldByName('yield'));
-    $('[name=malt-moisture]', ferm).val(rs.fieldByName('moisture'));
-    $('[name=malt-ebc]', ferm).val(rs.fieldByName('ebc'));
-    rs.close();
+    $('[name=malt-id]', ferm).val(fermentable.id);
+    $('[name=malt-yield]', ferm).val(fermentable.yield);
+    $('[name=malt-moisture]', ferm).val(fermentable.moisture);
+    $('[name=malt-ebc]', ferm).val(fermentable.ebc);
 
     $('[name=malt-yield]', ferm).change();
     $('[name=malt-moisture]', ferm).change();
@@ -101,33 +74,34 @@ $(function() {
     
     $(event.target).change();
   });
-    
-  $('input[name=priming-name]').autocomplete(function(term) {
-    var rs = db.execute('select fermentable_id, name, priming from fermentable where name like ? and priming is not null', [ '%' + term + '%' ]);
-    var data = [];
-    while (rs.isValidRow()) {
-      data.push({
-		data: [ rs.field(1), rs.field(0), rs.field(2) ],
-		value: rs.field(1),
-		result: rs.field(1)
-      });
-      rs.next();
-    }
-    rs.close();
-    return data;
+
+  $('input[name=priming-name]').autocomplete(function(term, callback) {
+    storage.findPrimingFermentables(term, function(field) {
+      var data = [];
+      for (var i = 0; i < rows.length; i++) {
+        var field = rows[i];
+        data.push({
+          value: field.name,
+          id: field.fermentable_id,
+          name: field.name,
+          priming: field.priming
+        });
+      }
+      callback(data);
+    });
   }, {
     matchContains: true,
     mustMatch: true,
     moreItems: false,
-    max: -1,
     formatItem: function(row, i, max) {
-      return row[0];
+      return row.name;
     }
   }); // autocomplete
 
   $('input[name=priming-name]').result(function(event, fermentable) {
-    $('#priming-id').val(fermentable[1]);
-    $('#priming-factor').val(fermentable[2]);
+    $('#priming-id').val(fermentable.id);
+    $('#priming-factor').val(fermentable.priming);
+    
     $('#priming-id').change();
     $('#priming-factor').change();
   });
@@ -140,8 +114,8 @@ $(function() {
  */
 $(function() {
 
-  // Skip this part if Google Gears is not present
-  if (window.google && google.gears) {
+  // Skip this part if HTML 5 storage is present
+  if (window.openDatabase) {
     return;
   }
     
@@ -181,7 +155,6 @@ $(function() {
         matchContains: true,
         moreItems: false,
         mustMatch: true,
-        max: -1,
         formatItem: function(row, i, max) {
           return row.name;
         },
@@ -234,7 +207,6 @@ $(function() {
       $('input[name=malt-name]').autocomplete(fermentables, {
         matchContains: true,
         moreItems: false,
-        max: -1,
         formatItem: function(row, i, max) {
           return row.name + '<br /><span class="descr">' + row.category + ' [' + row.ebc + ' EBC]</span>';
         },
@@ -247,7 +219,6 @@ $(function() {
         matchContains: true,
         moreItems: false,
         mustMatch: true,
-        max: -1,
         formatItem: function(row, i, max) {
           return row.name;
         },

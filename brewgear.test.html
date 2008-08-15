@@ -5,9 +5,12 @@
  <head>
   <title>I Brew tests</title>
 
-  <link rel="stylesheet" href="css/themes/light/light.css" type="text/css" />
   <link rel="stylesheet" href="css/brewgear.css" type="text/css" />
-  <script type="text/javascript" src="js/jquery-1.2.2.js"></script>
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+
+  <script type="text/javascript" src="js/gears_init.js"></script>
+  <script type="text/javascript" src="js/gears_wrapper.js"></script>
 
   <script type="text/javascript" src="js/brewgear.jquery.js"></script>
   <script type="text/javascript" src="js/brewgear.math.js"></script>
@@ -26,6 +29,33 @@
     //console.log($('#datetest2').field());
 
     $('#test-sum').text($('#test-math > table td:nth-child(3) > input').sum());
+
+/*
+
+ */
+ 
+    MyClass = {
+      caller: function(callback) {
+        callback('hi');
+      },
+      dbtest: function(callback) {
+        db = openDatabase('brewgear');    
+        db.transaction(function(tx) {
+          tx.executeSql('select style_id, name from style where name like ?', [ '%%' ], function(tx, rs) {
+            for (var i = 0; i < rs.rows.length; i++) {
+              var field = rs.rows.item(i);
+              console.log(i + ' of ' + rs.rows.length + ' - name: ' + field.name + ', style_id: ' + field.style_id);
+              $('#styles').append('<tr><td>' + field.name + '</td></tr>');
+              callback(i);
+            }
+          });
+        });
+      }
+    }
+  
+    MyClass.dbtest(function(msg) {
+      $('#caller').text(msg);
+    });
   });
   </script>
  <head>
@@ -50,5 +80,9 @@
    <input type="text" class="date" id="datetest1" value="13-12-07" /> <span id="datetest1out" ></span>
    <input type="text" class="date" id="datetest2" value="29-02-2008" /> <span id="datetest2out" ></span>
   </div>
+  
+  <table id="styles">
+  </table>
+  <p id="caller" />
  </body>
 </html>

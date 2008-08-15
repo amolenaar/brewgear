@@ -21,9 +21,9 @@ $.extend({
     if ($._update_timer === 0) {
       $('#spinner').css('display', 'block');
       $._update_timer = setTimeout(function() {
-        //console.log('start processing of update queue');
         try {
           var q = $.unique($.update_queue.reverse());
+          //console.log('start processing of update queue ' + $.update_queue);
           $._update_timer = 0;
           q.reverse();
           var i = 0;
@@ -35,10 +35,6 @@ $.extend({
               clearInterval(ival_id);
             }
           }, 1);
-          //for (var i in q) {
-          //  $(q[i]).update();
-          //}
-          //$('#spinner').css('visibility', 'hidden');
         } finally {
           $.update_queue = [];
         }

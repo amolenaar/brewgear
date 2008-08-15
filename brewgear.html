@@ -9,19 +9,21 @@
   <link rel="stylesheet" href="css/jquery.autocomplete.css" type="text/css" />
   <link rel="stylesheet" href="css/brewgear.css" type="text/css" />
   <link rel="stylesheet" href="css/brewgear.print.css" type="text/css" media="print" />
+  <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="css/ie.css" />
+  <![endif]-->
 
   <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/jquery.dimensions.js"></script>
-  <script type="text/javascript" src="js/jquery.bgiframe.js"></script>
   <script type="text/javascript" src="js/jquery.autocomplete.js"></script>
   <script type="text/javascript" src="js/jquery.easydrag.js"></script>
 
   <script type="text/javascript" src="js/gears_init.js"></script>
-
+  <script type="text/javascript" src="js/gears_wrapper.js"></script>
+   
   <script type="text/javascript" src="js/brewgear.jquery.js"></script>
+  <script type="text/javascript" src="js/brewgear.math.js"></script>
   <script type="text/javascript" src="js/brewgear.db.js"></script>
   <script type="text/javascript" src="js/brewgear.autocomplete.js"></script>
-  <script type="text/javascript" src="js/brewgear.math.js"></script>
   <script type="text/javascript" src="js/brewgear.storage.js"></script>
   <script type="text/javascript" src="js/brewgear.export.js"></script>
   <script type="text/javascript" src="js/brewgear.import.js"></script>
@@ -31,20 +33,34 @@
 
  </head>
  <body id="recipe">
- 
-  <img id="spinner" src="data/spinner.gif" />
+
+  <img id="spinner" src="images/spinner.gif" />
+
   <div id="wrapper">
   
-   <div id="no-mozilla" class="warning">
-    <p>Deze pagina is enkel getest onder
-    <a href="http://www.mozilla-europe.org/nl/">FireFox</a>.</p>
+   <div id="you-have-ie" class="warning">
+    <p>Beste gebruiker,</p>
+    <p>U maakt momenteel gebruik van Internet Explorer (IE), de browser van Microsoft.</p>
+    <p>Deze pagina laat zich niet goed tonen in deze browser. Ook de Javascript
+    functionaliteit werkt niet. Dit heeft te maken met het feit dat IE zich
+    niets aantrekt van de <a
+     href="http://www.webstandards.org/">web-standaarden</a> welke door het <a
+     href="http://w3c.org">World Wide Web Consortium</a> (W3C) zijn
+    gespecificeerd.</p>
+    <p>Bij deze wil de auteur u een van de alternatieve browsers aanbevelen, te weten:</p>
+    <ul>
+     <li>Mozilla's <a href="http://www.mozilla-europe.org/nl">FireFox</a></il>
+     <li>Apple's <a href="http://www.apple.com/nl/safari">Safari</a></il>
+     <li><a href="http://www.opera.com/">Opera</a></il>
+    </ul>
    </div>
-   <div id="no-google-gears" class="warning">
-     <p>Deze pagina vereist Google Gears Beta om recepturen op te slaan en te
-     laden.</p>
-     <p>Installeer Google Gears van
-     <a href="http://gears.google.com">http://gears.google.com</a> en herlaadt
-     deze pagina.</p>
+
+   <div id="no-database" class="warning">
+    <p>Om de volledige functionaliteit van deze pagina te benutten heeft u een
+     database nodig in de browser.</p>
+    <p>Deze is standaard aanwezig in <a href="http://www.apple.com/nl/safari">
+     Safari</a>, de web browser van Apple.</p>
+    <p>Wij raden u deze browser van harte aan. Ook voor Windows gebruikers!</p>
    </div>
   
    <div id="s_name">
@@ -455,7 +471,7 @@
    </div>
 
    <div id="footer" title="Google Gears powered">
-    <p><img src="data/brewgear.png" id="gears-logo" alt="BrewGear" />
+    <p><img src="images/brewgear.png" id="gears-logo" alt="BrewGear" />
     BrewGear v<span id="version">1.0</span></p>
    </div>
 

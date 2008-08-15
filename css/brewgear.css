@@ -2,15 +2,16 @@ body {
  font: 10px Arial;
 }
 
-#wrapper {
- background-color: #efefef;
- border: 1px solid #bbb;
- margin: 10px auto 0px auto;
- width: 600px;
+#you-have-ie, .onlyprint {
+ display: none;
 }
 
-.onlyprint {
- display: none;
+#wrapper {
+ background-color: #efefef;
+ border: 1px solid #888;
+ margin: 10px auto 0px auto;
+ width: 615px;
+ -webkit-box-shadow: #888 1px 2px 5px;
 }
 
 h1 {
@@ -19,6 +20,7 @@ h1 {
  border-bottom: 3px solid #888;
  font-size: 22px;
  padding-bottom: 3px;
+ text-shadow: white -1px -1px 0px;
 }
 
 #changed {
@@ -38,6 +40,7 @@ h2 {
  font-weight: bold;
  font-size: 14px;
  clear: both;
+ text-shadow: #333 1px 1px 1px;
 }
 
 h3 {
@@ -53,6 +56,11 @@ p {
 em {
  font-style: normal;
  font-weight: bold;
+}
+
+#color {
+ background-color: #fff;
+ -webkit-box-shadow: #999 2px 2px 4px;
 }
 
 table {
@@ -151,10 +159,17 @@ input.date {
 }
 
 .multistate {
- padding: 0;
+ padding: 1px 4px;
  font-size: 100%;
  border: 1px solid #aaa;
- background: transparent;
+ background: #fff;
+ -webkit-box-shadow: #aaa 2px 2px 3px;
+ margin: 0 1px 1px 0;
+}
+
+.multistate:active {
+ -webkit-box-shadow: none;
+ margin: 1px 0 0 1px;
 }
 
 #s_judgement input {
@@ -202,7 +217,7 @@ a.delete {
 #notes {
  font: 12px monospace;
  margin: 1px;
- width: 596px;
+ width: 611px;
  height: 120px;
  border: 1px solid gray;
 }
@@ -259,10 +274,6 @@ a.delete {
  margin: 1em auto;
  border: 1px solid red;
  background-color: #fcc;
-}
-
-.warning p {
- text-align: center;
 }
 
 /**
@@ -329,13 +340,17 @@ a.delete {
  margin-bottom: 4pt;
 }
 
-#s_style {
+#s_style, #s_menu {
  position: fixed;
+ background-color: #ffe6cc;
+ z-index: 99;
+ opacity: 0.7;
+ -webkit-box-shadow: #888 1px 2px 5px;
+}
+
+#s_style {
  left: 3px;
  top: 220px;
- z-index: 99;
- background-color: #ffe6cc;
- opacity: 0.7;
 }
 
 #s_style h2, #s_menu h2 {
@@ -344,12 +359,8 @@ a.delete {
 }
 
 #s_menu {
- position: fixed;
  left: 18px;
  top: 40px;
- z-index: 99;
- background-color: #ffe6cc;
- opacity: 0.7;
  padding: 0;
 }
 

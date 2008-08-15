@@ -44,7 +44,8 @@ CREATE TABLE fermentable (
 	name TEXT,
 	yield REAL,
 	moisture REAL,
-	ebc INTEGER);
+	ebc INTEGER,
+	priming REAL);
 
 CREATE TABLE recipe_fermentable (
 	recipe_id INTEGER,
@@ -94,6 +95,7 @@ CREATE TABLE fermentation (
 	primary_date TEXT,
 	primary_fg INTEGER,
 	primary_t REAL,
+	primary_aeration TEXT,
 	secundary_date TEXT,
 	secundary_fg INTEGER,
 	secundary_t REAL);
