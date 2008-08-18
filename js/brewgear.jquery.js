@@ -10,6 +10,8 @@ $.extend({
   _change_count: 0,
   _update_timer: 0,
   
+  lock_class: 'locked',
+  
   process_updates: function() {
     /* Processing is delayed by a timeout function. This way
      * all change() events can be queued and update()s for a
@@ -132,22 +134,29 @@ $.fn.extend({
   },
 
   /**
+   * Returns true if the locked class is defined on the element.
+   */
+  locked: function() {
+    return $(this).hasClass($.lock_class);
+  },
+
+  /**
    * In case of a change() event (invoked by the user) and update() + change()
    * is invoked for the element.
+   * Does nothing if the element is considered locked.
    */
-  observe: function(observed, lock) {
+  observe: function(observed) {
     var e = $(this);
     $(observed).change(function() {
-      //console.log('updating', e, 'from', this);
-      e.queue_for_update();
-      e.change();
+      if (!$(e).locked()) {
+        e.queue_for_update();
+        e.change();
+      }
     });
     return this;
   },
 
   queue_for_update: function() {
-    //$(this).update();
-    //console.log('Pushing', this, 'on the queue');
     $.update_queue.push(this);
     return this;
   },
