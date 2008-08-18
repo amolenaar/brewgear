@@ -657,6 +657,10 @@ $(function() {
     $('#recipe').removeClass('changed');
   }
 
+  $('input').dblclick(function() {
+    $(this).toggleClass('locked');
+  });
+
   /*
    * Dialog windows, Mac style.
    */
