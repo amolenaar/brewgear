@@ -309,9 +309,10 @@ a.delete {
  width: 270px;
 }
 
-.dialog h2 {
- color: black;
- background-color: transparent;
+.dialog h1 {
+ margin: 4pt 0 2pt;
+ border: none;
+ font-size: 14px;
 }
 
 #filedialog select {
