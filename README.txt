@@ -11,9 +11,11 @@ BrewGear is een handig tooltje voor (nederlandssprekende) hobby brouwers. Dit
 werk bouwt voort op de BrouwHulp van Adrie Otte
 (http://home.tiscali.nl/adrieotte/wp/).
 
-Om BrewGear ten volste te kunnen benutten is het van essentieel belang dat je
-Google Gears geinstalleerd hebt. Deze plugin maakt het mogelijk om recepten in
-de browser op te slaan - je hebt dus geen internet verbinding nodig!
+BrewGear biedt de mogelijkheid om recepten op te slaan in de browser. Dit
+vereist ondersteuning voor een (client-side) database in de browser. Deze is
+standaard aanwezig in Safari (3.0 en nieuwer) en is optioneel voor Firefox
+(middels de Google Gears plugin).
+
 
   PRINT JE RECEPTEN UIT!
 
@@ -24,7 +26,6 @@ verzoekt tijdelijke bestanden op te ruimen.
 TODO's
 ======
 
-- toevoegen: SG/IBU coefficient
 - sla maischwater op, ook als er geen maischschema velden zijn
 - verbeter bestandsbeheer (zit ik in een nieuw of bestaand recept?)
 
