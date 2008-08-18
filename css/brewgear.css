@@ -1,5 +1,5 @@
 body {
- font: 10px Arial;
+ font: 10px sans-serif;
 }
 
 #you-have-ie, .onlyprint {
@@ -59,9 +59,25 @@ em {
 }
 
 #color {
+ float: right;
+ width: 105px;
+ height: 70px;
+ margin: -30px 10px 0 0;
+ border: 1px solid black;
  background-color: #fff;
  -webkit-box-shadow: #999 2px 2px 4px;
 }
+
+.primary {
+ float: left;
+ margin-right: 3em;
+}
+
+.clear {
+ clear: both;
+}
+
+/* Tables:: */
 
 table {
  border-collapse: collapse;
@@ -89,6 +105,8 @@ td {
  white-space: nowrap;
 }
 
+/* Labels:: */
+
 label {
  display: block;
  float: left;
@@ -115,24 +133,20 @@ label[for="svg"], tr.summary label {
  width: auto;
 }
 
-#priming-name, input[name="starter-temp"] {
- margin-left: 0.5em;
-}
-
-
 #s_judgement label {
  clear: left;
 }
+
+/* Inputs:: */
 
 input {
  font: 12px monospace;
  border: 1px solid gray;
  vertical-align: baseline;
  margin: 0;
-}
-
-select {
- border: 1px solid gray;
+ /* position of lock image */
+ background-position: right bottom;
+ background-repeat: no-repeat;
 }
 
 input:focus {
@@ -145,6 +159,10 @@ input:disabled {
  border: 1px solid #aaa;
 }
 
+select {
+ border: 1px solid gray;
+}
+
 input[type="text"] {
  width: 180px;
 }
@@ -152,10 +170,16 @@ input[type="text"] {
 input.number, input.real {
  width: 64px;
  text-align: right;
+ /* position of lock image */
+ background-position: left bottom;
 }
 
 input.date {
  width: 100px;
+}
+
+input.locked {
+ background-image: url(../images/lock.png);
 }
 
 .multistate {
@@ -176,15 +200,9 @@ input.date {
  width: 510px;
 }
 
-/* Custom input fields: */
-
 #batch {
  width: 40px;
  margin: 0;
-}
-
-/* FF only: */
-input[name="batch"] {
  color: #fff;
  background-color: #888;
  font-size: 22px;
@@ -206,12 +224,8 @@ input[name="batch"] {
  width: 80px;
 }
 
-a.delete {
- color: maroon;
- font-weight: bold;
- text-decoration: none;
- font-size: 110%;
- cursor: pointer;
+#priming-name, #starter-temp {
+ margin-left: 0.5em;
 }
 
 #notes {
@@ -234,30 +248,20 @@ a.delete {
 #gears-logo {
  margin: -14px -48pt -1pt 0px;
 } 
-/**
- * General
- */
 
-#color {
- float: right;
- width: 105px;
- height: 70px;
- margin: -30px 10px 0 0;
- border: 1px solid black;
-}
-
-.primary {
- float: left;
- margin-right: 3em;
-}
-
-.clear {
- clear: both;
-}
 
 /**
  * Interactive feedback and errors
  */
+
+
+a.delete {
+ color: maroon;
+ font-weight: bold;
+ text-decoration: none;
+ font-size: 110%;
+ cursor: pointer;
+}
 
 #spinner {
  position: fixed;
@@ -379,3 +383,5 @@ a.delete {
  right: 0;
  margin-bottom: 0;
 }
+
+
