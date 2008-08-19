@@ -71,6 +71,10 @@ input, input:disabled {
  border-top: 1px solid #888888;
 }
 
+input.lockable, input.locked {
+ background-image: none;
+}
+
 #s_hops, #s_mash, #s_filter, #s_boil, #s_yeast, #s_fermentation {
  float: left;
  width: 320px;

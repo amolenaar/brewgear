@@ -413,16 +413,16 @@ $(function() {
    */
 
   $('#volume-after-boil').update(function() {
-    $(this).val(($('#batch-size').field() / 0.94 + ($('#loss-after-boil').field() || 0)).toFixed(1));
-  }).observe('#batch-size,#loss-after-boil');
+    $(this).val(($('#volume-fermenter').field() / 0.94 + ($('#loss-after-boil').field() || 0)).toFixed(1));
+  }).observe('#volume-fermenter,#loss-after-boil');
 
   $('#volume-before-boil').update(function() {
     $(this).val($('#volume-after-boil').field() + ($('#boiltime').field() || 0) / 60.0 * ($('#evaporation').field() || 0).toFixed(1));
   }).observe('#volume-after-boil,#boiltime,#evaporation');
 
   $('#volume-fermenter').update(function() {
-    $(this).val(($('#volume-after-boil').field() * 0.94 - ($('#loss-after-boil').field() || 0)).toFixed(1));
-  }).observe('#volume-after-boil,#loss-after-boil');
+    $(this).val($('#batch-size').field());
+  }).observe('#batch-size');
 
   $('#og').update(function() {
     var brix = $('#boil-yield').field() / ($('#volume-after-boil').field() * 0.94) / 10;
@@ -586,7 +586,7 @@ $(function() {
    * Usability: Input checks 
    */
 
-  $('input.number').change(function() {
+  $('input.number').update(function() {
     var v = $(this).val();
     if (v === null || v === '') { return; }
     var x = parseInt(v);
@@ -597,7 +597,7 @@ $(function() {
     }
   });
  
-  $('input.real').change(function() {
+  $('input.real').update(function() {
     var v = $(this).val();
     if (v === null || v === '') { return; }
     var x = parseFloat(v);
@@ -608,7 +608,7 @@ $(function() {
     }
   });
   
-  $('input.date').change(function() {
+  $('input.date').update(function() {
   });
 
   /*
@@ -657,7 +657,7 @@ $(function() {
     $('#recipe').removeClass('changed');
   }
 
-  $('input').dblclick(function() {
+  $('input.lockable').dblclick(function() {
     $(this).toggleClass('locked');
   });
 

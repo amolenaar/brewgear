@@ -178,6 +178,10 @@ input.date {
  width: 100px;
 }
 
+input.lockable {
+ background-image: url(../images/unlock.png);
+}
+
 input.locked {
  background-image: url(../images/lock.png);
 }
