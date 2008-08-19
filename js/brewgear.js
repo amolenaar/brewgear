@@ -659,7 +659,7 @@ $(function() {
 
   $('input.lockable').dblclick(function() {
     $(this).toggleClass('locked');
-  });
+  }).attr('title', 'Dubbelklik om veld te vergrendelen');
 
   /*
    * Dialog windows, Mac style.

@@ -7,17 +7,17 @@ body {
 }
 
 #wrapper {
- background-color: #efefef;
- border: 1px solid #888;
+ background-color: #f1f1e6;
+ border: 1px solid #82827c;
  margin: 10px auto 0px auto;
  width: 615px;
- -webkit-box-shadow: #888 1px 2px 5px;
+ -webkit-box-shadow: #82827c 1px 2px 5px;
 }
 
 h1 {
  margin: 0;
  text-align: center;
- border-bottom: 3px solid #888;
+ border-bottom: 3px solid #82827c;
  font-size: 22px;
  padding-bottom: 3px;
  text-shadow: white -1px -1px 0px;
@@ -25,7 +25,6 @@ h1 {
 
 #changed {
  display: none;
- 
 }
 
 .changed #changed {
@@ -33,9 +32,11 @@ h1 {
 }
 
 h2 {
- margin: 4pt 0 2pt;
- padding: 0 1em;
- background-color: #888;
+ margin: 0;
+ border-top: 4px solid #f1f1e6;
+ border-bottom: 2px solid #f1f1e6;
+ padding: 0 1em 1px 1em;
+ background-color: #82827c;
  color: #fff;
  font-weight: bold;
  font-size: 14px;
@@ -63,9 +64,9 @@ em {
  width: 105px;
  height: 70px;
  margin: -30px 10px 0 0;
- border: 1px solid black;
+ border: 1px solid #6f6f6a;
  background-color: #fff;
- -webkit-box-shadow: #999 2px 2px 4px;
+ -webkit-box-shadow: #82827c 2px 2px 4px;
 }
 
 .primary {
@@ -139,9 +140,9 @@ label[for="svg"], tr.summary label {
 
 /* Inputs:: */
 
-input {
+input, textarea {
  font: 12px monospace;
- border: 1px solid gray;
+ border: 1px solid #82827c;
  vertical-align: baseline;
  margin: 0;
  /* position of lock image */
@@ -150,17 +151,13 @@ input {
 }
 
 input:focus {
- background-color: #ffc;
+ background-color: #f9f9c8;
 }
 
 input:disabled {
- color: #222;
- background-color: #eee;
- border: 1px solid #aaa;
-}
-
-select {
- border: 1px solid gray;
+ color: #111;
+ background-color: #f1f1da;
+ border: 1px solid #ccccb9;
 }
 
 input[type="text"] {
@@ -189,9 +186,9 @@ input.locked {
 .multistate {
  padding: 1px 4px;
  font-size: 100%;
- border: 1px solid #aaa;
+ border: 1px solid #82827c;
  background: #fff;
- -webkit-box-shadow: #aaa 2px 2px 3px;
+ -webkit-box-shadow: #82827c 2px 2px 3px;
  margin: 0 1px 1px 0;
 }
 
@@ -208,12 +205,14 @@ input.locked {
  width: 40px;
  margin: 0;
  color: #fff;
- background-color: #888;
+ background-color: #82827c;
  font-size: 22px;
+ font-weight: bold;
  float: right;
  border: none;
  padding: 4px 3px 3px 3px;
  text-align: center;
+ text-shadow: #333 1px 1px 1px;
 }
 
 #name {
@@ -233,11 +232,9 @@ input.locked {
 }
 
 #notes {
- font: 12px monospace;
  margin: 1px;
  width: 611px;
  height: 120px;
- border: 1px solid gray;
 }
 
 #print-notes {
@@ -299,6 +296,9 @@ a.delete {
  border-top: 4px solid #444;
 }
 
+.dialog select {
+ border: 1px solid gray;
+}
 
 .buttonbar {
  padding: 6px 0;
@@ -345,16 +345,12 @@ a.delete {
  font-size: 120%;
 }
 
-#wrapper > div {
- margin-bottom: 4pt;
-}
-
 #s_style, #s_menu {
  position: fixed;
  background-color: #ffe6cc;
  z-index: 99;
  opacity: 0.7;
- -webkit-box-shadow: #888 1px 2px 5px;
+ -webkit-box-shadow: #82827c 1px 2px 5px;
 }
 
 #s_style {
