@@ -1,5 +1,6 @@
 body {
  font: 10px sans-serif;
+ font: 10px Arial;
 }
 
 #you-have-ie, .onlyprint {
@@ -18,9 +19,9 @@ body {
 h1 {
  margin: 0;
  text-align: center;
- border-bottom: 2px solid #82827c;
+ border-bottom: 3px solid #82827c;
  font-size: 22px;
- padding-bottom: 5px;
+ padding-bottom: 3px;
  text-shadow: white -1px -1px 0px;
 }
 
