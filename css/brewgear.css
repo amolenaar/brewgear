@@ -369,6 +369,7 @@ a.delete {
  background-color: #ffe6cc;
  z-index: 99;
  opacity: 0.7;
+ border: 1px solid #82827c;
  -moz-border-radius: 6px;
  -webkit-border-radius: 6px;
  -webkit-box-shadow: #82827c 1px 2px 5px;
@@ -380,9 +381,10 @@ a.delete {
 }
 
 #s_style h2, #s_menu h2 {
- margin: 0;
+ margin: -1px 0 0 0;
  border: none;
  text-align: center;
+ opacity: 0.8;
  -moz-border-radius: 6px;
  -webkit-border-radius: 6px;
 }
@@ -399,6 +401,12 @@ a.delete {
  border: none;
  margin: 0 4px;
  cursor: pointer;
+}
+
+#s_menu hr {
+ height: 1px;
+ background-color: #82827c;
+ border: none;
 }
 
 #footer {
