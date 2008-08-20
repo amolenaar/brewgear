@@ -1,6 +1,8 @@
+/**
+ * Use only relative units: px, em and ex
+ */
 body {
- font: 10px sans-serif;
- font: 10px Arial;
+ font: 10px Verdana,sans-serif;
 }
 
 #you-have-ie, .onlyprint {
@@ -20,7 +22,7 @@ h1 {
  margin: 0;
  text-align: center;
  border-bottom: 3px solid #82827c;
- font-size: 22px;
+ font-size: 2.2em;
  padding-bottom: 3px;
  text-shadow: white -1px -1px 0px;
 }
@@ -74,6 +76,11 @@ em {
 .primary {
  float: left;
  margin-right: 3em;
+ min-width: 280px;
+}
+
+#s_general .primary {
+ min-width: 240px;
 }
 
 .clear {
@@ -96,6 +103,7 @@ th {
  vertical-align: bottom;
  white-space: nowrap;
  font-weight: bold;
+ font-size: 80%;
 }
 
 th.numerical {
@@ -113,12 +121,12 @@ td {
 label {
  display: block;
  float: left;
- width: 8em;
+ width: 12em;
  padding-top: 2px;
 }
 
 .primary label {
- width: 12em;
+ width: 15em;
 }
 
 label[for="name"], label[for="klasse"] {
@@ -134,6 +142,14 @@ label[for="style"], label[for="brew-date"], label[for="bottle-volume"], label[fo
 label[for="svg"], tr.summary label {
  padding-right: .5em;
  width: auto;
+}
+
+#s_general label {
+ width: 8em;
+}
+
+#s_general .primary label {
+ width: 14em;
 }
 
 #s_judgement label {
@@ -249,7 +265,7 @@ input.locked {
 }
 
 #gears-logo {
- margin: -14px -48pt -1pt 0px;
+ margin: -14px -48px -1px 0px;
 } 
 
 
@@ -320,7 +336,7 @@ a.delete {
 }
 
 .dialog h1 {
- margin: 4pt 0 2pt;
+ margin: 4px 0 2px;
  border: none;
  font-size: 14px;
 }
@@ -380,7 +396,7 @@ a.delete {
  display: block;
  background-color: transparent;
  border: none;
- margin: 0 4pt;
+ margin: 0 4px;
  cursor: pointer;
 }
 
