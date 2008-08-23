@@ -47,6 +47,10 @@ td {
  width: 14em;
 }
 
+#s_fermentation label {
+ width: auto;
+}
+
 input[name="malt-name"] {
   width: 170px;
 }
