@@ -52,6 +52,8 @@ $(function() {
     $('>*:gt(0)', $(this).parent()).slideToggle('slow');
   });
   
+  $('#malt,#hop,#s_mash table').tableDnD();
+  
   /*
    * General
    */

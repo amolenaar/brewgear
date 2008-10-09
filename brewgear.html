@@ -20,6 +20,7 @@
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/jquery.autocomplete.js"></script>
   <script type="text/javascript" src="js/jquery.easydrag.js"></script>
+  <script type="text/javascript" src="js/jquery.tablednd.js"></script>
 
   <script type="text/javascript" src="js/gears_init.js"></script>
   <script type="text/javascript" src="js/gears_wrapper.js"></script>
@@ -126,111 +127,117 @@
    <div id="s_fermentables">
     <h2>Granen, suikers</h2>
     <table id="malt">
-     <tr>
-      <th title="selecteer een naam uit de lijst">naam</th>
-      <th class="numerical">opbrengst(%)</th>
-      <th class="numerical">vocht (%)</th>
-      <th class="numerical">kleur (EBC)</th>
-      <th  class="numerical" title="past begin SG, kleur en percentages aan">gewicht (g)</th>
-      <th  class="numerical" title="past gewicht en kleur aan">% stort</th>
-      <th title="tijdens maischen, koken of vegisting" colspan="2">toevoegen</th>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="malt">
-      <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
-      <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
-      <td><input type="text" name="malt-amount" class="real" /></td>
-      <td><input type="text" name="malt-percentage" class="real" /></td>
-      <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="summary">
-      <td colspan="3">
-       <span class="noprint">
-        <label for="color-method">Volgens:</label>
-        <button name="color-method" id="color-method" class="multistate" rel="daniels:Daniels,morey:Morey,mosher:Mosher"></button>
-       </span>
-      </td>
-      <td><input type="text" name="ebc" id="ebc" class="number noprint" disabled="disabled" /></td>
-      <td>
-       <input type="hidden" name="mash-amount" id="mash-amount" class="number" />
-       <input type="hidden" name="boil-amount" id="boil-amount" class="number" />
-       <input type="hidden" name="ferm-amount" id="ferm-amount" class="number" />
-       <input type="text" name="total-amount" id="total-amount" class="number" disabled="disabled" />
-      </td>
-      <td><input type="text" name="total-percentage" id="total-percentage" class="real" disabled="disabled" /></td>
-     </tr>
+     <thead>
+      <tr>
+       <th title="selecteer een naam uit de lijst">naam</th>
+       <th class="numerical">opbrengst(%)</th>
+       <th class="numerical">vocht (%)</th>
+       <th class="numerical">kleur (EBC)</th>
+       <th  class="numerical" title="past begin SG, kleur en percentages aan">gewicht (g)</th>
+       <th  class="numerical" title="past gewicht en kleur aan">% stort</th>
+       <th title="tijdens maischen, koken of vegisting" colspan="2">toevoegen</th>
+      </tr>
+     </thead>
+     <tfoot>
+      <tr class="summary">
+       <td colspan="3">
+        <span class="noprint">
+         <label for="color-method">Volgens:</label>
+         <button name="color-method" id="color-method" class="multistate" rel="daniels:Daniels,morey:Morey,mosher:Mosher"></button>
+        </span>
+       </td>
+       <td><input type="text" name="ebc" id="ebc" class="number noprint" disabled="disabled" /></td>
+       <td>
+        <input type="hidden" name="mash-amount" id="mash-amount" class="number" />
+        <input type="hidden" name="boil-amount" id="boil-amount" class="number" />
+        <input type="hidden" name="ferm-amount" id="ferm-amount" class="number" />
+        <input type="text" name="total-amount" id="total-amount" class="number" disabled="disabled" />
+       </td>
+       <td><input type="text" name="total-percentage" id="total-percentage" class="real" disabled="disabled" /></td>
+      </tr>
+     </tfoot>
+     <tbody>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="malt">
+       <td><input type="text" name="malt-name" /><input type="hidden" name="malt-id" /></td>
+       <td><input type="text" name="malt-yield" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-moisture" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-ebc" class="real" disabled="disabled" /></td>
+       <td><input type="text" name="malt-amount" class="real" /></td>
+       <td><input type="text" name="malt-percentage" class="real" /></td>
+       <td><button name="malt-added" class="multistate" rel="mash:maisch,boil:koken,ferm:vergisting"></button></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+     </tbody>
     </table>
    </div> <!-- fermentables -->
    
@@ -238,68 +245,74 @@
     <h2>Hop</h2>
     
     <table id="hop">
-     <tr>
-      <th>naam</th>
-      <th class="numerical">alpha%</th>
-      <th class="numerical">gewicht (g)</th>
-      <th class="numerical">tijd (min)</th>
-      <th class="numerical">IBU</th>
-      <th></th>
-     </tr>
-     <tr class="hop">
-      <td><input type="text" name="hop-name" /></td>
-      <td><input type="text" name="hop-alpha" class="real" /></td>
-      <td><input type="text" name="hop-amount" class="real" /></td>
-      <td><input type="text" name="hop-boiltime" class="number" /></td>
-      <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="hop">
-      <td><input type="text" name="hop-name" /></td>
-      <td><input type="text" name="hop-alpha" class="real" /></td>
-      <td><input type="text" name="hop-amount" class="real" /></td>
-      <td><input type="text" name="hop-boiltime" class="number" /></td>
-      <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="hop">
-      <td><input type="text" name="hop-name" /></td>
-      <td><input type="text" name="hop-alpha" class="real" /></td>
-      <td><input type="text" name="hop-amount" class="real" /></td>
-      <td><input type="text" name="hop-boiltime" class="number" /></td>
-      <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="hop">
-      <td><input type="text" name="hop-name" /></td>
-      <td><input type="text" name="hop-alpha" class="real" /></td>
-      <td><input type="text" name="hop-amount" class="real" /></td>
-      <td><input type="text" name="hop-boiltime" class="number" /></td>
-      <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="hop">
-      <td><input type="text" name="hop-name" /></td>
-      <td><input type="text" name="hop-alpha" class="real" /></td>
-      <td><input type="text" name="hop-amount" class="real" /></td>
-      <td><input type="text" name="hop-boiltime" class="number" /></td>
-      <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="hop">
-      <td><input type="text" name="hop-name" /></td>
-      <td><input type="text" name="hop-alpha" class="real" /></td>
-      <td><input type="text" name="hop-amount" class="real" /></td>
-      <td><input type="text" name="hop-boiltime" class="number" /></td>
-      <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
-      <td><a href="#" title="delete" class="delete">X</a></td>
-     </tr>
-     <tr class="summary noprint">
-      <td colspan="4"><label for="bitterness-method">Volgens:</label>
-       <button name="bitterness-method" id="bitterness-method" class="multistate" rel="tinseth:Tinseth,daniels:Daniels,rager:Rager,garetz:Garetz"></button>
-      </td>
-      <td><input type="text" name="total-bitterness" id="total-bitterness" class="number" disabled="disabled" /></td>
-     </tr>
+     <thead>
+      <tr>
+       <th>naam</th>
+       <th class="numerical">alpha%</th>
+       <th class="numerical">gewicht (g)</th>
+       <th class="numerical">tijd (min)</th>
+       <th class="numerical">IBU</th>
+       <th></th>
+      </tr>
+     </thead>
+     <tfoot>
+      <tr class="summary noprint">
+       <td colspan="4"><label for="bitterness-method">Volgens:</label>
+        <button name="bitterness-method" id="bitterness-method" class="multistate" rel="tinseth:Tinseth,daniels:Daniels,rager:Rager,garetz:Garetz"></button>
+       </td>
+       <td><input type="text" name="total-bitterness" id="total-bitterness" class="number" disabled="disabled" /></td>
+      </tr>
+     </tfoot>
+     <tbody>
+      <tr class="hop">
+       <td><input type="text" name="hop-name" /></td>
+       <td><input type="text" name="hop-alpha" class="real" /></td>
+       <td><input type="text" name="hop-amount" class="real" /></td>
+       <td><input type="text" name="hop-boiltime" class="number" /></td>
+       <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="hop">
+       <td><input type="text" name="hop-name" /></td>
+       <td><input type="text" name="hop-alpha" class="real" /></td>
+       <td><input type="text" name="hop-amount" class="real" /></td>
+       <td><input type="text" name="hop-boiltime" class="number" /></td>
+       <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="hop">
+       <td><input type="text" name="hop-name" /></td>
+       <td><input type="text" name="hop-alpha" class="real" /></td>
+       <td><input type="text" name="hop-amount" class="real" /></td>
+       <td><input type="text" name="hop-boiltime" class="number" /></td>
+       <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="hop">
+       <td><input type="text" name="hop-name" /></td>
+       <td><input type="text" name="hop-alpha" class="real" /></td>
+       <td><input type="text" name="hop-amount" class="real" /></td>
+       <td><input type="text" name="hop-boiltime" class="number" /></td>
+       <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="hop">
+       <td><input type="text" name="hop-name" /></td>
+       <td><input type="text" name="hop-alpha" class="real" /></td>
+       <td><input type="text" name="hop-amount" class="real" /></td>
+       <td><input type="text" name="hop-boiltime" class="number" /></td>
+       <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+      <tr class="hop">
+       <td><input type="text" name="hop-name" /></td>
+       <td><input type="text" name="hop-alpha" class="real" /></td>
+       <td><input type="text" name="hop-amount" class="real" /></td>
+       <td><input type="text" name="hop-boiltime" class="number" /></td>
+       <td><input type="text" name="hop-bitterness" class="number" disabled="disabled" /></td>
+       <td><a href="#" title="delete" class="delete">X</a></td>
+      </tr>
+     </tbody>
     </table>
     <p><label for="bu-gu-ratio">BU:GU ratio:</label>
      <input type="text" name="bu-gu-ratio" id="bu-gu-ratio" class="real" disabled="disabled" /></p>
@@ -308,43 +321,47 @@
    <div id="s_mash">
     <h2>Maisch schema</h2>
     <div class="primary">
-     <table>
-      <tr>
-       <th>stap</th>
-       <th class="numerical">T (&deg;C)</th>
-       <th class="numerical">tijd (min)</th>
-       <th></th>
-      </tr>
-      <tr class="step">
-       <td><input type="text" name="step-name" /></td>
-       <td><input type="text" name="step-temp" class="real" /></td>
-       <td><input type="text" name="step-time" class="real" /></td>
-       <td><a href="#" title="delete" class="delete">X</a></td>
-      </tr>
-      <tr class="step">
-       <td><input type="text" name="step-name" /></td>
-       <td><input type="text" name="step-temp" class="real" /></td>
-       <td><input type="text" name="step-time" class="real" /></td>
-       <td><a href="#" title="delete" class="delete">X</a></td>
-      </tr>
-      <tr class="step">
-       <td><input type="text" name="step-name" /></td>
-       <td><input type="text" name="step-temp" class="real" /></td>
-       <td><input type="text" name="step-time" class="real" /></td>
-       <td><a href="#" title="delete" class="delete">X</a></td>
-      </tr>
-      <tr class="step">
-       <td><input type="text" name="step-name" /></td>
-       <td><input type="text" name="step-temp" class="real" /></td>
-       <td><input type="text" name="step-time" class="real" /></td>
-       <td><a href="#" title="delete" class="delete">X</a></td>
-      </tr>
-      <tr class="step">
-       <td><input type="text" name="step-name" /></td>
-       <td><input type="text" name="step-temp" class="real" /></td>
-       <td><input type="text" name="step-time" class="real" /></td>
-       <td><a href="#" title="delete" class="delete">X</a></td>
-      </tr>
+     <table id="mash">
+      <thead>
+       <tr>
+        <th>stap</th>
+        <th class="numerical">T (&deg;C)</th>
+        <th class="numerical">tijd (min)</th>
+        <th></th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr class="step">
+        <td><input type="text" name="step-name" /></td>
+        <td><input type="text" name="step-temp" class="real" /></td>
+        <td><input type="text" name="step-time" class="real" /></td>
+        <td><a href="#" title="delete" class="delete">X</a></td>
+       </tr>
+       <tr class="step">
+        <td><input type="text" name="step-name" /></td>
+        <td><input type="text" name="step-temp" class="real" /></td>
+        <td><input type="text" name="step-time" class="real" /></td>
+        <td><a href="#" title="delete" class="delete">X</a></td>
+       </tr>
+       <tr class="step">
+        <td><input type="text" name="step-name" /></td>
+        <td><input type="text" name="step-temp" class="real" /></td>
+        <td><input type="text" name="step-time" class="real" /></td>
+        <td><a href="#" title="delete" class="delete">X</a></td>
+       </tr>
+       <tr class="step">
+        <td><input type="text" name="step-name" /></td>
+        <td><input type="text" name="step-temp" class="real" /></td>
+        <td><input type="text" name="step-time" class="real" /></td>
+        <td><a href="#" title="delete" class="delete">X</a></td>
+       </tr>
+       <tr class="step">
+        <td><input type="text" name="step-name" /></td>
+        <td><input type="text" name="step-temp" class="real" /></td>
+        <td><input type="text" name="step-time" class="real" /></td>
+        <td><a href="#" title="delete" class="delete">X</a></td>
+       </tr>
+      </tbody>
      </table>
     </div>
     <p><label for="volume-mash">Maischwater:</label>
