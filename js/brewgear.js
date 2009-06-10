@@ -610,6 +610,25 @@ $(function() {
     }
   });
   
+  /* Handle key events */
+  $('input.real, input.number').keydown(function (e) {
+    switch (e.which) {
+    case KEY_UP:
+      var val = $(this).field();
+      val = val + 1;
+      if (val < 0) { val = 0; }
+      $(this).val(val).change();
+      break;      
+    case KEY_DOWN:
+      var val = $(this).field();
+      val = val - 1;
+      if (val < 0) { val = 0; }
+      $(this).val(val).change();
+      break;      
+    }
+  });
+  
+  
   $('input.date').update(function() {
   });
 
