@@ -230,7 +230,7 @@ storage = {
         }
       );
       
-      var added = $('[name=malt-added]:first').attr('rel').split(',');
+      var added = $('[name=malt-added]:first').attr('data-multistate').split(',');
       for (n in added) {
         p = added[n].split(':');
         added[p[0]] = p[1];
