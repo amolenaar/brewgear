@@ -216,7 +216,7 @@ $.fn.extend({
     $(this).each(function() {
       var e = $(this);
       var map = { };
-      var items = e.attr('rel').split(/,/);
+      var items = e.attr('data-multistate').split(/,/);
       var last = '_default_';
       for (i in items) {
         var kv = items[i].split(/:/);

@@ -3,9 +3,9 @@
  */
 
 function set_status(msg) {
-  $('#statusbar').text(msg);
+  $('#statusbar').text(msg).slideDown();
   window.setTimeout(function() {
-    $('#statusbar').text('');
+    $('#statusbar').text('').slideUp();
   }, 15000);
 }
 

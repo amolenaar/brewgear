@@ -357,11 +357,12 @@ a.delete {
 
 
 #statusbar {
- position: fixed;
- top: 0;
- left: 0;
- background-color: white;
- font-size: 120%;
+ background-color: #82827c;
+ color: white;
+ margin: 0;
+ padding: 3px;
+ display: none;
+ height: 12px;
 }
 
 #s_style, #s_menu {
