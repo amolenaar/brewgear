@@ -1,5 +1,5 @@
 /**
- * BrewGear - Google Gears based beer recipe tool.
+ * BrewGear - Web based beer recipe tool.
  */
 
 function set_status(msg) {
@@ -356,10 +356,8 @@ $(function() {
 
 
   $('.malt a.delete').click(function() {
-    var malt = this.parentNode.parentNode;
+    var malt = this.row();
     $('input', malt).val('').change();
-    //$('input[name=malt-percentage]', malt).change();
-    //$(malt).queue_for_update();
     $(malt).change();
   }).removeAttr('href');
 
@@ -369,7 +367,7 @@ $(function() {
    */
    
   $('.step a.delete').click(function() {
-    var step = this.parentNode.parentNode;
+    var step = this.row();
     $('input', step).val('').change();
     $(step).change();
   }).removeAttr('href');
@@ -436,21 +434,10 @@ $(function() {
    * Hops
    */
 
-  $('#hop').update(function() {
-    $('.hop', this).update();
-    $('#total-bitterness').update();
-  }).observe('#volume-after-boil,#og-before-boil,[name=bitterness-method]');
-
-  $('#hop').change(function() {
-    $(this).update();
-    $('#total-bitterness').change();
-  });
-
   var bitterness_method = bitterness_tinseth;
   $('[name=bitterness-method]').change(function() {
     bitterness_method = eval('bitterness_' + $(this).val());
     storage.setProperty('bitterness-method', $(this).val());
-    $('#hop').change();
   });
   
   try {
@@ -462,15 +449,15 @@ $(function() {
       }
     });
   } catch (e) {
+  	// Use already defined default
   }
-  
 
-  // update individual hop records (called from #hop)
-  $('.hop').update(function() {
-    alpha = $('input[name=hop-alpha]', this).val();
+  $('input[name=hop-bitterness]').update(function() {
+    hop = $(this).row();
+    alpha = $('input[name=hop-alpha]', hop).val();
     
-    amount = $('input[name=hop-amount]', this).val();
-    boiltime = $('input[name=hop-boiltime]', this).val();
+    amount = $('input[name=hop-amount]', hop).val();
+    boiltime = $('input[name=hop-boiltime]', hop).val();
     volume = $('#volume-after-boil').field() * 0.96;
     og = $('#og-before-boil').val();
     
@@ -479,27 +466,30 @@ $(function() {
               utilization: boiltime_to_utilization(boiltime) },
               boiltime, volume, og);
     if (bitterness > 0) {
-      $('input[name=hop-bitterness]', this).val(Math.round(bitterness));
+      $(this).val(Math.round(bitterness));
     } else {
-      $('input[name=hop-bitterness]', this).val('');
+      $(this).val('');
     }
-  }); // .hop
+  }).observe('#volume-after-boil,#og-before-boil,[name=bitterness-method]').each(function() {
+    hop = $(this).row();
+  	$(this).observe('input[name=hop-alpha],input[name=hop-amount],input[name=hop-boiltime]', hop);
+  }); // input[name=hop-bitterness]
 
   // update total hop bitterness (called from #hop)
   $('#total-bitterness').update(function() {
     var bitterness = 0;
-    $('input[name=hop-bitterness]').each(function() {
+    $('#hop input[name=hop-bitterness]').each(function() {
       var b = $(this).field();
       if (isFinite(b)) {
         bitterness += b;
       }
     });
     $(this).val(bitterness);
-  }); // #total-bitterness
+  }).observe('#hop'); // #total-bitterness
 
 
   $('.hop a.delete').click(function() {
-    var hop = this.parentNode.parentNode;
+    var hop = $(this).row();
     $('input', hop).val('').change();
 //    $(hop).queue_for_update();
 //    $(hop).change();

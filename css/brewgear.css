@@ -363,6 +363,8 @@ a.delete {
  padding: 3px;
  display: none;
  height: 12px;
+ -moz-border-radius: 6px;
+ -webkit-border-radius: 6px;
 }
 
 #s_style, #s_menu {

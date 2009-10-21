@@ -151,9 +151,9 @@ $.fn.extend({
    * is invoked for the element.
    * Does nothing if the element is considered locked.
    */
-  observe: function(observed) {
+  observe: function(observed, context) {
     var e = $(this);
-    $(observed).change(function() {
+    $(observed, context).change(function() {
       if (!$(e).locked()) {
         e.queue_for_update();
         e.change();
@@ -238,8 +238,11 @@ $.fn.extend({
       e.data('multistate', map);
     });
     return this;
-  }
+  },
   
+  row: function(name) {
+    return $(this).parents('tr' + (name || "")).get(0);
+  }
 });
 
 // vim: sw=2:et:ai

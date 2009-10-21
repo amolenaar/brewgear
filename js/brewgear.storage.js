@@ -399,7 +399,7 @@ storage = {
 
     $('#beslagdikte,#volume-begin-mash').update();
 
-    $('#hop').update();
+    $('input[name=hop-bitterness],#total-bitterness').update();
     $('.malt,.hop,.step').update();
 
     $('#efficiency,#bu-gu-ratio,#svg,#co2v,#priming-total,#alcohol').update();
