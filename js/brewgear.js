@@ -356,7 +356,7 @@ $(function() {
 
 
   $('.malt a.delete').click(function() {
-    var malt = this.row();
+    var malt = $(this).row();
     $('input', malt).val('').change();
     $(malt).change();
   }).removeAttr('href');
@@ -367,7 +367,7 @@ $(function() {
    */
    
   $('.step a.delete').click(function() {
-    var step = this.row();
+    var step = $(this).row();
     $('input', step).val('').change();
     $(step).change();
   }).removeAttr('href');
