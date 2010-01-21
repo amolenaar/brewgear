@@ -355,23 +355,12 @@ $(function() {
   }); // >malt-amount
 
 
-  $('.malt a.delete').click(function() {
-    var malt = $(this).row();
-    $('input', malt).val('').change();
-    $(malt).change();
-  }).removeAttr('href');
 
 
   /*
    * Mash
    */
    
-  $('.step a.delete').click(function() {
-    var step = $(this).row();
-    $('input', step).val('').change();
-    $(step).change();
-  }).removeAttr('href');
-
 
   $('#beslagdikte').update(function() {
     $(this).val(($('#volume-mash').field() / ($('#mash-amount').field() / 1000.0)).toFixed(2));
@@ -453,6 +442,7 @@ $(function() {
   }
 
   $('input[name=hop-bitterness]').update(function() {
+    
     hop = $(this).row();
     alpha = $('input[name=hop-alpha]', hop).val();
     
@@ -486,14 +476,6 @@ $(function() {
     });
     $(this).val(bitterness);
   }).observe('#hop'); // #total-bitterness
-
-
-  $('.hop a.delete').click(function() {
-    var hop = $(this).row();
-    $('input', hop).val('').change();
-//    $(hop).queue_for_update();
-//    $(hop).change();
-  }).removeAttr('href');
 
 
   $('#bu-gu-ratio').update(function() {
@@ -577,6 +559,18 @@ $(function() {
   /*
    * Usability: Input checks 
    */
+
+  $('a.add').click(function() {
+  	var table = $(this).parents('table').get(0);
+  	var last = $('tbody > tr:last', table);
+  	last.clone(true).insertAfter(last);
+  }).removeAttr('href');
+  
+  $('a.delete').click(function() {
+    var row = $(this).row();
+    $('input', row).val('').change();
+    $(row).change();
+  }).removeAttr('href');
 
   $('input.number').update(function() {
     var v = $(this).val();
