@@ -10,12 +10,28 @@ var db_version = 0;
 $(function() {
   // Skip this part if Google Gears is not present
   if (window.openDatabase) {
-    db = openDatabase('brewgear');
-  } else {
+    //var shortName = 'brewgear';
+    //var version = '1.0';
+    //var displayName = 'BrewGear recipe database';
+    //var maxSize = 1024*1024; // 1Mb, in bytes
+    try {
+      db = openDatabase('brewgear', undefined, 'BrewGear recipe database', 65536);
+    } catch (e) {
+      // Error handling code goes here.
+      if (e == 2) {
+        // Version number mismatch.
+        alert("Invalid database version.");
+      } else {
+        alert("Unknown error "+e+".");
+      }
+      return;
+    }
+  }
+
+  if (!db) {
     return;
   }
 
-  
   db.transaction(function(tx) {
     tx.executeSql("SELECT value FROM brewgear WHERE key = 'db'", [], function(tx, rs) {
       // Issue: no result set!
