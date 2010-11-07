@@ -3,8 +3,8 @@
  * SG is always in g/l (e.g. 1050 in stead of 1.050)
  */
 
-
 /* Gravity */ 
+var WCF = 1.04; // Wort correction factor
 
 function sg_to_plato(sg) {
   return -0.0002030586 * sg * sg + 0.663958589 * sg - 460.89746;
@@ -14,16 +14,21 @@ function sg_to_brix(sg) {
   return -0.0002112789 * sg * sg + 0.6907289 * sg - 479.4467;
 }
 
+//function sg_to_brix2(sg) {
+//  return plato_to_brix(sg_to_plato(sg));
+//}
+
 function brix_to_sg(brix) {
-  return 0.01374 * brix * brix + 3.70502 * brix + 1000;
+  return 259 / (259 - (brix / WCF)) * 1000;
+  //return 0.01374 * brix * brix + 3.70502 * brix + 1000;
 }
 
 function brix_to_plato(brix) {
-  return 0.9615 * brix;
+  return brix / WCF;
 }
 
 function plato_to_brix(plato) {
-  return 1.040009 * plato;
+  return WCF * plato;
 }
 
 function max_og() {

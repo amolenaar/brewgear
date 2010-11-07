@@ -380,8 +380,6 @@
     <div class="primary">
     <p><label for="volume-filter">Water toevoegen:</label>
      <input type="text" name="volume-filter" id="volume-filter" class="real lockable" /> l</p>
-    <p><label for="og-before-boil">Dichtheid voor koken:</label>
-    <input type="text" name="og-before-boil" id="og-before-boil" class="real lockable" /> g/l</p>
     <p><label for="loss-after-filter">Blijft achter in filterkuip:</label>
     <input type="text" name="loss-after-filter" id="loss-after-filter" class="real" /> l (80&deg;C)</p>
     </div>
@@ -392,27 +390,32 @@
    <div id="s_boil">
     <h2>Koken</h2>
     <div class="primary">
-    <p><label for="volume-before-boil">Volume voor koken:</label>
-    <input type="text" name="volume-before-boil" id="volume-before-boil" class="real lockable" /> l (100&deg;C)</p>
+     <p><label for="volume-before-boil">Volume voor koken:</label>
+     <input type="text" name="volume-before-boil" id="volume-before-boil" class="real lockable" /> l (100&deg;C)</p>
+     <p><label for="og-before-boil">Dichtheid voor koken:</label>
+     <input type="text" name="og-before-boil" id="og-before-boil" class="real lockable" /> g/l</p>
+     <p><label for="boiltime">Kooktijd:</label>
+     <input type="text" name="boiltime" id="boiltime" class="real" /> min.</p>
+     <p><label for="evaporation">Verdamping:</label>
+     <input type="text" name="evaporation" id="evaporation" class="real" /> l/uur</p>
+    </div>
     <p><label for="volume-after-boil">Volume na koken:</label>
     <input type="text" name="volume-after-boil" id="volume-after-boil" class="real lockable" /> l (100&deg;C)</p>
+    <p><label for="og">Dichtheid na koken:</label>
+    <input type="text" name="og" id="og" class="number lockable" /> g/l</p>
     <p class="noprint"><label for="loss-after-boil">Blijft achter in ketel:</label>
     <input type="text" name="loss-after-boil" id="loss-after-boil" class="real" /> l</p>
-    <p><label for="volume-fermenter">Volume in gistingskuip:</label>
+    <p><label for="volume-fermenter">Volume in gistvat:</label>
     <input type="text" name="volume-fermenter" id="volume-fermenter" class="real lockable" /> l</p>
-   </div>
-   <p><label for="boiltime">Kooktijd:</label>
-    <input type="text" name="boiltime" id="boiltime" class="real" /> min.</p>
-   <p><label for="evaporation">Verdamping:</label>
-    <input type="text" name="evaporation" id="evaporation" class="real" /> l/uur</p>
-   <p><label for="og">Dichtheid:</label>
-    <input type="text" name="og" id="og" class="number lockable" /> g/l</p>
    </div> <!-- boil -->
    
    <div id="s_yeast">
     <h2>Gist</h2>
-    <p><label for="yeast">Gist:</label><input type="text" name="yeast" id="yeast" /></p>
-    <p><label for="starter">Giststarter:</label><input type="text" name="starter" id="starter" class="real" /> l vergist bij <input type="text" name="starter-temp" id="starter-temp" class="real" /> &deg;C </p>
+    <p><label for="yeast">Gist:</label>
+    <input type="text" name="yeast" id="yeast" /></p>
+    <p><label for="starter">Giststarter:</label>
+    <input type="text" name="starter" id="starter" class="real" /> l vergist bij
+    <input type="text" name="starter-temp" id="starter-temp" class="real" /> &deg;C </p>
    </div> <!-- yeast -->
    
    <div id="s_fermentation">
