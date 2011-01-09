@@ -371,7 +371,7 @@ storage = {
         $('#style').val(field.name);
         $('#style-og-min').text(field.gravity_min);
         $('#style-og-max').text(field.gravity_max);
-        $('#style-alcohol-min').text(field.alcohol_max);
+        $('#style-alcohol-min').text(field.alcohol_min);
         $('#style-alcohol-max').text(field.alcohol_max);
         $('#style-attenuation-min').text(field.attenuation_min);
         $('#style-attenuation-max').text(field.attenuation_max);
