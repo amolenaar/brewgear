@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>BrewGear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/application.css" type="text/css" charset="utf-8">
+  <link rel="stylesheet" href="css/jquery.mobile.css" type="text/css" charset="utf-8">
+  <script src="/application.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    var jQuery  = require("jqueryify");
+    var exports = this;
+    jQuery(function(){
+      require('app');
+      //var App = require("app");
+      //exports.app = new App({el: $("body")});      
+    });
+  </script>
+  
+</head>
+<body>
+
+<section id="recipes" data-role="page">
+    <header data-role="header">
+        <h1>BrewGear</h1>
+        <a href="#/fermentables/new" class="ui-btn-right" data-role="button" data-mini="true" data-icon="add" data-theme="b">Add</a>
+    </header>
+
+    <div data-role="content">
+        <ul data-role="listview">
+        </ul>
+
+    </div>
+    <script id="recipe-item" type="text/x-jquery-tmpl">
+        <li data-id="${batch}"><a href="#/recipes/${batch}">${batch} ${name}</a></li>
+    </script>
+</section>
+
+
+<section id="recipe" data-role="page">
+    <header data-role="header">
+        <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="back" data-theme="b">Back</a>
+        <h1>BrewGear</h1>
+    </header>
+
+    <div data-role="content">
+      <form>
+        <label for="overview-batch">Batch#</label>
+	<input type="text" name="batch" id="overview-batch" value="${batch}"/>
+        <label for="overview-name">Naam</label>
+	<input type="text" name="name" id="overview-name" value="${name}"/>
+      </form>
+      <ul data-role="listview" data-inset="true">
+        <li><a class="to-fermentables" href="#/recipes/${batch}/fermentables">Granen en suikers</a></li>
+        <li><a class="to-hops" href="#/recipes/${batch}/hops">Hop en kruiden</a></li>
+        <li><a class="to-fermentation" href="#/recipes/${batch}/fermentation">Vergisting</a></li>
+      </ul>
+    </div>
+</section>
+
+<section id="fermentables" data-role="page">
+    <header data-role="header">
+        <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="back" data-theme="b">Back</a>
+        <h1>Granen en suikers</h1>
+        <a href="#/fermentables/new" data-role="button" data-mini="true" data-icon="add" data-theme="b">Add</a>
+    </header>
+
+    <div data-role="content">
+        <div>
+            <h3>Hadrianus tripel</h3>
+            <dl>
+                <dt>Begin SG:</dt>
+                <dd>1.043</dd>
+                <dt>Eind SG:</dt>
+                <dd>1.043</dd>
+            </dl>
+        </div>
+        <ul  data-role="listview" data-theme="e">
+            <li data-wrapperels="div" data-icon="arrow-r" data-iconpos="right"><a href="#/fermentables/1"><span class="name">Pilsmout</span><span class="color">3 EBC</span><span class="weight">3234 g</span></a></li>
+            <li><a href="#/fermentables/2"><span class="name">Cara 120</span><span class="color">120 EBC</span><span class="weight">234 g</span></a></li>
+            <li><a href="#/fermentables/3"><span class="name">Chocolademout</span><span class="color">800 EBC</span><span class="weight">137 g</span></a></li>
+        </ul>
+    </div>
+    <script class="template" type="text/x-jquery-tmpl">
+        <li><a href="${hash}"><span class="name">${name}</span><span class="color">${color} EBC</span><span class="weight">${amount} g</span></a></li>
+    </script>
+</section>
+
+</body>
+<!-- vim:sw=4:et:ai
+-->
+</html>
