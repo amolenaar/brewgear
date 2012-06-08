@@ -90,7 +90,9 @@ $ ->
 
     Route.setup()
 
-    $('a[data-rel="back"]').click ->
+    $('a[data-rel="back"]').click (event) ->
+        event.stopPropagation()
+        event.preventDefault()
         Route.back()
 
 
