@@ -61,7 +61,7 @@ routes
 
 
 testDataSet = ->
-    r = new Model.Recipe
+    new Model.Recipe
         batch: '1'
         name: 'My Dubble'
         fermentables: [
@@ -74,11 +74,11 @@ testDataSet = ->
                 color: 120
                 amount: 243
         ]
-    r.save()
-    r = new Model.Recipe
+    .save()
+    new Model.Recipe
         batch: '2'
         name: 'My Triple'
-    r.save()
+    .save()
     console.log Model.Recipe.all()
 
 $ ->
