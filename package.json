@@ -3,5 +3,8 @@
   "version": "0.0.1",
   "dependencies": { 
     "flatiron": "~0.2.1",
+    "connect": "~2.3.3",
+    "union": "~0.3.2",
+    "director": "~1.0.11"
   }
 }
