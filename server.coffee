@@ -1,4 +1,4 @@
-#flatiron = require 'flatiron'
+
 connect = require 'connect'
 union = require 'union'
 path = require 'path'
@@ -16,10 +16,33 @@ fs.readFile 'db/fermentables.json', (err, data) ->
 router = new director.http.Router
     '/db/fermentables':
         get: ->
-            this.res.writeHead 200,
+            @res.writeHead 200,
                 'Content-Type': 'application/json'
-            this.res.end FERMENTABLES
+            @res.end FERMENTABLES
+    '/recipes/:id':
+        get: (id) ->
+            console.log "get recipe id: #{id}"
+        post: (id) ->
+            console.log "post recipe id: #{id}"
+    '/recipes':
+        get: ->
+            console.log "get all recipes", arguments
+            first = false
+            @res.writeHead 200,
+                'Content-Type': 'application/json'
+            fs.readdir "recipes", (err, files) =>
+                @res.write "["
+                for f in files
+                    if first then @res.write ", "
+                    first = true
+                    data = fs.readFileSync "recipes/#{f}"
+                    @res.write data
+                @res.end "]"
+        post: ->
+            console.log "posting data #{@req.body}"
 
+.configure
+    strict: false
 
 server = union.createServer
   buffer: false
