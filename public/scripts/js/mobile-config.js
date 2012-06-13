@@ -1,8 +1,10 @@
 $(document).bind('mobileinit', function() {
   console.log('javascript mobile init');
-  opt = $.mobile; //page.prototype.options
+  opt = $.mobile;
   opt.defaultPageTransition = 'slide';
   opt.loadingMessage = 'Laden...';
+
+  //opt.autoInitializePage = false;
 
   // disable default interactions:
   opt.ajaxEnabled = false;

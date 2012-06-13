@@ -1,14 +1,11 @@
-require 'lib/setup'
+use 'scripts/spine/spine'
+use 'scripts/spine/route'
+use 'scripts/model'
+use 'scripts/controller'
 
 $ = jQuery
-
-Spine = require 'spine'
-
-Model = require 'model'
-Controller = require 'controller'
-
-
-console.log 'in mainapp', Controller.Recipes, Spine.Route
+Controller = BrewGear.Controller
+Model = BrewGear.Model
 
 class Route extends Spine.Route
     @visited = []
@@ -36,10 +33,11 @@ theController = null
 
 goTo = (controller) ->
     console.log 'starting controller', controller
-    #theController?.release()
+    theController?.release()
     theController = controller
     Route.changePage controller.el
     theController.render()
+    $.mobile.hidePageLoadingMsg()
 
 routes = (routes) ->
     Route.add(key, value) for key, value of routes
@@ -48,16 +46,16 @@ routes
     "/recipes/:id/fermentables": (params) ->
         goTo new Controller.Fermentables
             model: Model.Recipe.findByAttribute('batch', params.id)
+            id: params.id
             el: '#fermentables'
     "/recipes/:id": (params) ->
         goTo new Controller.Recipe
             model: Model.Recipe.findByAttribute('batch', params.id)
+            id: params.id
             el: '#recipe'
     "/": ->
         goTo new Controller.Recipes
-            model: Model.Recipe.all()
             el: '#recipes'
-
 
 
 testDataSet = ->
@@ -81,19 +79,25 @@ testDataSet = ->
     .save()
     console.log Model.Recipe.all()
 
-$ ->
 
-    console.log 'loading the rest'
-    # Init local data:
-    testDataSet()
-    #BrewGear.Model.Recipe.fetch()
-
-    Route.setup()
-
-    $('a[data-rel="back"]').click (event) ->
-        event.stopPropagation()
-        event.preventDefault()
-        Route.back()
+# Init local data:
+#testDataSet()
 
 
+Route.setup()
+
+Model.Recipe.fetch()
+Model.FermentableResource.fetch()
+
+$('a[data-rel="back"]').click (event) ->
+    event.stopPropagation()
+    event.preventDefault()
+    Route.back()
+
+#$.mobile.initializePage()
+#Route.navigate("#/")
+
+($ window).bind 'hashchange', ->
+  console.log 'hash change', arguments
 # vim: sw=4:et:ai
+@

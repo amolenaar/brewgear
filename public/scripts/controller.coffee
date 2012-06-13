@@ -14,9 +14,17 @@ class BrewGear.Controller.Recipes extends Spine.Controller
         'ul': 'list'
         '#recipe-item': 'template'
 
+    constructor: ->
+        super
+        BrewGear.Model.Recipe.bind 'refresh change', @render
+        @release ->
+            BrewGear.Model.Recipe.unbind 'refresh change', @render
+
     render: =>
+        @log 'rendering recipes'
         @list.empty()
-        @list.append (@template.tmpl recipe) for recipe in @model
+        model = BrewGear.Model.Recipe.all()
+        @list.append (@template.tmpl recipe) for recipe in model
         @list.listview 'refresh' 
 
 

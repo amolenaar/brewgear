@@ -20,7 +20,8 @@ class Fermentable extends Spine.Model
 class Recipe extends Spine.Model
     @configure 'Recipe', 'name', 'batch', 'fermentables', 'hops'
     #@hasMany 'fermentables', Fermentable
-    @extend Spine.Model.Local
+    @extend Spine.Model.Ajax
+    @url: '/recipes'
 
     validate: ->
         unless @name
@@ -29,15 +30,9 @@ class Recipe extends Spine.Model
 
 
 class FermentableResource extends Spine.Model
-    @configure 'name', 'yield', 'moisture', 'ebc'
+    @configure 'Fermentable', 'name', 'yield', 'moisture', 'ebc', 'category', 'priming'
     @extend Spine.Model.Ajax
-    @url 'fermentables.json'
-
-    save: ->
-
-    update: ->
-
-    destroy: ->
+    @url: '/db/fermentables'
 
 #Recipe.hasMany 'fermentables', Fermentable
 #Fermentable.belongsTo 'recipe', Recipe
@@ -47,5 +42,4 @@ BrewGear.Model.Recipe = Recipe
 BrewGear.Model.Fermentable = Fermentable
 BrewGear.Model.FermentableResource = FermentableResource
 
-FermentableResource.fetch()
 # vim:sw=4:et:ai
