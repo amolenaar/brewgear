@@ -10,6 +10,9 @@ use 'scripts/spine/route'
 use 'scripts/model'
 use 'scripts/controller'
 
+# Monkey patch! We're not interested in URL changes, only the hash that changes
+Spine.Route.getPath = Spine.Route.getFragment
+
 class Route extends Spine.Route
     @visited = []
     # Simulate page back with a slide reverse

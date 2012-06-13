@@ -11,7 +11,7 @@ Events =
   one: (ev, callback) ->
     @bind ev, ->
       @unbind(ev, arguments.callee)
-      callback.apply(@, arguments)
+      callback.apply(this, arguments)
 
   trigger: (args...) ->
     ev = args.shift()
@@ -20,7 +20,7 @@ Events =
     return unless list
 
     for callback in list
-      if callback.apply(@, args) is false
+      if callback.apply(this, args) is false
         break
     true
 
@@ -58,24 +58,24 @@ moduleKeywords = ['included', 'extended']
 
 class Module
   @include: (obj) ->
-    throw('include(obj) requires obj') unless obj
+    throw new Error('include(obj) requires obj') unless obj
     for key, value of obj when key not in moduleKeywords
       @::[key] = value
-    obj.included?.apply(@)
+    obj.included?.apply(this)
     this
 
   @extend: (obj) ->
-    throw('extend(obj) requires obj') unless obj
+    throw new Error('extend(obj) requires obj') unless obj
     for key, value of obj when key not in moduleKeywords
       @[key] = value
-    obj.extended?.apply(@)
+    obj.extended?.apply(this)
     this
 
   @proxy: (func) ->
-    => func.apply(@, arguments)
+    => func.apply(this, arguments)
 
   proxy: (func) ->
-    => func.apply(@, arguments)
+    => func.apply(this, arguments)
 
   constructor: ->
     @init?(arguments...)
@@ -103,14 +103,14 @@ class Model extends Module
     record = @records[id]
     if !record and ("#{id}").match(/c-\d+/)
       return @findCID(id)
-    throw('Unknown record') unless record
+    throw new Error('Unknown record') unless record
     record.clone()
-    
+
   @findCID: (cid) ->
     record = @crecords[cid]
-    throw('Unknown record') unless record
+    throw new Error('Unknown record') unless record
     record.clone()
-    
+
   @exists: (id) ->
     try
       return @find(id)
@@ -121,7 +121,7 @@ class Model extends Module
     if options.clear
       @records  = {}
       @crecords = {}
-      
+
     records = @fromJSON(values)
     records = [records] unless isArray(records)
 
@@ -130,7 +130,7 @@ class Model extends Module
       @records[record.id]   = record
       @crecords[record.cid] = record
 
-    @trigger('refresh', not options.clear and @cloneArray(records))
+    @trigger('refresh', @cloneArray(records))
     this
 
   @select: (callback) ->
@@ -210,7 +210,7 @@ class Model extends Module
 
   @fromForm: ->
     (new this).fromForm(arguments...)
-    
+
   # Private
 
   @recordsValues: ->
@@ -221,18 +221,20 @@ class Model extends Module
 
   @cloneArray: (array) ->
     (value.clone() for value in array)
-    
+
   @idCounter: 0
-  
-  @uid: ->
-    @idCounter++
+
+  @uid: (prefix = '') ->
+    uid = prefix + @idCounter++
+    uid = @uid(prefix) if @exists(uid)
+    uid
 
   # Instance
 
   constructor: (atts) ->
     super
     @load atts if atts
-    @cid or= 'c-' + @constructor.uid()
+    @cid = @constructor.uid('c-')
 
   isNew: ->
     not @exists()
@@ -261,8 +263,8 @@ class Model extends Module
     result
 
   eql: (rec) ->
-    !!(rec and rec.constructor is @constructor and 
-        (rec.id is @id or rec.cid is @cid))
+    !!(rec and rec.constructor is @constructor and
+        (rec.cid is @cid) or (rec.id and rec.id is @id))
 
   save: (options = {}) ->
     unless options.validate is false
@@ -276,9 +278,9 @@ class Model extends Module
     @trigger('save', options)
     record
 
-  updateAttribute: (name, value) ->
+  updateAttribute: (name, value, options) ->
     @[name] = value
-    @save()
+    @save(options)
 
   updateAttributes: (atts, options) ->
     @load(atts)
@@ -310,7 +312,7 @@ class Model extends Module
     result
 
   clone: ->
-    Object.create(@)
+    createObject(this)
 
   reload: ->
     return this if @isNew()
@@ -322,7 +324,7 @@ class Model extends Module
     @attributes()
 
   toString: ->
-    "<#{@constructor.className} (#{JSON.stringify(@)})>"
+    "<#{@constructor.className} (#{JSON.stringify(this)})>"
 
   fromForm: (form) ->
     result = {}
@@ -347,11 +349,11 @@ class Model extends Module
   create: (options) ->
     @trigger('beforeCreate', options)
     @id          = @cid unless @id
-    
+
     record       = @dup(false)
     @constructor.records[@id]   = record
     @constructor.crecords[@cid] = record
-    
+
     clone        = record.clone()
     clone.trigger('create', options)
     clone.trigger('change', 'create', options)
@@ -360,7 +362,7 @@ class Model extends Module
   bind: (events, callback) ->
     @constructor.bind events, binder = (record) =>
       if record && @eql(record)
-        callback.apply(@, arguments)
+        callback.apply(this, arguments)
     @constructor.bind 'unbind', unbinder = (record) =>
       if record && @eql(record)
         @constructor.unbind(events, binder)
@@ -370,10 +372,10 @@ class Model extends Module
   one: (events, callback) ->
     binder = @bind events, =>
       @constructor.unbind(events, binder)
-      callback.apply(@)
+      callback.apply(this, arguments)
 
   trigger: (args...) ->
-    args.splice(1, 0, @)
+    args.splice(1, 0, this)
     @constructor.trigger(args...)
 
   unbind: ->
@@ -392,34 +394,43 @@ class Controller extends Module
     for key, value of @options
       @[key] = value
 
-    @el = document.createElement(@tag) unless @el
-    @el = $(@el)
+    @el  = document.createElement(@tag) unless @el
+    @el  = $(@el)
+    @$el = @el
 
     @el.addClass(@className) if @className
     @el.attr(@attributes) if @attributes
 
-    @release -> @el.remove()
-
     @events = @constructor.events unless @events
     @elements = @constructor.elements unless @elements
 
-    @delegateEvents() if @events
+    @delegateEvents(@events) if @events
     @refreshElements() if @elements
 
     super
 
-  release: (callback) =>
-    if typeof callback is 'function'
-      @bind 'release', callback
-    else
-      @trigger 'release'
+  release: =>
+    @trigger 'release'
+    @el.remove()
+    @unbind()
 
   $: (selector) -> $(selector, @el)
 
-  delegateEvents: ->
-    for key, method of @events
-      unless typeof(method) is 'function'
-        method = @proxy(@[method])
+  delegateEvents: (events) ->
+    for key, method of events
+
+      if typeof(method) is 'function'
+        # Always return true from event handlers
+        method = do (method) => =>
+          method.apply(this, arguments)
+          true
+      else
+        unless @[method]
+          throw new Error("#{method} doesn't exist")
+
+        method = do (method) => =>
+          @[method].apply(this, arguments)
+          true
 
       match      = key.match(@eventSplitter)
       eventName  = match[1]
@@ -462,7 +473,7 @@ class Controller extends Module
   replace: (element) ->
     [previous, @el] = [@el, $(element.el or element)]
     previous.replaceWith(@el)
-    @delegateEvents()
+    @delegateEvents(@events)
     @refreshElements()
     @el
 
@@ -470,11 +481,10 @@ class Controller extends Module
 
 $ = window?.jQuery or window?.Zepto or (element) -> element
 
-unless typeof Object.create is 'function'
-  Object.create = (o) ->
-    Func = ->
-    Func.prototype = o
-    new Func()
+createObject = Object.create or (o) ->
+  Func = ->
+  Func.prototype = o
+  new Func()
 
 isArray = (value) ->
   Object::toString.call(value) is '[object Array]'
@@ -485,14 +495,14 @@ isBlank = (value) ->
   true
 
 makeArray = (args) ->
-  Array.prototype.slice.call(args, 0)
+  Array::slice.call(args, 0)
 
 # Globals
 
 Spine = @Spine   = {}
 module?.exports  = Spine
 
-Spine.version    = '1.0.5'
+Spine.version    = '1.0.8'
 Spine.isArray    = isArray
 Spine.isBlank    = isBlank
 Spine.$          = $
@@ -521,8 +531,5 @@ Model.setup = (name, attributes = []) ->
   class Instance extends this
   Instance.configure(name, attributes...)
   Instance
-
-Module.init = Controller.init = Model.init = (a1, a2, a3, a4, a5) ->
-  new this(a1, a2, a3, a4, a5)
 
 Spine.Class = Module
