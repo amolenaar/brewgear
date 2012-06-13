@@ -37,8 +37,8 @@ theController = null
 goTo = (controller) ->
     theController?.deactivate?()
     theController = controller
-    theController.activate?()
     Route.changePage controller.el
+    theController.activate?()
     theController.render()
 
 routes = (routes) ->
@@ -47,11 +47,11 @@ routes = (routes) ->
 routes
     "/recipes/:id/fermentables": (params) ->
         goTo new BrewGear.Controller.Fermentables
-            model: BrewGear.Model.Recipe.findByAttribute('batch', params.id)
+            id: params.id
             el: '#fermentables'
     "/recipes/:id": (params) ->
         goTo new BrewGear.Controller.Recipe
-            model: BrewGear.Model.Recipe.findByAttribute('batch', params.id)
+            id: params.id
             el: '#recipe'
     "": ->
         goTo new BrewGear.Controller.Recipes
@@ -59,9 +59,9 @@ routes
 
 $ ->
 
-    # Init local data:
-    #testDataSet()
+    # Get the right amount of data
     BrewGear.Model.Recipe.fetch()
+    BrewGear.Model.FermentableResource.fetch()
 
     Route.setup()
 

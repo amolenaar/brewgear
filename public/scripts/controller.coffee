@@ -21,7 +21,6 @@ class BrewGear.Controller.Recipes extends Spine.Controller
         BrewGear.Model.Recipe.unbind ev, @render for ev in ['refresh', 'change']
 
     render: =>
-        @log 'rendering'
         model = BrewGear.Model.Recipe.all()
         @list.empty()
         @list.append (@template.tmpl recipe) for recipe in model
@@ -39,6 +38,10 @@ class BrewGear.Controller.Recipe extends Spine.Controller
     @events:
         'change input': 'update'
         'blur input': 'update'
+
+    constructor: (params) ->
+        super
+        @model = BrewGear.Model.Recipe.findByAttribute('batch', params.id)
 
     update: =>
         @model.batch = @batch.val()
@@ -61,11 +64,15 @@ class BrewGear.Controller.Fermentables extends Spine.Controller
         '.template': 'template'
         'h3': 'name'
 
+    constructor: (params) ->
+        super
+        @model = BrewGear.Model.Recipe.findByAttribute('batch', params.id)
+
     render: =>
         @name = @model.name
         @list.empty()
-        console.log ' model: ' + @model.fermentables
-        for i, fermentable of @model.fermentables
+        console.log ' model: ' + @model.fermentables()
+        for i, fermentable of @model.fermentables()
             @list.append @template.tmpl
                 name: fermentable.name
                 color: fermentable.color

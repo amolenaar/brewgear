@@ -11,7 +11,7 @@ BrewGear.Model ?= {}
 
 class Fermentable extends Spine.Model
     @configure 'Fermentable', 'name', 'color', 'amount' #, moisture, ...
-    #@belongsTo 'recipe', Recipe
+    @belongsTo 'recipe', Recipe
 
     validate: ->
         unless @name
@@ -19,7 +19,7 @@ class Fermentable extends Spine.Model
 
 class Recipe extends Spine.Model
     @configure 'Recipe', 'name', 'batch', 'fermentables', 'hops'
-    #@hasMany 'fermentables', Fermentable
+    @hasMany 'fermentables', Fermentable
     @extend Spine.Model.Ajax
     @url: '/recipes'
 
@@ -32,7 +32,7 @@ class Recipe extends Spine.Model
 class FermentableResource extends Spine.Model
     @configure 'Fermentable', 'name', 'yield', 'moisture', 'ebc', 'category', 'priming'
     @extend Spine.Model.Ajax
-    @url: '/db/fermentables'
+    @url: '/fermentables'
 
 #Recipe.hasMany 'fermentables', Fermentable
 #Fermentable.belongsTo 'recipe', Recipe

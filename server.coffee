@@ -14,7 +14,7 @@ fs.readFile 'db/fermentables.json', (err, data) ->
 
 
 router = new director.http.Router
-    '/db/fermentables':
+    '/fermentables':
         get: ->
             @res.writeHead 200,
                 'Content-Type': 'application/json'
