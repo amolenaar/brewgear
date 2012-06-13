@@ -5,11 +5,50 @@ use 'scripts/model'
 
 BrewGear.Controller ?= {}
 
-# Stand-in dummy class
-class BrewGear.Controller.Null extends Spine.Controller
+class BaseController extends Spine.Controller
+
+    constructor: ->
+        @_boundEvents = []
+        @_delegatedEvents = []
+        super
+
+    delegateEvents: (events) =>
+        for key, method of events
+
+            if typeof(method) is 'function'
+                # Always return true from event handlers
+                method = do (method) => =>
+                    method.apply(this, arguments)
+                    true
+            else
+                unless @[method]
+                    throw new Error("#{method} doesn't exist")
+
+                method = do (method) => =>
+                    @[method].apply(this, arguments)
+                    true
+
+            match      = key.match(@eventSplitter)
+            eventName  = match[1]
+            selector   = match[2]
+
+            if selector is ''
+                @el.bind(eventName, method)
+                @_boundEvents.push [eventName, method]
+            else
+                @el.delegate(selector, eventName, method)
+                @_delegatedEvents.push [selector, eventName, method]
 
 
-class BrewGear.Controller.Recipes extends Spine.Controller
+    unbindEvents: =>
+        @el.unbind args[0], args[1] for args in @_boundEvents
+        @el.undelegate args[0], args[1], args[2] for args in @_delegatedEvents
+    
+    deactivate: ->
+        @unbindEvents()
+
+
+class BrewGear.Controller.Recipes extends BaseController
     @elements:
         'ul': 'list'
         '#recipe-item': 'template'
@@ -18,6 +57,7 @@ class BrewGear.Controller.Recipes extends Spine.Controller
         BrewGear.Model.Recipe.bind 'refresh change', @render
 
     deactivate: ->
+        super
         BrewGear.Model.Recipe.unbind ev, @render for ev in ['refresh', 'change']
 
     render: =>
@@ -27,7 +67,7 @@ class BrewGear.Controller.Recipes extends Spine.Controller
         @list.listview 'refresh' 
 
 
-class BrewGear.Controller.Recipe extends Spine.Controller
+class BrewGear.Controller.Recipe extends BaseController
     @elements:
         '.to-fermentables': 'fermentablesLink'
         '.to-hops': 'hopsLink'
@@ -39,9 +79,9 @@ class BrewGear.Controller.Recipe extends Spine.Controller
         'change input': 'update'
         'blur input': 'update'
 
-    constructor: (params) ->
+    constructor: (options) ->
         super
-        @model = BrewGear.Model.Recipe.findByAttribute('batch', params.id)
+        @model = BrewGear.Model.Recipe.findByAttribute('batch', options.id)
 
     update: =>
         @model.batch = @batch.val()
@@ -58,7 +98,7 @@ class BrewGear.Controller.Recipe extends Spine.Controller
 
 
 
-class BrewGear.Controller.Fermentables extends Spine.Controller
+class BrewGear.Controller.Fermentables extends BaseController
     @elements:
         'ul': 'list'
         '.template': 'template'
