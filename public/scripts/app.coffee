@@ -1,11 +1,14 @@
-use 'scripts/spine/spine'
-use 'scripts/spine/route'
-use 'scripts/model'
-use 'scripts/controller'
+
+# application namespace:
+BrewGear = @BrewGear = {}
 
 $ = jQuery
-Controller = BrewGear.Controller
-Model = BrewGear.Model
+
+use 'scripts/spine/spine'
+use 'scripts/spine/route'
+
+use 'scripts/model'
+use 'scripts/controller'
 
 class Route extends Spine.Route
     @visited = []
@@ -32,72 +35,40 @@ class Route extends Spine.Route
 theController = null
 
 goTo = (controller) ->
-    console.log 'starting controller', controller
-    theController?.release()
+    theController?.deactivate?()
     theController = controller
+    theController.activate?()
     Route.changePage controller.el
     theController.render()
-    $.mobile.hidePageLoadingMsg()
 
 routes = (routes) ->
     Route.add(key, value) for key, value of routes
 
 routes
     "/recipes/:id/fermentables": (params) ->
-        goTo new Controller.Fermentables
-            model: Model.Recipe.findByAttribute('batch', params.id)
-            id: params.id
+        goTo new BrewGear.Controller.Fermentables
+            model: BrewGear.Model.Recipe.findByAttribute('batch', params.id)
             el: '#fermentables'
     "/recipes/:id": (params) ->
-        goTo new Controller.Recipe
-            model: Model.Recipe.findByAttribute('batch', params.id)
-            id: params.id
+        goTo new BrewGear.Controller.Recipe
+            model: BrewGear.Model.Recipe.findByAttribute('batch', params.id)
             el: '#recipe'
-    "/": ->
-        goTo new Controller.Recipes
+    "": ->
+        goTo new BrewGear.Controller.Recipes
             el: '#recipes'
 
+$ ->
 
-testDataSet = ->
-    new Model.Recipe
-        batch: '1'
-        name: 'My Dubble'
-        fermentables: [
-            new Model.Fermentable
-                name: 'Pilsmount'
-                color: 3
-                amount: 3500
-            new Model.Fermentable
-                name: 'Cara 120'
-                color: 120
-                amount: 243
-        ]
-    .save()
-    new Model.Recipe
-        batch: '2'
-        name: 'My Triple'
-    .save()
-    console.log Model.Recipe.all()
+    # Init local data:
+    #testDataSet()
+    BrewGear.Model.Recipe.fetch()
+
+    Route.setup()
+
+    $('a[data-rel="back"]').click ->
+        event.stopPropagation()
+        event.preventDefault()
+        Route.back()
 
 
-# Init local data:
-#testDataSet()
-
-
-Route.setup()
-
-Model.Recipe.fetch()
-Model.FermentableResource.fetch()
-
-$('a[data-rel="back"]').click (event) ->
-    event.stopPropagation()
-    event.preventDefault()
-    Route.back()
-
-#$.mobile.initializePage()
-#Route.navigate("#/")
-
-($ window).bind 'hashchange', ->
-  console.log 'hash change', arguments
 # vim: sw=4:et:ai
-@
