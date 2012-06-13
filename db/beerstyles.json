@@ -1,0 +1,806 @@
+[{
+  "name": "Berliner Weisse",
+  "description": "Hooggegist/melkzuurgisting, nagisting op fles",
+  "gravity": [1028, 1032],
+  "alcohol": [2.8, 3.7],
+  "attenuation": [75, 78],
+  "ebc": [4, 8],
+  "ibu": [3, 8],
+  "co2g": [0.50, 0.65],
+  "co2v": [2.5, 3.3],
+  "ph": [2.9, 3.0],
+  "class": "A"
+
+}, {
+  "name": "Bitter",
+  "description": "Hooggegist met dryhopping, soms nagisting op fles",
+  "gravity": [1033, 1044],
+  "alcohol": [3.4, 4.5],
+  "attenuation": [66, 77],
+  "ebc": [10, 25],
+  "ibu": [30, 40],
+  "co2g": [0.35, 0.47],
+  "co2v": [1.8, 2.4],
+  "ph": [3.9, 4.5],
+  "class": "A"
+
+}, {
+  "name": "California Steam",
+  "description": "Laaggegist op 16-21 graden en gefilterd",
+  "gravity": [1048, 1051],
+  "alcohol": [4.8, 5.2],
+  "attenuation": [74, 75],
+  "ebc": [22, 35],
+  "ibu": [30, 35],
+  "co2g": [0.40, 0.44],
+  "co2v": [2.0, 2.2],
+  "ph": [4.3, 4.7],
+  "class": "A"
+
+}, {
+  "name": "Dortmunder Export",
+  "description": "Laaggegist, meestal gefilterd",
+  "gravity": [1048, 1056],
+  "alcohol": [5.0, 5.6],
+  "attenuation": [75, 86],
+  "ebc": [7, 22],
+  "ibu": [23, 30],
+  "co2g": [0.43, 0.48],
+  "co2v": [2.2, 2.4],
+  "ph": [4.4, 4.6],
+  "class": "A"
+
+}, {
+  "name": "Faro",
+  "description": "Spontane gisting met nagisting op fles",
+  "gravity": [1040, 1054],
+  "alcohol": [4.5, 6.0],
+  "attenuation": [75, 99],
+  "ebc": [20, 45],
+  "ibu": [6, 20],
+  "co2g": [0.45, 0.50],
+  "co2v": [2.3, 2.5],
+  "ph": [3.5, 3.8],
+  "class": "A"
+
+}, {
+  "name": "Gueuze Lambic",
+  "description": "Spontane gisting, versnijbier",
+  "gravity": [1051, 1058],
+  "alcohol": [5.0, 7.6],
+  "attenuation": [75, 99],
+  "ebc": [12, 25],
+  "ibu": [11, 20],
+  "co2g": [0.80, 1.00],
+  "co2v": [4.1, 5.1],
+  "ph": [3.0, 3.6],
+  "class": "A"
+
+}, {
+  "name": "Irish Red Ale",
+  "description": "Hooggegist en gefilterd",
+  "gravity": [1040, 1048],
+  "alcohol": [4.0, 5.2],
+  "attenuation": [71, 83],
+  "ebc": [22, 36],
+  "ibu": [22, 28],
+  "co2g": [0.44, 0.52],
+  "co2v": [2.2, 2.6],
+  "ph": [4.0, 4.4],
+  "class": "A"
+
+}, {
+  "name": "Kölsch",
+  "description": "Hooggegist met koude lagering",
+  "gravity": [1041, 1048],
+  "alcohol": [.00, 5.0],
+  "attenuation": [73, 80],
+  "ebc": [10, 17],
+  "ibu": [20, 30],
+  "co2g": [0.42, 0.53],
+  "co2v": [2.1, 2.7],
+  "ph": [4.1, 4.5],
+  "class": "A"
+
+}, {
+  "name": "Lambiek",
+  "description": "Spontane gisting meestal alleen op fust",
+  "gravity": [1051, 1056],
+  "alcohol": [5.1, 6.4],
+  "attenuation": [75, 99],
+  "ebc": [12, 25],
+  "ibu": [11, 20],
+  "co2g": [0.20, 0.25],
+  "co2v": [1.0, 1.3],
+  "ph": [3.2, 3.8],
+  "class": "A"
+
+}, {
+  "name": "Märzen &amp; Oktoberfest",
+  "description": "Laaggegist en gefilterd",
+  "gravity": [1050, 1056],
+  "alcohol": [5.1, 6.0],
+  "attenuation": [67, 84],
+  "ebc": [15, 35],
+  "ibu": [18, 25],
+  "co2g": [0.42, 0.50],
+  "co2v": [2.1, 2.5],
+  "ph": [4.1, 4.6],
+  "class": "A"
+
+}, {
+  "name": "Münchener Helles",
+  "description": "Laaggegist en gefilterd",
+  "gravity": [1044, 1049],
+  "alcohol": [4.7, 5.3],
+  "attenuation": [69, 73],
+  "ebc": [8, 15],
+  "ibu": [18, 25],
+  "co2g": [0.43, 0.47],
+  "co2v": [2.2, 2.4],
+  "ph": [4.2, 4.6],
+  "class": "A"
+
+}, {
+  "name": "Pale Ale/Strong Bitter",
+  "description": "Hooggegist met dryhopping, soms nagisting op fles",
+  "gravity": [1045, 1056],
+  "alcohol": [4.5, 5.6],
+  "attenuation": [69, 76],
+  "ebc": [15, 30],
+  "ibu": [30, 45],
+  "co2g": [0.35, 0.47],
+  "co2v": [1.8, 2.4],
+  "ph": [4.0, 4.4],
+  "class": "A"
+
+}, {
+  "name": "Pale Ale (American)",
+  "description": "Hooggegist en gefilterd",
+  "gravity": [1044, 1057],
+  "alcohol": [4.5, 6.0],
+  "attenuation": [73, 81],
+  "ebc": [8, 22],
+  "ibu": [20, 40],
+  "co2g": [0.42, 0.46],
+  "co2v": [2.1, 2.3],
+  "ph": [4.3, 4.5],
+  "class": "A"
+
+}, {
+  "name": "Pale Ale (Belgisch)",
+  "description": "Hooggegist en meestal gefilterd",
+  "gravity": [1046, 1055],
+  "alcohol": [4.5, 5.5],
+  "attenuation": [75, 84],
+  "ebc": [15, 27],
+  "ibu": [19, 25],
+  "co2g": [0.37, 0.60],
+  "co2v": [1.9, 3.1],
+  "ph": [4.1, 4.6],
+  "class": "A"
+
+}, {
+  "name": "Pils(ener)",
+  "description": "Laaggegist en meestal gefilterd",
+  "gravity": [1042, 1050],
+  "alcohol": [4.4, 5.0],
+  "attenuation": [76, 82],
+  "ebc": [6, 10],
+  "ibu": [20, 28],
+  "co2g": [0.40, 0.45],
+  "co2v": [2.0, 2.3],
+  "ph": [4.0, 4.4],
+  "class": "A"
+
+}, {
+  "name": "Pilsener (Urtyp)",
+  "description": "Laaggegist en soms ongefilterd",
+  "gravity": [1044, 1056],
+  "alcohol": [4.4, 5.5],
+  "attenuation": [69, 73],
+  "ebc": [6, 14],
+  "ibu": [28, 45],
+  "co2g": [0.37, 0.45],
+  "co2v": [1.9, 2.3],
+  "ph": [4.1, 4.5],
+  "class": "A"
+
+}, {
+  "name": "Saison",
+  "description": "Hooggegist met nagisting op fles",
+  "gravity": [1045, 1056],
+  "alcohol": [5.5, 6.7],
+  "attenuation": [78, 95],
+  "ebc": [10, 35],
+  "ibu": [15, 40],
+  "co2g": [0.65, 0.80],
+  "co2v": [3.3, 4.1],
+  "ph": [3.9, 4.4],
+  "class": "A"
+
+}, {
+  "name": "Vienna",
+  "description": "Laaggegist en gefilterd",
+  "gravity": [1046, 1056],
+  "alcohol": [4.8, 5.5],
+  "attenuation": [73, 78],
+  "ebc": [15, 25],
+  "ibu": [22, 28],
+  "co2g": [0.45, 0.47],
+  "co2v": [2.3, 2.4],
+  "ph": [4.1, 4.5],
+  "class": "A"
+
+}, {
+  "name": "Weizen",
+  "description": "Hooggegist, meestal met nagisting op fles",
+  "gravity": [1046, 1056],
+  "alcohol": [5.0, 5.6],
+  "attenuation": [70, 77],
+  "ebc": [6, 22],
+  "ibu": [10, 15],
+  "co2g": [0.55, 0.75],
+  "co2v": [2.8, 3.8],
+  "ph": [4.0, 4.5],
+  "class": "A"
+
+}, {
+  "name": "Witbier",
+  "description": "Hooggegist met nagisting op fles",
+  "gravity": [1042, 1045],
+  "alcohol": [4.3, 5.2],
+  "attenuation": [78, 81],
+  "ebc": [5, 8],
+  "ibu": [9, 16],
+  "co2g": [0.40, 0.60],
+  "co2v": [2.0, 3.1],
+  "ph": [3.9, 4.5],
+  "class": "A"
+
+}, {
+  "name": "Alt",
+  "description": "Hooggegist en meestal gefilterd",
+  "gravity": [1045, 1050],
+  "alcohol": [4.5, 5.0],
+  "attenuation": [75, 79],
+  "ebc": [25, 40],
+  "ibu": [25, 50],
+  "co2g": [0.42, 0.50],
+  "co2v": [2.1, 2.5],
+  "ph": [4.2, 4.5],
+  "class": "B"
+
+}, {
+  "name": "Amber-Red (American)",
+  "description": "Hooggegist en gefilterd",
+  "gravity": [1048, 1060],
+  "alcohol": [4.5, 6.4],
+  "attenuation": [73, 78],
+  "ebc": [25, 50],
+  "ibu": [28, 45],
+  "co2g": [0.40, 0.44],
+  "co2v": [2.0, 2.2],
+  "ph": [4.3, 4.7],
+  "class": "B"
+
+}, {
+  "name": "Brown Ale",
+  "description": "Hooggegist en meestal gefilterd",
+  "gravity": [1040, 1050],
+  "alcohol": [4.2, 6.0],
+  "attenuation": [72, 78],
+  "ebc": [50, 65],
+  "ibu": [15, 30],
+  "co2g": [0.42, 0.44],
+  "co2v": [2.1, 2.2],
+  "ph": [4.0, 4.3],
+  "class": "B"
+
+}, {
+  "name": "Dark Lager",
+  "description": "Laaggegist",
+  "gravity": [1052, 1060],
+  "alcohol": [4.5, 6.0],
+  "attenuation": [72, 74],
+  "ebc": [50, 90],
+  "ibu": [20, 30],
+  "co2g": [0.42, 0.50],
+  "co2v": [2.1, 2.5],
+  "ph": [4.0, 4.6],
+  "class": "B"
+
+}, {
+  "name": "Frambozen-Lambiek",
+  "description": "Spontane gisting van Lambiek. Hergisting op fles",
+  "gravity": [1045, 1060],
+  "alcohol": [5.0, 6.2],
+  "attenuation": [75, 99],
+  "ebc": [, ],
+  "ibu": [15, 21],
+  "co2g": [0.40, 0.60],
+  "co2v": [2.0, 3.1],
+  "ph": [3.0, 3.3],
+  "class": "B"
+
+}, {
+  "name": "Kriek-Lambiek",
+  "description": "Spontane gisting van Lambiek. Hergisting op fles",
+  "gravity": [1045, 1060],
+  "alcohol": [5.0, 6.5],
+  "attenuation": [75, 99],
+  "ebc": [, ],
+  "ibu": [15, 21],
+  "co2g": [0.40, 0.60],
+  "co2v": [2.0, 3.1],
+  "ph": [3.2, 3.7],
+  "class": "B"
+
+}, {
+  "name": "Mild Ale",
+  "description": "Hooggegist en meestal gefilterd",
+  "gravity": [1030, 1038],
+  "alcohol": [3.3, 4.1],
+  "attenuation": [75, 85],
+  "ebc": [60, 140],
+  "ibu": [18, 30],
+  "co2g": [0.38, 0.53],
+  "co2v": [1.9, 2.7],
+  "ph": [4.0, 4.3],
+  "class": "B"
+
+}, {
+  "name": "Münchener Dunkles",
+  "description": "Laaggegist en gefilterd",
+  "gravity": [1048, 1052],
+  "alcohol": [4.5, 5.5],
+  "attenuation": [71, 74],
+  "ebc": [40, 80],
+  "ibu": [20, 25],
+  "co2g": [0.44, 0.47],
+  "co2v": [2.2, 2.4],
+  "ph": [4.4, 4.6],
+  "class": "B"
+
+}, {
+  "name": "Oud Bruin (NL)",
+  "description": "Laaggegist en gefilterd",
+  "gravity": [1032, 1040],
+  "alcohol": [2.5, 3.5],
+  "attenuation": [, ],
+  "ebc": [70, 130],
+  "ibu": [8, 24],
+  "co2g": [0.44, 0.48],
+  "co2v": [2.2, 2.4],
+  "ph": [4.4, 4.9],
+  "class": "B"
+
+}, {
+  "name": "Porter (Brown)",
+  "description": "Hooggegist en soms met nagisting op fles",
+  "gravity": [1045, 1060],
+  "alcohol": [4.5, 5.5],
+  "attenuation": [72, 80],
+  "ebc": [50, 90],
+  "ibu": [25, 40],
+  "co2g": [0.40, 0.60],
+  "co2v": [2.0, 3.1],
+  "ph": [4.0, 4.4],
+  "class": "B"
+
+}, {
+  "name": "Schwarz",
+  "description": "Laaggegist en hooggegist",
+  "gravity": [1044, 1052],
+  "alcohol": [4.6, 5.2],
+  "attenuation": [77, 80],
+  "ebc": [50, 115],
+  "ibu": [22, 30],
+  "co2g": [0.30, 0.54],
+  "co2v": [1.5, 2.7],
+  "ph": [4.2, 4.7],
+  "class": "B"
+
+}, {
+  "name": "Scotch Export Ale",
+  "description": "Hooggegist en meestal gefilterd",
+  "gravity": [1040, 1052],
+  "alcohol": [4.0, 5.2],
+  "attenuation": [68, 70],
+  "ebc": [25, 45],
+  "ibu": [20, 30],
+  "co2g": [0.39, 0.45],
+  "co2v": [2.0, 2.3],
+  "ph": [4.1, 4.3],
+  "class": "B"
+
+}, {
+  "name": "Stout (Irish Dry)",
+  "description": "Hooggegist en gefilterd/gepasteuriseerd",
+  "gravity": [1036, 1039],
+  "alcohol": [4.0, 5.0],
+  "attenuation": [78, 80],
+  "ebc": [117, 124],
+  "ibu": [33, 48],
+  "co2g": [0.45, 0.55],
+  "co2v": [2.3, 2.8],
+  "ph": [3.9, 4.3],
+  "class": "B"
+
+}, {
+  "name": "Stout (Milk)",
+  "description": "Hooggegist en meestal gefilterd",
+  "gravity": [1041, 1059],
+  "alcohol": [3.0, 5.0],
+  "attenuation": [59, 71],
+  "ebc": [200, 450],
+  "ibu": [21, 35],
+  "co2g": [0.44, 0.44],
+  "co2v": [2.2, 2.2],
+  "ph": [4.1, 4.1],
+  "class": "B"
+
+}, {
+  "name": "Stout (Oatmeal)",
+  "description": "Hooggegist en gefilterd/gepasteuriseerd",
+  "gravity": [1045, 1065],
+  "alcohol": [4.5, 5.5],
+  "attenuation": [70, 76],
+  "ebc": [50, 165],
+  "ibu": [22, 40],
+  "co2g": [0.40, 0.60],
+  "co2v": [2.0, 3.1],
+  "ph": [3.8, 4.1],
+  "class": "B"
+
+}, {
+  "name": "Vlaams Bruin",
+  "description": "Hooggegist met multi-strain gist en/of melk-azijnzuurinfectie",
+  "gravity": [1042, 1056],
+  "alcohol": [4.0, 6.0],
+  "attenuation": [66, 81],
+  "ebc": [50, 80],
+  "ibu": [15, 35],
+  "co2g": [0.35, 0.45],
+  "co2v": [1.8, 2.3],
+  "ph": [3.4, 4.0],
+  "class": "B"
+
+}, {
+  "name": "Vlaams Rood",
+  "description": "Hooggegist versnijbier met multi-strain gist en/of melk-azijnzuurinfectie",
+  "gravity": [1050, 1064],
+  "alcohol": [5.0, 6.2],
+  "attenuation": [70, 81],
+  "ebc": [50, 80],
+  "ibu": [14, 20],
+  "co2g": [0.43, 0.56],
+  "co2v": [2.2, 2.9],
+  "ph": [3.3, 4.0],
+  "class": "B"
+
+}, {
+  "name": "Weizen (Dunkel)",
+  "description": "Hooggegist met nagisting op fles",
+  "gravity": [1048, 1056],
+  "alcohol": [5.0, 5.5],
+  "attenuation": [70, 77],
+  "ebc": [45, 80],
+  "ibu": [10, 15],
+  "co2g": [0.55, 0.75],
+  "co2v": [2.8, 3.8],
+  "ph": [4.0, 4.5],
+  "class": "B"
+
+}, {
+  "name": "Barley Wine (Pale)",
+  "description": "Hooggegist, soms met meerdere culturen, meestal gefilterd",
+  "gravity": [1088, 1120],
+  "alcohol": [8.5, 15.0],
+  "attenuation": [68, 92],
+  "ebc": [15, 35],
+  "ibu": [15, 35],
+  "co2g": [0.42, 0.54],
+  "co2v": [2.1, 2.7],
+  "ph": [4.0, 4.6],
+  "class": "C"
+
+}, {
+  "name": "Bières de Garde ambrée",
+  "description": "Hooggegist en laaggegist",
+  "gravity": [1060, 1080],
+  "alcohol": [6.5, 8.0],
+  "attenuation": [73, 77],
+  "ebc": [25, 30],
+  "ibu": [15, 25],
+  "co2g": [0.48, 0.55],
+  "co2v": [2.4, 2.8],
+  "ph": [4.1, 4.6],
+  "class": "C"
+
+}, {
+  "name": "Blond",
+  "description": "Hooggegist, meestal met nagisting op fles",
+  "gravity": [1053, 1068],
+  "alcohol": [6.0, 7.4],
+  "attenuation": [80, 85],
+  "ebc": [10, 25],
+  "ibu": [15, 30],
+  "co2g": [0.39, 0.74],
+  "co2v": [2.0, 3.8],
+  "ph": [4.1, 4.4],
+  "class": "C"
+
+}, {
+  "name": "Dortmunder (strong)",
+  "description": "Laaggegist en gefilterd",
+  "gravity": [1064, 1074],
+  "alcohol": [6.5, 7.7],
+  "attenuation": [80, 85],
+  "ebc": [10, 26],
+  "ibu": [13, 35],
+  "co2g": [0.41, 0.48],
+  "co2v": [2.1, 2.4],
+  "ph": [4.4, 4.6],
+  "class": "C"
+
+}, {
+  "name": "Dubbelbok (licht)",
+  "description": "Laaggegist en gefilterd",
+  "gravity": [1064, 1092],
+  "alcohol": [7.0, 10.0],
+  "attenuation": [73, 83],
+  "ebc": [10, 35],
+  "ibu": [17, 30],
+  "co2g": [0.42, 0.43],
+  "co2v": [2.1, 2.2],
+  "ph": [4.6, 4.7],
+  "class": "C"
+
+}, {
+  "name": "India Pale Ale",
+  "description": "Hooggegist",
+  "gravity": [1056, 1070],
+  "alcohol": [5.6, 7.5],
+  "attenuation": [72, 78],
+  "ebc": [15, 35],
+  "ibu": [38, 65],
+  "co2g": [0.42, 0.69],
+  "co2v": [2.1, 3.5],
+  "ph": [4.0, 4.6],
+  "class": "C"
+
+}, {
+  "name": "Meibock &amp; Blonde bock",
+  "description": "Laaggegist en hooggegist",
+  "gravity": [1060, 1070],
+  "alcohol": [6.5, 7.5],
+  "attenuation": [70, 77],
+  "ebc": [14, 35],
+  "ibu": [20, 40],
+  "co2g": [0.42, 0.55],
+  "co2v": [2.1, 2.8],
+  "ph": [4.4, 4.6],
+  "class": "C"
+
+}, {
+  "name": "Saison (Sterke)",
+  "description": "Hooggegist, meestal met spontane verzuring",
+  "gravity": [1065, 1074],
+  "alcohol": [7.5, 9.0],
+  "attenuation": [78, 100],
+  "ebc": [10, 35],
+  "ibu": [15, 40],
+  "co2g": [0.37, 0.62],
+  "co2v": [1.9, 3.2],
+  "ph": [4.2, 4.3],
+  "class": "C"
+
+}, {
+  "name": "Sterke Blonde",
+  "description": "Hooggegist met nagisting op fles",
+  "gravity": [1066, 1080],
+  "alcohol": [8.5, 9.0],
+  "attenuation": [77, 93],
+  "ebc": [7, 18],
+  "ibu": [25, 30],
+  "co2g": [0.44, 0.79],
+  "co2v": [2.2, 4.0],
+  "ph": [3.9, 4.4],
+  "class": "C"
+
+}, {
+  "name": "Tripel",
+  "description": "Hooggegist, meestal met nagisting op fles",
+  "gravity": [1065, 1080],
+  "alcohol": [7.5, 9.5],
+  "attenuation": [73, 90],
+  "ebc": [10, 25],
+  "ibu": [15, 40],
+  "co2g": [0.55, 0.80],
+  "co2v": [2.8, 4.1],
+  "ph": [4.0, 4.5],
+  "class": "C"
+
+}, {
+  "name": "Barley Wine",
+  "description": "Hooggegist",
+  "gravity": [1088, 1120],
+  "alcohol": [8.0, 12.0],
+  "attenuation": [68, 85],
+  "ebc": [40, 100],
+  "ibu": [35, 120],
+  "co2g": [0.27, 0.64],
+  "co2v": [1.4, 3.3],
+  "ph": [4.2, 4.8],
+  "class": "D"
+
+}, {
+  "name": "Bockbier",
+  "description": "Laaggegist en hooggegist",
+  "gravity": [1062, 1068],
+  "alcohol": [6.0, 7.0],
+  "attenuation": [75, 80],
+  "ebc": [40, 100],
+  "ibu": [15, 35],
+  "co2g": [0.39, 0.69],
+  "co2v": [2.0, 3.5],
+  "ph": [4.0, 4.8],
+  "class": "D"
+
+}, {
+  "name": "Dubbel",
+  "description": "Hooggegist met nagisting op fles",
+  "gravity": [1062, 1070],
+  "alcohol": [6.0, 7.5],
+  "attenuation": [84, 91],
+  "ebc": [45, 80],
+  "ibu": [15, 30],
+  "co2g": [0.52, 0.70],
+  "co2v": [2.6, 3.6],
+  "ph": [4.1, 4.5],
+  "class": "D"
+
+}, {
+  "name": "Dubbelbock",
+  "description": "Laaggegist en hooggegist",
+  "gravity": [1068, 1080],
+  "alcohol": [7.1, 8.0],
+  "attenuation": [75, 80],
+  "ebc": [50, 100],
+  "ibu": [20, 35],
+  "co2g": [0.40, 0.50],
+  "co2v": [2.0, 2.5],
+  "ph": [4.3, 4.9],
+  "class": "D"
+
+}, {
+  "name": "Eisbock/Ijsbok",
+  "description": "Laaggegist en hooggegist",
+  "gravity": [1061, 1068],
+  "alcohol": [7.5, 9.5],
+  "attenuation": [75, 80],
+  "ebc": [80, 130],
+  "ibu": [20, 35],
+  "co2g": [0.47, 0.65],
+  "co2v": [2.4, 3.3],
+  "ph": [4.4, 4.6],
+  "class": "D"
+
+}, {
+  "name": "Old Ale",
+  "description": "Hooggegist",
+  "gravity": [1058, 1092],
+  "alcohol": [5.6, 9.0],
+  "attenuation": [75, 80],
+  "ebc": [90, 95],
+  "ibu": [29, 53],
+  "co2g": [0.26, 0.40],
+  "co2v": [1.3, 2.0],
+  "ph": [3.8, 4.5],
+  "class": "D"
+
+}, {
+  "name": "Porter (Robust)",
+  "description": "Hooggegist en laaggegist",
+  "gravity": [1062, 1076],
+  "alcohol": [6.0, 8.0],
+  "attenuation": [65, 78],
+  "ebc": [60, 250],
+  "ibu": [30, 50],
+  "co2g": [0.37, 0.52],
+  "co2v": [1.9, 2.6],
+  "ph": [4.0, 4.5],
+  "class": "D"
+
+}, {
+  "name": "Quadrupel",
+  "description": "Hooggegist met nagisting op fles",
+  "gravity": [1070, 1094],
+  "alcohol": [8.5, 12.0],
+  "attenuation": [82, 90],
+  "ebc": [60, 95],
+  "ibu": [17, 40],
+  "co2g": [0.54, 0.76],
+  "co2v": [2.7, 3.9],
+  "ph": [4.2, 4.6],
+  "class": "D"
+
+}, {
+  "name": "Scotch Ale (Strong)",
+  "description": "Hooggegist en laaggegist",
+  "gravity": [1065, 1090],
+  "alcohol": [6.0, 8.6],
+  "attenuation": [69, 74],
+  "ebc": [25, 55],
+  "ibu": [30, 50],
+  "co2g": [0.39, 0.56],
+  "co2v": [2.0, 2.9],
+  "ph": [4.0, 4.6],
+  "class": "D"
+
+}, {
+  "name": "Stout (Export)",
+  "description": "Hooggegist en laaggegist",
+  "gravity": [1068, 1093],
+  "alcohol": [6.5, 8.5],
+  "attenuation": [77, 92],
+  "ebc": [190, 250],
+  "ibu": [30, 80],
+  "co2g": [0.39, 0.70],
+  "co2v": [2.0, 3.6],
+  "ph": [3.8, 4.3],
+  "class": "D"
+
+}, {
+  "name": "Stout (Imperial Russian)",
+  "description": "Hooggegist",
+  "gravity": [1075, 1105],
+  "alcohol": [7.5, 11.0],
+  "attenuation": [68, 76],
+  "ebc": [80, 300],
+  "ibu": [50, 90],
+  "co2g": [0.32, 0.45],
+  "co2v": [1.6, 2.3],
+  "ph": [3.9, 4.9],
+  "class": "D"
+
+}, {
+  "name": "Vlaams Bruin (Sterk)",
+  "description": "Hooggegist met een giststam oorspronkelijk afkomstig van Rodenbach",
+  "gravity": [1075, 1090],
+  "alcohol": [7.5, 8.4],
+  "attenuation": [76, 85],
+  "ebc": [50, 80],
+  "ibu": [20, 33],
+  "co2g": [0.45, 0.65],
+  "co2v": [2.3, 3.3],
+  "ph": [3.8, 3.9],
+  "class": "D"
+
+}, {
+  "name": "Weizen(doppel)bock",
+  "description": "Hooggegist met nagisting op fles",
+  "gravity": [1062, 1074],
+  "alcohol": [6.0, 8.0],
+  "attenuation": [70, 81],
+  "ebc": [40, 80],
+  "ibu": [10, 15],
+  "co2g": [0.51, 0.82],
+  "co2v": [2.6, 4.2],
+  "ph": [4.2, 4.5],
+  "class": "D"
+
+}, {
+  "name": "Overige bieren",
+  "description": "Hooggegist of laaggegist",
+  "gravity": [1028, 1120],
+  "alcohol": [2.5, 15.0],
+  "attenuation": [59, 100],
+  "ebc": [4, 450],
+  "ibu": [3, 120],
+  "co2g": [, ],
+  "co2v": [1.0, 5.1],
+  "ph": [2.9, 4.9],
+  "class": "O"
+}]
