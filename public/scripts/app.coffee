@@ -13,35 +13,26 @@ use 'scripts/controller'
 # Monkey patch! We're not interested in URL changes, only the hash that changes
 Spine.Route.getPath = Spine.Route.getFragment
 
-class Route extends Spine.Route
-    @visited = []
-    # Simulate page back with a slide reverse
-    @reverseEffect = false
-
-    @changePage: (pageName, options={}) ->
-        options.changeHash = false
-        options.reverse = @reverseEffect
-        $.mobile.changePage ($ pageName), options
-        @visited.push(window.location.hash)
-        @reverseEffect = false
-
-    @back: ->
-        # drop current page
-        @visited.pop()
-        if @visited
-            @reverseEffect = true
-            window.location.hash = @visited.pop() or ""
-            #route = @change()
-            #console.log route
+Route = Spine.Route
+#class Route extends Spine.Route
+#    #@visited = []
+#    # Simulate page back with a slide reverse
+#    @reverseEffect = false
+#
+#    @changePage: (pageName, options={}) ->
+##        options.changeHash = false
+#        #options.reverse = @reverseEffect
+##        $.mobile.changePage ($ pageName), options
+#        @visited.push(window.location.hash)
+#        @reverseEffect = false
 
 theController = null
 
 goTo = (controller) ->
     theController?.release()
     theController = controller
-    Route.changePage controller.el
-    theController.activate?()
-    #theController.render()
+#    Route.changePage controller.el
+    theController.activate()
 
 routes = (routes) ->
     Route.add(key, value) for key, value of routes
@@ -55,6 +46,9 @@ routes
         goTo new BrewGear.Controller.Recipe
             id: params.id
             el: '#recipe'
+    "/recipes": (params) ->
+        goTo new BrewGear.Controller.Recipe
+            el: '#newrecipe'
     "": ->
         goTo new BrewGear.Controller.Recipes
             el: '#recipes'
@@ -66,11 +60,5 @@ $ ->
     BrewGear.Model.FermentableResource.fetch()
 
     Route.setup()
-
-    $('a[data-rel="back"]').click ->
-        event.stopPropagation()
-        event.preventDefault()
-        Route.back()
-
 
 # vim: sw=4:et:ai

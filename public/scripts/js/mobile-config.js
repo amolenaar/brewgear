@@ -1,8 +1,8 @@
 $(document).bind('mobileinit', function() {
   console.log('javascript mobile init');
   opt = $.mobile;
-  opt.defaultPageTransition = 'slide';
-  opt.loadingMessage = 'Laden...';
+//  opt.defaultPageTransition = 'slide';
+//  opt.loadingMessage = 'Laden...';
 
   //opt.autoInitializePage = false;
 
@@ -11,4 +11,6 @@ $(document).bind('mobileinit', function() {
   opt.pushStateEnabled = false;
   opt.linkBindingEnabled = false;
   opt.hashListeningEnabled = false;
+
+  opt.changePage.defaults.changeHash = false
 });

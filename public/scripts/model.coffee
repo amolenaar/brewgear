@@ -11,15 +11,15 @@ BrewGear.Model ?= {}
 
 class Fermentable extends Spine.Model
     @configure 'Fermentable', 'name', 'color', 'amount' #, moisture, ...
-    @belongsTo 'recipe', Recipe
+    #@belongsTo 'recipe', Recipe
 
     validate: ->
         unless @name
               "name is required"
 
 class Recipe extends Spine.Model
-    @configure 'Recipe', 'name', 'batch', 'fermentables', 'hops'
-    @hasMany 'fermentables', Fermentable
+    @configure 'Recipe', 'name', 'batch', 'plannedOg', 'plannedFg', 'fermentables', 'hops'
+    #@hasMany 'fermentables', Fermentable
     @extend Spine.Model.Ajax
     @url: '/recipes'
 

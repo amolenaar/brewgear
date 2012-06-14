@@ -36,7 +36,7 @@ class BaseController extends Spine.Controller
         else
             element.delegate(selector, eventName, method)
             @bind 'release', =>
-                #@log "remove delegated event #{selector}.#{eventName}"
+                @log "remove delegated event #{selector}.#{eventName}"
                 element.undelegate selector, eventName, method
 
     delegateEvents: (events) =>
@@ -49,10 +49,17 @@ class BaseRecipeController extends BaseController
     constructor: ->
         super
         @delegateEvent BrewGear.Model.Recipe, ev, @refresh for ev in ['refresh', 'change']
+        @delegateEvent @el, 'click a[data-rel="back"]', 'back'
+
+    back: (event) =>
+        event.stopPropagation()
+        event.preventDefault()
+        window.history.back()
 
     refresh: ->
 
-    activate: ->
+    activate: (options) ->
+        $.mobile.changePage @el, options
         @refresh()
 
 
@@ -76,33 +83,97 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         '.to-fermentables': 'fermentablesLink'
         '.to-hops': 'hopsLink'
         '.to-fermentation': 'fermentationLink'
+        'form': 'form'
         'input[name="batch"]': 'batch'
         'input[name="name"]': 'name'
+        'input[name="plannedOg"]': 'plannedOg'
+        'input[name="plannedFg"]': 'plannedFg'
 
     @events:
         'change input': 'update'
         'blur input': 'update'
+        'click button[type="submit"]': 'submit'
 
-    constructor: ->
+
+    activate: ->
         super
 
     refresh: =>
-        @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)
-        @render() if @model
+        if @id
+            @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)
+        else
+            @model = new BrewGear.Model.Recipe()
+        @render()
 
     update: =>
-        @model.batch = @batch.val()
+        @id = @model.batch = @batch.val()
+        @log 'fetched batch', @batch.val(), @model.batch, @id
         @model.name = @name.val()
+        @model.plannedOg = @plannedOg.val()
+        @model.plannedFg = @plannedFg.val()
         @model.save()
+        #@model.fromForm(@form).save()
+
+    submit: (event) =>
+        event.preventDefault()
+        event.stopPropagation()
+        nextid = @batch.val()
+        @log 'batch set to', @batch.val(), nextid, @id
+        @update()
+        window.history.back()
+        # Delay a little and go to the details screen
+        setTimeout =>
+            @log 'go to the next', @id
+            window.location.hash = "/recipes/#{@id}"
+        , 20
+        false
 
     render: =>
         @log 'render recipe'
         @batch.val @model.batch
         @name.val @model.name
+        @plannedOg.val @model.plannedOg
+        @plannedFg.val @model.plannedFg
         batch = @model.batch
         @fermentablesLink.attr('href', "#/recipes/#{batch}/fermentables")
         @hopsLink.attr('href', "#/recipes/#{batch}/hops")
         @fermentationLink.attr('href', "#/recipes/#{batch}/fermentation")
+
+
+class BrewGear.Controller.NewRecipe extends BaseRecipeController
+    @elements:
+        'form': 'form'
+        'input[name="batch"]': 'batch'
+        'input[name="name"]': 'name'
+        'input[name="plannedOg"]': 'plannedOg'
+        'input[name="plannedFg"]': 'plannedFg'
+
+    @events:
+        'click button[type="submit"]': 'submit'
+        'click header a': 'goback'
+
+    refresh: =>
+        @render()
+
+    submit: (event) =>
+        @log 'submit', @name.val()
+        event.preventDefault()
+        BrewGear.Model.Recipe.fromForm(@form).save()
+        window.history.back()
+        false
+
+    goback: (event) =>
+        @log 'going back'
+        event.preventDefault()
+        window.history.back()
+        false
+
+    render: =>
+        @batch.val ''
+        @name.val ''
+        @plannedOg.val ''
+        @plannedFg.val ''
+        
 
 
 class BrewGear.Controller.Fermentables extends BaseRecipeController
@@ -113,6 +184,7 @@ class BrewGear.Controller.Fermentables extends BaseRecipeController
 
     constructor: (params) ->
         super
+        BrewGear.Model.Fermentable.fetch()
 
     refresh: =>
         @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)

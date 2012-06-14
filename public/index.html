@@ -15,7 +15,7 @@
 <section id="recipes" data-role="page">
     <header data-role="header">
         <h1>BrewGear</h1>
-        <a href="#/fermentables/new" class="ui-btn-right" data-role="button" data-mini="true" data-icon="add" data-theme="b">Add</a>
+        <a href="#/recipes" class="ui-btn-right" data-role="button" data-mini="true" data-icon="add" data-theme="b">Nieuw</a>
     </header>
 
     <div data-role="content">
@@ -31,7 +31,7 @@
 
 <section id="recipe" data-role="page">
     <header data-role="header">
-        <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="back" data-theme="b">Back</a>
+        <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="back" data-direction="reverse" data-theme="b">Terug</a>
         <h1>BrewGear</h1>
     </header>
 
@@ -41,6 +41,16 @@
 	<input type="text" name="batch" id="overview-batch" value="${batch}"/>
         <label for="overview-name">Naam</label>
 	<input type="text" name="name" id="overview-name" value="${name}"/>
+        <label for="style">Stijl</label>
+	<select name="style" id="style">
+         <option value="triple">Triple</option>
+         <option value="dubble">Dubbel</option>
+         <option value="bitter">Bitter</option>
+        </select>
+        <label for="plannedSg">Gepland OG</label>
+	<input type="text" name="plannedOg" id="plannedOg" value="${planned_og}"/>
+        <label for="plannedOg">Gepland FG</label>
+	<input type="text" name="planned-fg" id="plannedFg" value="${planned_fg}"/>
       </form>
       <ul data-role="listview" data-inset="true">
         <li><a class="to-fermentables" href="#/recipes/${batch}/fermentables">Granen en suikers</a></li>
@@ -50,11 +60,38 @@
     </div>
 </section>
 
+<section id="newrecipe" data-role="dialog">
+    <header data-role="header">
+        <h1>Nieuw recept</h1>
+    </header>
+    <div data-role="content">
+      <form>
+        <label for="batch">Batch#</label>
+	<input type="text" name="batch" id="batch" value=""/>
+        <label for="name">Naam</label>
+	<input type="text" name="name" id="name" value=""/>
+        <label for="style">Stijl</label>
+	<select name="style" id="style">
+         <option value="triple">Triple</option>
+         <option value="dubble">Dubbel</option>
+         <option value="bitter">Bitter</option>
+        </select>
+
+        <label for="plannedOg">Gepland OG</label>
+	<input type="text" name="plannedOg" id="plannedOg" value=""/>
+        <label for="plannedOg">Gepland FG</label>
+	<input type="text" name="plannedFg" id="plannedFg" value=""/>
+        <button name="save" type="submit">Opslaan</button>
+        <a data-role="button" data-rel="back" data-icon="back">Sluiten</a>
+      </form>
+    </div>
+</section>
+
 <section id="fermentables" data-role="page">
     <header data-role="header">
         <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="back" data-theme="b">Back</a>
         <h1>Granen en suikers</h1>
-        <a href="#/fermentables/new" data-role="button" data-mini="true" data-icon="add" data-theme="b">Add</a>
+        <a href="#/fermentables/new" data-role="button" data-mini="true" data-icon="add" data-theme="b" data-rel="dialog">Add</a>
     </header>
 
     <div data-role="content">

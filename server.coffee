@@ -22,8 +22,9 @@ router = new director.http.Router
     '/recipes/:id':
         get: (id) ->
             console.log "get recipe id: #{id}"
-        post: (id) ->
+        put: (id) ->
             console.log "post recipe id: #{id}"
+            console.log @req.body
     '/recipes':
         get: ->
             console.log "get all recipes", arguments
@@ -39,7 +40,9 @@ router = new director.http.Router
                     @res.write data
                 @res.end "]"
         post: ->
+            @res.writeHead 200
             console.log "posting data #{@req.body}"
+            @res.end
 
 .configure
     strict: false
