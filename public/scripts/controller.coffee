@@ -7,67 +7,71 @@ BrewGear.Controller ?= {}
 
 class BaseController extends Spine.Controller
 
-    constructor: ->
-        @_boundEvents = []
-        @_delegatedEvents = []
-        super
+    release: =>
+        @trigger 'release'
+        @unbind()
+    
+    delegateEvent: (element, key, method) =>
+        if typeof(method) is 'function'
+            # Always return true from event handlers
+            method = do (method) => =>
+                method.apply(this, arguments)
+                true
+        else
+            unless @[method]
+                throw new Error("#{method} doesn't exist")
+
+            method = do (method) => =>
+                @[method].apply(this, arguments)
+                true
+
+        match      = key.match(@eventSplitter)
+        eventName  = match[1]
+        selector   = match[2]
+
+        if selector is ''
+            element.bind(eventName, method)
+            @bind 'release', =>
+                element.unbind eventName, method
+        else
+            element.delegate(selector, eventName, method)
+            @bind 'release', =>
+                #@log "remove delegated event #{selector}.#{eventName}"
+                element.undelegate selector, eventName, method
 
     delegateEvents: (events) =>
         for key, method of events
-
-            if typeof(method) is 'function'
-                # Always return true from event handlers
-                method = do (method) => =>
-                    method.apply(this, arguments)
-                    true
-            else
-                unless @[method]
-                    throw new Error("#{method} doesn't exist")
-
-                method = do (method) => =>
-                    @[method].apply(this, arguments)
-                    true
-
-            match      = key.match(@eventSplitter)
-            eventName  = match[1]
-            selector   = match[2]
-
-            if selector is ''
-                @el.bind(eventName, method)
-                @_boundEvents.push [eventName, method]
-            else
-                @el.delegate(selector, eventName, method)
-                @_delegatedEvents.push [selector, eventName, method]
+            @delegateEvent @el, key, method
 
 
-    unbindEvents: =>
-        @el.unbind args[0], args[1] for args in @_boundEvents
-        @el.undelegate args[0], args[1], args[2] for args in @_delegatedEvents
-    
-    deactivate: ->
-        @unbindEvents()
+class BaseRecipeController extends BaseController
+
+    constructor: ->
+        super
+        @delegateEvent BrewGear.Model.Recipe, ev, @refresh for ev in ['refresh', 'change']
+
+    refresh: ->
+
+    activate: ->
+        @refresh()
 
 
-class BrewGear.Controller.Recipes extends BaseController
+class BrewGear.Controller.Recipes extends BaseRecipeController
     @elements:
         'ul': 'list'
         '#recipe-item': 'template'
 
-    activate: ->
-        BrewGear.Model.Recipe.bind 'refresh change', @render
-
-    deactivate: ->
-        super
-        BrewGear.Model.Recipe.unbind ev, @render for ev in ['refresh', 'change']
+    refresh: =>
+        @render()
 
     render: =>
         model = BrewGear.Model.Recipe.all()
         @list.empty()
         @list.append (@template.tmpl recipe) for recipe in model
-        @list.listview 'refresh' 
+        @list.listview 'refresh'
 
 
-class BrewGear.Controller.Recipe extends BaseController
+class BrewGear.Controller.Recipe extends BaseRecipeController
     @elements:
         '.to-fermentables': 'fermentablesLink'
         '.to-hops': 'hopsLink'
@@ -79,9 +83,12 @@ class BrewGear.Controller.Recipe extends BaseController
         'change input': 'update'
         'blur input': 'update'
 
-    constructor: (options) ->
+    constructor: ->
         super
-        @model = BrewGear.Model.Recipe.findByAttribute('batch', options.id)
+
+    refresh: =>
+        @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)
+        @render() if @model
 
     update: =>
         @model.batch = @batch.val()
@@ -89,6 +96,7 @@ class BrewGear.Controller.Recipe extends BaseController
         @model.save()
 
     render: =>
+        @log 'render recipe'
         @batch.val @model.batch
         @name.val @model.name
         batch = @model.batch
@@ -97,8 +105,7 @@ class BrewGear.Controller.Recipe extends BaseController
         @fermentationLink.attr('href', "#/recipes/#{batch}/fermentation")
 
 
-
-class BrewGear.Controller.Fermentables extends BaseController
+class BrewGear.Controller.Fermentables extends BaseRecipeController
     @elements:
         'ul': 'list'
         '.template': 'template'
@@ -106,13 +113,16 @@ class BrewGear.Controller.Fermentables extends BaseController
 
     constructor: (params) ->
         super
-        @model = BrewGear.Model.Recipe.findByAttribute('batch', params.id)
+
+    refresh: =>
+        @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)
+        @render() if @model
 
     render: =>
         @name = @model.name
         @list.empty()
-        console.log ' model: ' + @model.fermentables()
-        for i, fermentable of @model.fermentables()
+        console.log ' model: ' + @model.fermentables().all()
+        for i, fermentable of @model.fermentables().all()
             @list.append @template.tmpl
                 name: fermentable.name
                 color: fermentable.color

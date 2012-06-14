@@ -19,7 +19,6 @@ class Route extends Spine.Route
     @reverseEffect = false
 
     @changePage: (pageName, options={}) ->
-        console.log "forwarding to #{pageName}"
         options.changeHash = false
         options.reverse = @reverseEffect
         $.mobile.changePage ($ pageName), options
@@ -38,11 +37,11 @@ class Route extends Spine.Route
 theController = null
 
 goTo = (controller) ->
-    theController?.deactivate?()
+    theController?.release()
     theController = controller
     Route.changePage controller.el
     theController.activate?()
-    theController.render()
+    #theController.render()
 
 routes = (routes) ->
     Route.add(key, value) for key, value of routes
