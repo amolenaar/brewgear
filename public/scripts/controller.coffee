@@ -55,6 +55,7 @@ class BaseRecipeController extends BaseController
         event.stopPropagation()
         event.preventDefault()
         window.history.back()
+        #false
 
     refresh: ->
 
@@ -86,6 +87,7 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         'form': 'form'
         'input[name="batch"]': 'batch'
         'input[name="name"]': 'name'
+        'select[name="style"]': 'style'
         'input[name="plannedOg"]': 'plannedOg'
         'input[name="plannedFg"]': 'plannedFg'
 
@@ -94,6 +96,9 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         'blur input': 'update'
         'click button[type="submit"]': 'submit'
 
+    constructor: ->
+        super
+        @delegateEvent BrewGear.Model.BeerStyle, ev, @renderBeerStyle for ev in ['refresh', 'change']
 
     activate: ->
         super
@@ -103,27 +108,27 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
             @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)
         else
             @model = new BrewGear.Model.Recipe()
-        @render()
+        @render() if @model
+
+    getStyle: (style) ->
+        BrewGear.Model.BeerStyle.findByAttribute('name', style)
 
     update: =>
-        @id = @model.batch = @batch.val()
-        @log 'fetched batch', @batch.val(), @model.batch, @id
-        @model.name = @name.val()
-        @model.plannedOg = @plannedOg.val()
-        @model.plannedFg = @plannedFg.val()
-        @model.save()
-        #@model.fromForm(@form).save()
+        @model.updateAttributes
+            id: @batch.val()
+            batch: @batch.val()
+            name: @name.val()
+            style: @getStyle @style.val()
+            plannedOg: @plannedOg.val()
+            plannedFg: @plannedFg.val()
 
     submit: (event) =>
         event.preventDefault()
         event.stopPropagation()
-        nextid = @batch.val()
-        @log 'batch set to', @batch.val(), nextid, @id
         @update()
         window.history.back()
         # Delay a little and go to the details screen
         setTimeout =>
-            @log 'go to the next', @id
             window.location.hash = "/recipes/#{@id}"
         , 20
         false
@@ -134,47 +139,21 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         @name.val @model.name
         @plannedOg.val @model.plannedOg
         @plannedFg.val @model.plannedFg
+        @style.val @model.style.name
+        @renderBeerStyle()
         batch = @model.batch
         @fermentablesLink.attr('href', "#/recipes/#{batch}/fermentables")
         @hopsLink.attr('href', "#/recipes/#{batch}/hops")
         @fermentationLink.attr('href', "#/recipes/#{batch}/fermentation")
 
-
-class BrewGear.Controller.NewRecipe extends BaseRecipeController
-    @elements:
-        'form': 'form'
-        'input[name="batch"]': 'batch'
-        'input[name="name"]': 'name'
-        'input[name="plannedOg"]': 'plannedOg'
-        'input[name="plannedFg"]': 'plannedFg'
-
-    @events:
-        'click button[type="submit"]': 'submit'
-        'click header a': 'goback'
-
-    refresh: =>
-        @render()
-
-    submit: (event) =>
-        @log 'submit', @name.val()
-        event.preventDefault()
-        BrewGear.Model.Recipe.fromForm(@form).save()
-        window.history.back()
-        false
-
-    goback: (event) =>
-        @log 'going back'
-        event.preventDefault()
-        window.history.back()
-        false
-
-    render: =>
-        @batch.val ''
-        @name.val ''
-        @plannedOg.val ''
-        @plannedFg.val ''
-        
-
+    renderBeerStyle: =>
+        @style.empty()
+        BrewGear.Model.BeerStyle.each (style) =>
+            @log "updating style option #{style.name}"
+            @style.append new Option(style.name, style.name,
+                style.name == @model?.style?.name,
+                style.name == @model?.style?.name)
+        @style.selectmenu 'refresh', true
 
 class BrewGear.Controller.Fermentables extends BaseRecipeController
     @elements:
@@ -184,7 +163,6 @@ class BrewGear.Controller.Fermentables extends BaseRecipeController
 
     constructor: (params) ->
         super
-        BrewGear.Model.Fermentable.fetch()
 
     refresh: =>
         @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)
@@ -193,8 +171,8 @@ class BrewGear.Controller.Fermentables extends BaseRecipeController
     render: =>
         @name = @model.name
         @list.empty()
-        console.log ' model: ' + @model.fermentables().all()
-        for i, fermentable of @model.fermentables().all()
+        console.log ' model: ' + @model.fermentables
+        for i, fermentable of @model.fermentables
             @list.append @template.tmpl
                 name: fermentable.name
                 color: fermentable.color

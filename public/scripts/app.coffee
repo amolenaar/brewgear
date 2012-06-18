@@ -14,24 +14,12 @@ use 'scripts/controller'
 Spine.Route.getPath = Spine.Route.getFragment
 
 Route = Spine.Route
-#class Route extends Spine.Route
-#    #@visited = []
-#    # Simulate page back with a slide reverse
-#    @reverseEffect = false
-#
-#    @changePage: (pageName, options={}) ->
-##        options.changeHash = false
-#        #options.reverse = @reverseEffect
-##        $.mobile.changePage ($ pageName), options
-#        @visited.push(window.location.hash)
-#        @reverseEffect = false
 
 theController = null
 
 goTo = (controller) ->
     theController?.release()
     theController = controller
-#    Route.changePage controller.el
     theController.activate()
 
 routes = (routes) ->
@@ -55,9 +43,12 @@ routes
 
 $ ->
 
+    #$.mobile.showPageLoadingMsg()
+
     # Get the right amount of data
     BrewGear.Model.Recipe.fetch()
-    BrewGear.Model.FermentableResource.fetch()
+    BrewGear.Model.BeerStyle.fetch()
+    BrewGear.Model.Fermentable.fetch()
 
     Route.setup()
 

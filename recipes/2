@@ -1,0 +1,19 @@
+{
+  "id": "3",
+  "name": "Tripel",
+  "batch": "35",
+  "style": {
+    "name": "Tripel"
+  },
+  "fermentables": [{
+    "name": "Pale malt",
+    "color": 12,
+    "amount": 1234
+  }, {
+    "name": "Cara 120",
+    "color": 120,
+    "amount": 200 
+  }],
+  "hops": [
+  ]
+}

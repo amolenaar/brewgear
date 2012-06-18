@@ -3,14 +3,22 @@ connect = require 'connect'
 union = require 'union'
 path = require 'path'
 fs = require 'fs'
-#router = require 'router'
-director = require('director')
+director = require 'director'
 
 FERMENTABLES = ''
+BEERSTYLES = ''
 
 fs.readFile 'db/fermentables.json', (err, data) ->
   if err then throw err
+  # Sanity check
+  JSON.parse data
   FERMENTABLES = data
+
+fs.readFile 'db/beerstyles.json', (err, data) ->
+  if err then throw err
+  # Sanity check
+  JSON.parse data
+  BEERSTYLES = data
 
 
 router = new director.http.Router
@@ -19,36 +27,51 @@ router = new director.http.Router
             @res.writeHead 200,
                 'Content-Type': 'application/json'
             @res.end FERMENTABLES
+    '/beerstyles':
+        get: ->
+            @res.writeHead 200,
+                'Content-Type': 'application/json'
+            @res.end BEERSTYLES
     '/recipes/:id':
         get: (id) ->
             console.log "get recipe id: #{id}"
+            fs.readFile "recipes/#{id}", (err, data) =>
+                if err then throw err
+                @res.writeHead 200,
+                    'Content-Type': 'application/json'
+                @res.end data
         put: (id) ->
-            console.log "post recipe id: #{id}"
-            console.log @req.body
+            console.log "post recipe id: #{id} => #{JSON.stringify @req.body}"
+            @res.writeHead 200
+            @res.end
     '/recipes':
         get: ->
-            console.log "get all recipes", arguments
-            first = false
             @res.writeHead 200,
                 'Content-Type': 'application/json'
             fs.readdir "recipes", (err, files) =>
-                @res.write "["
+                if err then throw err
+                recipes = []
+                console.log "have files #{files}"
+                readCount = 0
                 for f in files
-                    if first then @res.write ", "
-                    first = true
-                    data = fs.readFileSync "recipes/#{f}"
-                    @res.write data
-                @res.end "]"
+                    fs.readFile "recipes/#{f}", (err, data) =>
+                        if err then throw err
+                        console.log "recipe #{f}: #{data}"
+                        recipes.push JSON.parse(data)
+                        readCount += 1
+                        if readCount == files.length
+                            console.log "Sending out recipes: #{f} #{files[files.length - 1]} #{recipes}"
+                            @res.end JSON.stringify recipes
         post: ->
             @res.writeHead 200
-            console.log "posting data #{@req.body}"
+            console.log "new recipe => #{JSON.stringify @req.body}"
             @res.end
 
 .configure
     strict: false
 
 server = union.createServer
-  buffer: false
+  buffer: true
   before: [
     connect.favicon()
     connect.logger('dev')

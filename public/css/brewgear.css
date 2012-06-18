@@ -18,3 +18,16 @@
 	padding-top: .2em;
 }
 
+fieldset label.ui-input-text,
+fieldset label.ui-select {
+	vertical-align: baseline;
+	display: inline-block;
+	width: 30%;
+}
+fieldset input.ui-input-text,
+fieldset div.ui-select {
+	width: 65%;
+	display: inline-block;
+}
+
+

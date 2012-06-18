@@ -37,20 +37,30 @@
 
     <div data-role="content">
       <form>
-        <label for="overview-batch">Batch#</label>
-	<input type="text" name="batch" id="overview-batch" value="${batch}"/>
-        <label for="overview-name">Naam</label>
-	<input type="text" name="name" id="overview-name" value="${name}"/>
-        <label for="style">Stijl</label>
-	<select name="style" id="style">
-         <option value="triple">Triple</option>
-         <option value="dubble">Dubbel</option>
-         <option value="bitter">Bitter</option>
-        </select>
-        <label for="plannedSg">Gepland OG</label>
-	<input type="text" name="plannedOg" id="plannedOg" value="${planned_og}"/>
-        <label for="plannedOg">Gepland FG</label>
-	<input type="text" name="planned-fg" id="plannedFg" value="${planned_fg}"/>
+        <fieldset>
+          <label for="overview-batch">Batch#</label>
+	  <input type="text" name="batch" id="overview-batch" value="${batch}"/>
+        </fieldset>
+        <fieldset>
+          <label for="overview-name">Naam</label>
+	  <input type="text" name="name" id="overview-name" value="${name}"/>
+        </fieldset>
+        <fieldset>
+          <label for="style">Stijl</label>
+	  <select name="style" id="style">
+            <option value="triple">Triple</option>
+            <option value="dubble">Dubbel</option>
+            <option value="bitter">Bitter</option>
+          </select>
+        </fieldset>
+        <fieldset>
+         <label for="plannedOg">Gepland OG</label>
+	 <input type="text" name="plannedOg" id="plannedOg" value="${planned_og}"/>
+        </fieldset>
+        <fieldset>
+         <label for="plannedOg">Gepland FG</label>
+	 <input type="text" name="plannedFg" id="plannedFg" value="${planned_fg}"/>
+        </fieldset>
       </form>
       <ul data-role="listview" data-inset="true">
         <li><a class="to-fermentables" href="#/recipes/${batch}/fermentables">Granen en suikers</a></li>

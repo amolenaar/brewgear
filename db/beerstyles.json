@@ -93,7 +93,7 @@
   "name": "Kölsch",
   "description": "Hooggegist met koude lagering",
   "gravity": [1041, 1048],
-  "alcohol": [.00, 5.0],
+  "alcohol": [0.00, 5.0],
   "attenuation": [73, 80],
   "ebc": [10, 17],
   "ibu": [20, 30],
