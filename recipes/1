@@ -6,11 +6,15 @@
     "name": "Blond"
   },
   "fermentables": [{
-    "name": "Pale malt",
+    "source": {
+      "name": "Pale malt"
+    },
     "color": 12,
     "amount": 1234
   }, {
-    "name": "Cara 120",
+    "source": {
+      "name": "Cara 120"
+    },
     "color": 120,
     "amount": 200 
   }],
