@@ -12,7 +12,7 @@
  </head>
  <body>
 
-<section id="recipes" data-role="page">
+  <section id="recipes" data-role="page">
     <header data-role="header">
         <h1>BrewGear</h1>
         <a href="#/recipes" class="ui-btn-right" data-role="button" data-mini="true" data-icon="add" data-theme="b">Nieuw</a>
@@ -26,10 +26,10 @@
     <script id="recipe-item" type="text/x-jquery-tmpl">
         <li data-id="${batch}"><a href="#/recipes/${batch}">${batch} ${name}</a></li>
     </script>
-</section>
+  </section>
 
 
-<section id="recipe" data-role="page">
+  <section id="recipe" data-role="page">
     <header data-role="header">
         <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="back" data-direction="reverse" data-theme="b">Terug</a>
         <h1>BrewGear</h1>
@@ -63,14 +63,14 @@
         </fieldset>
       </form>
       <ul data-role="listview" data-inset="true">
-        <li><a class="to-fermentables" href="#/recipes/${batch}/fermentables">Granen en suikers</a></li>
-        <li><a class="to-hops" href="#/recipes/${batch}/hops">Hop en kruiden</a></li>
-        <li><a class="to-fermentation" href="#/recipes/${batch}/fermentation">Vergisting</a></li>
+        <li><a class="to-fermentables" href="#/recipes/${batch}?fermentables">Granen en suikers</a></li>
+        <li><a class="to-hops" href="#/recipes/${batch}?hops">Hop en kruiden</a></li>
+        <li><a class="to-fermentation" href="#/recipes/${batch}?fermentation">Vergisting</a></li>
       </ul>
     </div>
-</section>
+  </section>
 
-<section id="newrecipe" data-role="dialog">
+  <section id="newrecipe" data-role="dialog">
     <header data-role="header">
         <h1>Nieuw recept</h1>
     </header>
@@ -95,13 +95,13 @@
         <a data-role="button" data-rel="back" data-icon="back">Sluiten</a>
       </form>
     </div>
-</section>
+  </section>
 
-<section id="fermentables" data-role="page">
+  <section id="fermentables" data-role="page">
     <header data-role="header">
         <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="back" data-theme="b">Back</a>
         <h1>Granen en suikers</h1>
-        <a href="#/fermentables/new" data-role="button" data-mini="true" data-icon="add" data-theme="b" data-rel="dialog">Add</a>
+        <a class="new" href="#/fermentables/new" data-role="button" data-mini="true" data-icon="add" data-theme="b" data-rel="dialog">Add</a>
     </header>
 
     <div data-role="content">
@@ -123,7 +123,30 @@
     <script class="template" type="text/x-jquery-tmpl">
         <li><a href="${hash}"><span class="name">${name}</span><span class="color">${color} EBC</span><span class="weight">${amount} g</span></a></li>
     </script>
-</section>
+  </section>
+
+  <section id="fermentable" data-role="dialog">
+    <header data-role="header">
+        <h1>Grondstof</h1>
+    </header>
+    <div data-role="content">
+      <form>
+        <fieldset>
+          <label for="source">Grondstof</label>
+	  <select name="source" id="source">
+            <option value="mout">Mout</option>
+            <option value="suiker">Suiker</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label for="percentage">Percentage</label>
+	  <input type="number" min="0" max="100" name="percentage" id="percentage" value=""/>
+        </fieldset>
+        <button name="save" type="submit">Opslaan</button>
+        <a data-role="button" data-rel="back" data-icon="back">Sluiten</a>
+      </form>
+    </div>
+  </section>
 
   <script type="text/javascript" src="scripts/js/coffee-script-1.3.3.js"></script>
   <script type="text/javascript" src="scripts/js/date.js"></script>
@@ -134,6 +157,7 @@
 
   <!-- the meat -->
   <script type="text/coffeescript" src="scripts/app.coffee"></script>
+
  </body>
 <!-- vim:sw=4:et:ai
 -->

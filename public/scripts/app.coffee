@@ -26,17 +26,49 @@ routes = (routes) ->
     Route.add(key, value) for key, value of routes
 
 routes
+    "/recipes/:id/hops/:index": (params) ->
+        goTo new BrewGear.Controller.Hop
+            id: params.id
+            index: params.index
+            el: '#hop'
+    "/recipes/:id/hops": (params) ->
+        goTo new BrewGear.Controller.Hop
+            id: params.id
+            el: '#newhop'
+    "/recipes/:id?hops": (params) ->
+        goTo new BrewGear.Controller.Hops
+            id: params.id
+            el: '#hops'
+
+    "/recipes/:id/fermentables/:index": (params) ->
+        console.log "Open fermentable of recipe #{params.id} index #{params.index}"
+        goTo new BrewGear.Controller.Fermentable
+            id: params.id
+            index: params.index
+            el: '#fermentable'
     "/recipes/:id/fermentables": (params) ->
+        goTo new BrewGear.Controller.Fermentable
+            id: params.id
+            el: '#fermentable'
+    "/recipes/:id?fermentables": (params) ->
         goTo new BrewGear.Controller.Fermentables
             id: params.id
             el: '#fermentables'
+
     "/recipes/:id": (params) ->
+        console.log 'params', params
         goTo new BrewGear.Controller.Recipe
             id: params.id
             el: '#recipe'
     "/recipes": (params) ->
         goTo new BrewGear.Controller.Recipe
             el: '#newrecipe'
+    "test": ->
+        console.log 'start testing'
+        use 'scripts/testrunner'
+        TestRunner.start()
+    "?spec": ->
+        # Jasmine: leave it alone
     "": ->
         goTo new BrewGear.Controller.Recipes
             el: '#recipes'

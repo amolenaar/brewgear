@@ -18,7 +18,7 @@ BrewGear.Model ?= {}
 #              "name is required"
 
 class Recipe extends Spine.Model
-    @configure 'Recipe', 'name', 'batch', 'plannedOg', 'plannedFg', 'fermentables', 'hops'
+    @configure 'Recipe', 'name', 'batch', 'style', 'plannedOg', 'plannedFg', 'fermentables', 'hops'
     #@hasMany 'fermentables', Fermentable
     @extend Spine.Model.Ajax
     @url: '/recipes'
@@ -28,6 +28,8 @@ class Recipe extends Spine.Model
               "name is required"
         # TODO: batch# unique
 
+
+# define GroupBy for elements below:
 
 class Fermentable extends Spine.Model
     @configure 'Fermentable', 'name', 'yield', 'moisture', 'ebc', 'category', 'priming'

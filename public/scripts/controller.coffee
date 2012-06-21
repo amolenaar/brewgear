@@ -45,17 +45,37 @@ class BaseController extends Spine.Controller
 
 
 class BaseRecipeController extends BaseController
+    # Full featured base controller for handling forms and read-only pages alike.
+    # A bunch of events are registered at creation time:
+    #
+    # activate(): called after construction, activate the controller by displaying it's page
+    # back(): called to go back to the previous page
+    # submit(): submit the form, for new instance creation
+    # refresh(): the recipe model had a refresh/change. Update the screen
+    #   (default is calling @render()
+    # @isModified: property denoting an input has changed
 
     constructor: ->
         super
         @delegateEvent BrewGear.Model.Recipe, ev, @refresh for ev in ['refresh', 'change']
         @delegateEvent @el, 'click a[data-rel="back"]', 'back'
+        @delegateEvent @el, 'click button[type="submit"]', 'submit'
+        @delegateEvent @el, 'change input', 'setModified'
+        @delegateEvent @el, 'change select', 'setModified'
+        @isModified = false
+
+    setModified: =>
+        @isModified = true
 
     back: (event) =>
         event.stopPropagation()
         event.preventDefault()
         window.history.back()
-        #false
+
+    submit: ->
+        event.preventDefault()
+        event.stopPropagation()
+        window.history.back()
 
     refresh: ->
 
@@ -85,20 +105,13 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         '.to-hops': 'hopsLink'
         '.to-fermentation': 'fermentationLink'
         'form': 'form'
-        'input[name="batch"]': 'batch'
-        'input[name="name"]': 'name'
-        'select[name="style"]': 'style'
-        'input[name="plannedOg"]': 'plannedOg'
-        'input[name="plannedFg"]': 'plannedFg'
-
-    @events:
-        'change input': 'update'
-        'blur input': 'update'
-        'click button[type="submit"]': 'submit'
+        '#style': 'style'
 
     constructor: ->
         super
         @delegateEvent BrewGear.Model.BeerStyle, ev, @renderBeerStyle for ev in ['refresh', 'change']
+        # Modify existing recipe:
+        @modify = true if @id
 
     activate: ->
         super
@@ -111,22 +124,27 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         @render() if @model
 
     getStyle: (style) ->
+        @log "find style for #{style}"
         BrewGear.Model.BeerStyle.findByAttribute('name', style)
 
     update: =>
-        @model.updateAttributes
-            id: @batch.val()
-            batch: @batch.val()
-            name: @name.val()
-            style: @getStyle @style.val()
-            plannedOg: @plannedOg.val()
-            plannedFg: @plannedFg.val()
+        if @isModified
+            form = @form.get(0)
+            @model.updateAttributes
+                batch: form.batch.value
+                name: form.name.value
+                style: @getStyle form.style.value
+                plannedOg: form.plannedOg.value
+                plannedFg: form.plannedFg.value
+            @log "updated #{@model}"
+
+    back: =>
+        super
+        @update() if @modify
 
     submit: (event) =>
-        event.preventDefault()
-        event.stopPropagation()
+        super
         @update()
-        window.history.back()
         # Delay a little and go to the details screen
         setTimeout =>
             window.location.hash = "/recipes/#{@id}"
@@ -135,21 +153,22 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
 
     render: =>
         @log 'render recipe'
-        @batch.val @model.batch
-        @name.val @model.name
-        @plannedOg.val @model.plannedOg
-        @plannedFg.val @model.plannedFg
-        @style.val @model.style.name
+        form = @form.get(0)
+        form.batch.value = @model.batch or ''
+        form.name.value = @model.name or ''
+        form.plannedOg.value = @model.plannedOg or ''
+        form.plannedFg.value = @model.plannedFg or ''
+        form.style.value = @model.style?.name or ''
         @renderBeerStyle()
         batch = @model.batch
-        @fermentablesLink.attr('href', "#/recipes/#{batch}/fermentables")
-        @hopsLink.attr('href', "#/recipes/#{batch}/hops")
-        @fermentationLink.attr('href', "#/recipes/#{batch}/fermentation")
+        @fermentablesLink.attr('href', "#/recipes/#{batch}?fermentables")
+        @hopsLink.attr('href', "#/recipes/#{batch}?hops")
+        @fermentationLink.attr('href', "#/recipes/#{batch}?fermentation")
 
     renderBeerStyle: =>
         @style.empty()
         BrewGear.Model.BeerStyle.each (style) =>
-            @log "updating style option #{style.name}"
+            #@log "updating style option #{style.name}"
             @style.append new Option(style.name, style.name,
                 style.name == @model?.style?.name,
                 style.name == @model?.style?.name)
@@ -157,12 +176,10 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
 
 class BrewGear.Controller.Fermentables extends BaseRecipeController
     @elements:
+        '.new': 'newFermentableLink'
         'ul': 'list'
         '.template': 'template'
         'h3': 'name'
-
-    constructor: (params) ->
-        super
 
     refresh: =>
         @model = BrewGear.Model.Recipe.findByAttribute('batch', @id)
@@ -174,10 +191,68 @@ class BrewGear.Controller.Fermentables extends BaseRecipeController
         console.log ' model: ' + @model.fermentables
         for i, fermentable of @model.fermentables
             @list.append @template.tmpl
-                name: fermentable.name
+                name: fermentable.source.name
                 color: fermentable.color
                 amount: fermentable.amount
                 hash: "#/recipes/#{@model.batch}/fermentables/#{i}"
+        @newFermentableLink.attr('href', "#/recipes/#{@model.batch}/fermentables")
         @list.listview 'refresh'
+
+
+class BrewGear.Controller.Fermentable extends BaseRecipeController
+    @elements:
+        'form': 'form'
+        '#source': 'source'
+
+    constructor: ->
+        super
+        @delegateEvent BrewGear.Model.Fermentable, ev, @renderFermentable for ev in ['refresh', 'change']
+        @modify = true if @index
+
+    getMalt: (name) =>
+        BrewGear.Model.Fermentable.findByAttribute('name', name)
+
+    update: =>
+        if @isModified
+            form = @form.get(0)
+            fermentable =
+                source: @getMalt form.name.value
+                percentage: form.percentage.value
+            if @modify
+                @recipe.fermentables[@index] = fermentable
+            else
+                unless @recipe.fermentables
+                    @recipe.fermentables = {}
+                @recipe.fermentables.push fermentable
+
+            @log "updated #{@model}"
+
+    back: =>
+        super
+        @update() if @modify
+
+    submit: =>
+        super
+        @update()
+
+    refresh: =>
+        @recipe = BrewGear.Model.Recipe.findByAttribute('batch', @id)
+        @model = @recipe.fermentables[@index] if @index
+        @render() if @model
+
+    render: =>
+        @renderFermentable()
+        form = @form.get(0)
+        form.source.value = @model.source.name or ''
+        form.percentage.value = @model.amount or ''
+
+    renderFermentable: =>
+        @source.empty()
+        BrewGear.Model.Fermentable.each (fer) =>
+            @log "updating fermentable option #{fer.name}"
+            @source.append new Option(fer.name, fer.name,
+                fer.name == @model?.source.name,
+                fer.name == @model?.source.name)
+        @source.selectmenu 'refresh', true
 
 # vim:sw=4:et:ai

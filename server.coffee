@@ -41,9 +41,16 @@ router = new director.http.Router
                     'Content-Type': 'application/json'
                 @res.end data
         put: (id) ->
-            console.log "post recipe id: #{id} => #{JSON.stringify @req.body}"
-            @res.writeHead 200
-            @res.end
+            console.log "update recipe #{id} => #{JSON.stringify @req.body}"
+            fs.writeFile "recipes/#{id}", (JSON.stringify @req.body), (err) =>
+                if err
+                    @res.writeHead 400,
+                        'Content-Type': 'application/json'
+                    @res.end JSON.stringify err
+                else
+                    @res.writeHead 200
+                    @res.end
+                console.log 'It\'s saved!'
     '/recipes':
         get: ->
             @res.writeHead 200,
@@ -63,9 +70,29 @@ router = new director.http.Router
                             console.log "Sending out recipes: #{f} #{files[files.length - 1]} #{recipes}"
                             @res.end JSON.stringify recipes
         post: ->
-            @res.writeHead 200
             console.log "new recipe => #{JSON.stringify @req.body}"
-            @res.end
+            id = @req.body.id
+            fs.stat "recipes/#{id}", (err, stats) =>
+                if err
+                    @res.writeHead 400,
+                        'Content-Type': 'application/json'
+                    @res.end JSON.stringify err
+                    return
+                if stats
+                    @res.writeHead 400,
+                        'Content-Type': 'application/json'
+                    @res.end JSON.stringify stats
+                    return
+
+                fs.writeFile "recipes/#{id}", (JSON.stringify @req.body), (err) =>
+                    if err
+                        @res.writeHead 400,
+                            'Content-Type': 'application/json'
+                        @res.end JSON.stringify err
+                    else
+                        @res.writeHead 200
+                        @res.end
+                    console.log 'It\'s saved!'
 
 .configure
     strict: false
