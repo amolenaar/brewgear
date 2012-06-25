@@ -3,10 +3,8 @@ use 'scripts/dci'
 
 BrewGear.Logic = {}
 
-map = _.map
-zip = _.zip
-reduce = _.reduce
-forEach = _.forEach
+# gravity points per gram per litre
+POINTS_G_L = 0.3865
 
 sg_to_brix = (sg) ->
   -0.0002112789 * sg * sg + 0.6907289 * sg - 479.4467
@@ -21,28 +19,19 @@ class BrewGear.Logic.GristPercentage
         vol = @recipe.targetVolume
         sg_to_brix(og) * vol * 10
 
-    percentage: ->
-        parseInt(@grain.amount / @recipe.totalAmount() * 100)
+    plannedGU: ->
+        (@recipe.plannedOg - 1) * 1000
 
     amountInPercentage: (percentage) ->
         """
         Percentage is in the range 0-100.
+        Provide amount to be added in grammes.
         """
+        extract_potential = POINTS_G_L * @grain.source.yield
+        total_gravity = @plannedGU() * @recipe.targetVolume
 
-        @grain.percentage = percentage / 100
-
-        efficiency = @recipe.efficiency
-
-        new_total_amount = @totalYield() / reduce(
-            map(@recipe.fermentables, ((f) ->
-                f.source.yield *
-                (1.0 - f.source.moisture) *
-                f.percentage *
-                (if f.addDuring == 'mash' then efficiency else 1))),
-            ((memo, e) -> memo + e), 0)
-
-        forEach(@recipe.fermentables, (f) ->
-            f.amount = parseInt(new_total_amount * f.percentage))
+        @grain.amount = ((percentage / 100) * total_gravity) / (extract_potential *
+                (if @grain.addDuring == 'mash' then efficiency else 1))
 
 
 # vim:sw=4:et:ai

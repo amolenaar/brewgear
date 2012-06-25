@@ -2,8 +2,6 @@
 use 'scripts/model'
 use 'scripts/logic'
 
-console.log '->', BrewGear.Logic.GristPercentage
-
 makeRecipe = (attrs) ->
     new BrewGear.Model.Recipe
         name: attrs.name or 'test'
@@ -18,22 +16,20 @@ makeRecipe = (attrs) ->
 describe 'Modifying the grist', ->
 
     recipe = makeRecipe
-        plannedOg: 1050
+        plannedOg: 1.050
         targetVolume: 20
-        efficiency: 0.8,
+        efficiency: 0.8
         fermentables: [
             { source:
                 name: 'Pilsmout'
                 moisture: 0.04
                 yield: 0.80
-            amount: 1230,
-            percentage: 20 }
+            amount: 1230 }
             { source:
                 name: 'Munich'
                 moisture: 0.04
                 yield: 0.80
-            amount: 0,
-            percentage: 30 }
+            amount: 0 }
         ]
  
     it 'should allow grist to change', ->
@@ -41,19 +37,15 @@ describe 'Modifying the grist', ->
         ctx = new BrewGear.Logic.GristPercentage(recipe, f)
         expect(f.amount).toBe(1230)
         ctx.amountInPercentage(60)
-        expect(f.amount).toBe(65)
-        expect(recipe.fermentables[1].amount).toBe(3289)
-        expect(ctx.percentage()).toBe(1)
+        expect(f.amount).toBeCloseTo(1940.5, 1)
+        expect(recipe.fermentables[1].amount).toBe(0)
 
     it 'should provide a valid result once all fermentables are adjusted correctly', ->
         f = recipe.fermentables[1]
         ctx = new BrewGear.Logic.GristPercentage recipe, f
         ctx.amountInPercentage(40)
-        expect(f.amount).toBe(1342)
+        expect(f.amount).toBeCloseTo(1293.7, 1)
         expect(ctx.percentage()).toBe(40)
-        ctx2 = new BrewGear.Logic.GristPercentage recipe, recipe.fermentables[0]
-        expect(recipe.fermentables[0].amount).toBe(2013)
-        expect(ctx2.percentage()).toBe(60)
-        expect(2013 / (2013 + 1342)). toBe(0.6)
+        expect(1940.5 / (1940.5 + 1293.7)).toBeCloseTo(0.60)
 
 # vim:sw=4:et:ai
