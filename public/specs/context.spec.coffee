@@ -4,6 +4,7 @@ use 'scripts/dci'
 Trait = DCI.Trait
 incontext = DCI.incontext
 
+
 class HiSayer extends Trait
 
     @sayHi: ->

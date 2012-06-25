@@ -9,3 +9,5 @@ describe 'When starting a test', ->
 
 # And now for the real specs
 use 'specs/context.spec'
+use 'specs/recipe.spec'
+use 'specs/grist.spec'

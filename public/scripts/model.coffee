@@ -18,15 +18,28 @@ BrewGear.Model ?= {}
 #              "name is required"
 
 class Recipe extends Spine.Model
-    @configure 'Recipe', 'name', 'batch', 'style', 'plannedOg', 'plannedFg', 'fermentables', 'hops'
+    @configure 'Recipe', 'name', 'batch', 'style', 'plannedOg', 'plannedFg', 'fermentables', 'hops', 'efficiency', 'targetVolume'
     #@hasMany 'fermentables', Fermentable
     @extend Spine.Model.Ajax
     @url: '/recipes'
 
+    # Fermentables: source (Fermentable), amount, addDuring [mash, boil, ferm]
+    # Hops: name, alpha%, boiltime (int, FWH, CH)
+
     validate: ->
         unless @name
               "name is required"
-        # TODO: batch# unique
+#        unless @batch
+#              "batch is required"
+        # todo: batch# unique
+
+    totalAmount: ->
+        _.reduce @.fermentables, ((memo, a) -> memo + a.amount), 0
+
+    totalYield: ->
+        og = @recipe.plannedOg
+        vol = @recipe.targetVolume
+        sg_to_brix(og) * vol * 10
 
 
 # define GroupBy for elements below:

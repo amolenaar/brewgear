@@ -2,6 +2,7 @@
 
 use 'scripts/spine/spine'
 use 'scripts/model'
+use 'scripts/logic'
 
 BrewGear.Controller ?= {}
 

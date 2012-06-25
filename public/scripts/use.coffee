@@ -10,10 +10,17 @@
          url: url
          success: (result) ->
            console.log "use: Loading #{mod} module"
-           retval = CoffeeScript.run(result)
-           LiveJS?.addResource url
+           try
+               retval = CoffeeScript.run(result)
+           catch err
+             console.log '** ERROR ** loading script on url', url
+             console.log err
+             return
+           finally
+             LiveJS?.addResource url
          error: (jqXHR, textStatus, errorThrown) ->
            console.log "use: Loading of module #{mod} failed: ", textStatus
          async: false
     retval
 
+# vim:sw=4:et:ai
