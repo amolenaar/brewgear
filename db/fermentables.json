@@ -1,435 +1,435 @@
 [{
   "name": "Pilsmout 3",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "3",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 3,
   "category": "Dingemans"
 
 }, {
   "name": "Palemout 7",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "8",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 8,
   "category": "Dingemans"
 
 }, {
   "name": "Tarwemout",
-  "yield": "82.23",
-  "moisture": "4.0",
-  "ebc": "3",
+  "yield": 0.8223,
+  "moisture": 0.040,
+  "ebc": 3,
   "category": "Dingemans"
 
 }, {
   "name": "Tarwemout donker",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "31",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 31,
   "category": "Dingemans"
 
 }, {
   "name": "Munich mout 15",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "16",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 16,
   "category": "Dingemans"
 
 }, {
   "name": "Aromamout (Amber 50)",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "49",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 49,
   "category": "Dingemans"
 
 }, {
   "name": "Aromamout (Amber 150)",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "150",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 150,
   "category": "Dingemans"
 
 }, {
   "name": "Biscuit mout 50",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "58",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 58,
   "category": "Dingemans"
 
 }, {
   "name": "Chocolademout (Mout roost 900)",
-  "yield": "64.92",
-  "moisture": "4.0",
-  "ebc": "900",
+  "yield": 0.6492,
+  "moisture": 0.040,
+  "ebc": 900,
   "category": "Dingemans"
 
 }, {
   "name": "Black De-bittered 1400",
-  "yield": "64.92",
-  "moisture": "4.0",
-  "ebc": "1456",
+  "yield": 0.6492,
+  "moisture": 0.040,
+  "ebc": 1456,
   "category": "Dingemans"
 
 }, {
   "name": "CaraPils (Cara 20)",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "60",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 60,
   "category": "Dingemans"
 
 }, {
   "name": "CaraVienne (Cara 50)",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "66",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 66,
   "category": "Dingemans"
 
 }, {
   "name": "CaraMunich (Cara 120)",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "123",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 123,
   "category": "Dingemans"
 
 }, {
   "name": "Special B (Cara 400)",
-  "yield": "64.92",
-  "moisture": "4.0",
-  "ebc": "391",
+  "yield": 0.6492,
+  "moisture": 0.040,
+  "ebc": 391,
   "category": "Dingemans"
 
 }, {
   "name": "Pilsmout",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "3",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 3,
   "category": "Weyermann"
 
 }, {
   "name": "Viennamout",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "6",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 6,
   "category": "Weyermann"
 
 }, {
   "name": "Tarwemout licht",
-  "yield": "84.40",
-  "moisture": "4.0",
-  "ebc": "4",
+  "yield": 0.8440,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Weyermann"
 
 }, {
   "name": "Tarwemout donker",
-  "yield": "84.40",
-  "moisture": "4.0",
-  "ebc": "20",
+  "yield": 0.8440,
+  "moisture": 0.040,
+  "ebc": 20,
   "category": "Weyermann"
 
 }, {
   "name": "Munichmout I",
-  "yield": "82.23",
-  "moisture": "4.0",
-  "ebc": "12",
+  "yield": 0.8223,
+  "moisture": 0.040,
+  "ebc": 12,
   "category": "Weyermann"
 
 }, {
   "name": "Munichmout II",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "17",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 17,
   "category": "Weyermann"
 
 }, {
   "name": "CaraPils",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "4",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Weyermann"
 
 }, {
   "name": "CaraHell",
-  "yield": "79.00",
-  "moisture": "4.0",
-  "ebc": "22",
+  "yield": 0.7900,
+  "moisture": 0.040,
+  "ebc": 22,
   "category": "Weyermann"
 
 }, {
   "name": "CaraRed",
-  "yield": "78.00",
-  "moisture": "4.0",
-  "ebc": "39",
+  "yield": 0.7800,
+  "moisture": 0.040,
+  "ebc": 39,
   "category": "Weyermann"
 
 }, {
   "name": "CaraAmber",
-  "yield": "78.00",
-  "moisture": "4.0",
-  "ebc": "55.01",
+  "yield": 0.7800,
+  "moisture": 0.040,
+  "ebc": 55,
   "category": "Weyermann"
 
 }, {
   "name": "CaraAroma",
-  "yield": "77.00",
-  "moisture": "4.0",
-  "ebc": "256.02",
+  "yield": 0.7700,
+  "moisture": 0.040,
+  "ebc": 256,
   "category": "Weyermann"
 
 }, {
   "name": "CaraMunich I",
-  "yield": "78.00",
-  "moisture": "4.0",
-  "ebc": "85",
+  "yield": 0.7800,
+  "moisture": 0.040,
+  "ebc": 85,
   "category": "Weyermann"
 
 }, {
   "name": "CaraMunich II",
-  "yield": "78.00",
-  "moisture": "4.0",
-  "ebc": "91",
+  "yield": 0.7800,
+  "moisture": 0.040,
+  "ebc": 91,
   "category": "Weyermann"
 
 }, {
   "name": "CaraMunich III",
-  "yield": "78.00",
-  "moisture": "4.0",
-  "ebc": "112",
+  "yield": 0.7800,
+  "moisture": 0.040,
+  "ebc": 112,
   "category": "Weyermann"
 
 }, {
   "name": "Carafa I",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "630",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 630,
   "category": "Weyermann"
 
 }, {
   "name": "Carafa II",
-  "yield": "70.25",
-  "moisture": "4.0",
-  "ebc": "1024",
+  "yield": 0.7025,
+  "moisture": 0.040,
+  "ebc": 1024,
   "category": "Weyermann"
 
 }, {
   "name": "Carafa III",
-  "yield": "71.25",
-  "moisture": "4.0",
-  "ebc": "1084",
+  "yield": 0.7125,
+  "moisture": 0.040,
+  "ebc": 1084,
   "category": "Weyermann"
 
 }, {
   "name": "Carafa Special onttkaft I",
-  "yield": "72.25",
-  "moisture": "4.0",
-  "ebc": "663.97",
+  "yield": 0.7225,
+  "moisture": 0.040,
+  "ebc": 663,
   "category": "Weyermann"
 
 }, {
   "name": "Carafa special ontkaft II",
-  "yield": "73.25",
-  "moisture": "4.0",
-  "ebc": "837",
+  "yield": 0.7325,
+  "moisture": 0.040,
+  "ebc": 837,
   "category": "Weyermann"
 
 }, {
   "name": "Carafa special ontkaft III",
-  "yield": "74.25",
-  "moisture": "4.0",
-  "ebc": "926",
+  "yield": 0.7425,
+  "moisture": 0.040,
+  "ebc": 926,
   "category": "Weyermann"
 
 }, {
   "name": "CaraTarwe",
-  "yield": "77.91",
-  "moisture": "4.0",
-  "ebc": "140",
+  "yield": 0.7791,
+  "moisture": 0.040,
+  "ebc": 140,
   "category": "Weyermann"
 
 }, {
   "name": "Melanoidin mout",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "65",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 65,
   "category": "Weyermann"
 
 }, {
   "name": "Rauchmalz",
-  "yield": "80.07",
-  "moisture": "4.0",
-  "ebc": "4.01",
+  "yield": 0.8007,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Weyermann"
 
 }, {
   "name": "Sauermalz pH 3.5",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "3",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 3,
   "category": "Weyermann"
 
 }, {
   "name": "Roggemout",
-  "yield": "85.00",
-  "moisture": "4.0",
-  "ebc": "10",
+  "yield": 0.8500,
+  "moisture": 0.040,
+  "ebc": 10,
   "category": "Weyermann"
 
 }, {
   "name": "Caramelroggemout",
-  "yield": "75.74",
-  "moisture": "4.0",
-  "ebc": "40",
+  "yield": 0.7574,
+  "moisture": 0.040,
+  "ebc": 40,
   "category": "Weyermann"
 
 }, {
   "name": "Chocolade roggemout",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "800",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 800,
   "category": "Weyermann"
 
 }, {
   "name": "Chocolade speltmout",
-  "yield": "69.25",
-  "moisture": "4.0",
-  "ebc": "700",
+  "yield": 0.6925,
+  "moisture": 0.040,
+  "ebc": 700,
   "category": "Weyermann"
 
 }, {
   "name": "Chocolade tarwemout",
-  "yield": "74.00",
-  "moisture": "4.0",
-  "ebc": "1200",
+  "yield": 0.7400,
+  "moisture": 0.040,
+  "ebc": 1200,
   "category": "Weyermann"
 
 }, {
   "name": "Bruine basterdsuiker",
-  "yield": "99.55",
-  "moisture": "0.0",
-  "ebc": "30",
-  "priming": "1.0",
+  "yield": 0.9955,
+  "moisture": 0.000,
+  "ebc": 30,
+  "priming": 1.0,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Bruine kandijsuiker",
-  "yield": "100.00",
-  "moisture": "0.0",
-  "ebc": "10.01",
-  "priming": "1.0",
+  "yield": 1.0000,
+  "moisture": 0.000,
+  "ebc": 10,
+  "priming": 1.0,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Witte basterdsuiker",
-  "yield": "99.55",
-  "moisture": "0.0",
-  "ebc": "0",
-  "priming": "1.0",
+  "yield": 0.9955,
+  "moisture": 0.000,
+  "ebc": 0,
+  "priming": 1.0,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Witte kandijsuiker",
-  "yield": "100.00",
-  "moisture": "0.0",
-  "ebc": "0",
-  "priming": "1.0",
+  "yield": 1.0000,
+  "moisture": 0.000,
+  "ebc": 0,
+  "priming": 1.0,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Rietsuiker",
-  "yield": "97.38",
-  "moisture": "0.0",
-  "ebc": "6",
-  "priming": "1.0",
+  "yield": 0.9738,
+  "moisture": 0.000,
+  "ebc": 6,
+  "priming": 1.0,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Appelstroop",
-  "yield": "90.38",
-  "moisture": "0.0",
-  "ebc": "30",
+  "yield": 0.9038,
+  "moisture": 0.000,
+  "ebc": 30,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Stroop",
-  "yield": "73.58",
-  "moisture": "0.0",
-  "ebc": "30",
+  "yield": 0.7358,
+  "moisture": 0.000,
+  "ebc": 30,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Glucose",
-  "yield": "100.00",
-  "moisture": "0.0",
-  "ebc": "0",
-  "priming": "0.95",
+  "yield": 1.0000,
+  "moisture": 0.000,
+  "ebc": 0,
+  "priming": 0.95,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Honing",
-  "yield": "90.89",
-  "moisture": "0.0",
-  "ebc": "2",
-  "priming": "0.95",
+  "yield": 0.9089,
+  "moisture": 0.000,
+  "ebc": 2,
+  "priming": 0.95,
   "category": "Suiker, stroop en honing"
 
 }, {
   "name": "Kristalsuiker",
-  "yield": "100.00",
-  "moisture": "0.0",
-  "ebc": "0",
-  "priming": "1.0",
+  "yield": 1.0000,
+  "moisture": 0.000,
+  "ebc": 0,
+  "priming": 1.0,
   "category": "Suiker, stroop en honing"
   
 }, {
   "name": "Havervlokken",
-  "yield": "73.58",
-  "moisture": "4.0",
-  "ebc": "4",
+  "yield": 0.7358,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Ongemoute granen"
 
 }, {
   "name": "Rijstvlokken",
-  "yield": "86.56",
-  "moisture": "4.0",
-  "ebc": "1",
+  "yield": 0.8656,
+  "moisture": 0.040,
+  "ebc": 1,
   "category": "Ongemoute granen"
 
 }, {
   "name": "Tarwevlokken",
-  "yield": "73.58",
-  "moisture": "4.0",
-  "ebc": "4",
+  "yield": 0.7358,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Ongemoute granen"
 
 }, {
   "name": "Gerstvlokken",
-  "yield": "73.58",
-  "moisture": "4.0",
-  "ebc": "4",
+  "yield": 0.7358,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Ongemoute granen"
 
 }, {
   "name": "Geroosterde gerst",
-  "yield": "64.92",
-  "moisture": "4.0",
-  "ebc": "1522.82",
+  "yield": 0.6492,
+  "moisture": 0.040,
+  "ebc": 1500,
   "category": "Ongemoute granen"
 
 }, {
   "name": "Boekweitvlokken",
-  "yield": "73.58",
-  "moisture": "4.0",
-  "ebc": "4",
+  "yield": 0.7358,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Ongemoute granen"
 
 }, {
   "name": "Maisvlokken",
-  "yield": "74.58",
-  "moisture": "4.0",
-  "ebc": "1",
+  "yield": 0.7458,
+  "moisture": 0.040,
+  "ebc": 1,
   "category": "Ongemoute granen"
 
 }, {
   "name": "Roggevlokken",
-  "yield": "75.58",
-  "moisture": "4.0",
-  "ebc": "4",
+  "yield": 0.7558,
+  "moisture": 0.040,
+  "ebc": 4,
   "category": "Ongemoute granen"
 }]
