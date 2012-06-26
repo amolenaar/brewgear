@@ -34,18 +34,15 @@ describe 'Modifying the grist', ->
  
     it 'should allow grist to change', ->
         f = recipe.fermentables[0]
-        ctx = new BrewGear.Logic.GristPercentage(recipe, f)
-        expect(f.amount).toBe(1230)
+        ctx = new BrewGear.Logic.MaltPercentage(recipe, f)
         ctx.amountInPercentage(60)
         expect(f.amount).toBeCloseTo(1940.5, 1)
-        expect(recipe.fermentables[1].amount).toBe(0)
 
     it 'should provide a valid result once all fermentables are adjusted correctly', ->
         f = recipe.fermentables[1]
-        ctx = new BrewGear.Logic.GristPercentage recipe, f
+        ctx = new BrewGear.Logic.MaltPercentage recipe, f
         ctx.amountInPercentage(40)
         expect(f.amount).toBeCloseTo(1293.7, 1)
-        expect(ctx.percentage()).toBe(40)
         expect(1940.5 / (1940.5 + 1293.7)).toBeCloseTo(0.60)
 
 # vim:sw=4:et:ai

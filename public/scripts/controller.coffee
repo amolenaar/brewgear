@@ -135,8 +135,9 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
                 batch: form.batch.value
                 name: form.name.value
                 style: @getStyle form.style.value
-                plannedOg: form.plannedOg.value
-                plannedFg: form.plannedFg.value
+                plannedOg: parseFloat form.plannedOg.value
+                plannedFg: parseFloat form.plannedFg.value
+                targetVolume: parseFloat form.targetVolume.value
             @log "updated #{@model}"
 
     back: =>
@@ -144,8 +145,8 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         @update() if @modify
 
     submit: (event) =>
-        super
         @update()
+        super
         # Delay a little and go to the details screen
         setTimeout =>
             window.location.hash = "/recipes/#{@id}"
@@ -159,6 +160,7 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         form.name.value = @model.name or ''
         form.plannedOg.value = @model.plannedOg or ''
         form.plannedFg.value = @model.plannedFg or ''
+        form.targetVolume.value = @model.targetVolume or 10
         form.style.value = @model.style?.name or ''
         @renderBeerStyle()
         batch = @model.batch
@@ -191,10 +193,12 @@ class BrewGear.Controller.Fermentables extends BaseRecipeController
         @list.empty()
         console.log ' model: ' + @model.fermentables
         for i, fermentable of @model.fermentables
+            ctx = new BrewGear.Logic.MaltPercentage @model, fermentable
             @list.append @template.tmpl
                 name: fermentable.source.name
-                color: fermentable.color
-                amount: fermentable.amount
+                color: fermentable.source.ebc
+                amount: Math.round fermentable.amount
+                percentage: Math.round ctx.percentage()
                 hash: "#/recipes/#{@model.batch}/fermentables/#{i}"
         @newFermentableLink.attr('href', "#/recipes/#{@model.batch}/fermentables")
         @list.listview 'refresh'
@@ -208,7 +212,12 @@ class BrewGear.Controller.Fermentable extends BaseRecipeController
     constructor: ->
         super
         @delegateEvent BrewGear.Model.Fermentable, ev, @renderFermentable for ev in ['refresh', 'change']
-        @modify = true if @index
+        @modify = true if @index?
+
+    refresh: =>
+        @recipe = BrewGear.Model.Recipe.findByAttribute('batch', @id)
+        @model = @recipe.fermentables[@index] if @index
+        @render() if @recipe
 
     getMalt: (name) =>
         BrewGear.Model.Fermentable.findByAttribute('name', name)
@@ -217,8 +226,10 @@ class BrewGear.Controller.Fermentable extends BaseRecipeController
         if @isModified
             form = @form.get(0)
             fermentable =
-                source: @getMalt form.name.value
-                percentage: form.percentage.value
+                source: @getMalt form.source.value
+            console.log "new fermentable", fermentable
+            ctx = new BrewGear.Logic.MaltPercentage @recipe, fermentable
+            ctx.amountInPercentage form.percentage.value
             if @modify
                 @recipe.fermentables[@index] = fermentable
             else
@@ -233,19 +244,19 @@ class BrewGear.Controller.Fermentable extends BaseRecipeController
         @update() if @modify
 
     submit: =>
-        super
         @update()
-
-    refresh: =>
-        @recipe = BrewGear.Model.Recipe.findByAttribute('batch', @id)
-        @model = @recipe.fermentables[@index] if @index
-        @render() if @model
+        @recipe.save()
+        super
 
     render: =>
         @renderFermentable()
         form = @form.get(0)
-        form.source.value = @model.source.name or ''
-        form.percentage.value = @model.amount or ''
+        form.source.value = @model?.source.name or ''
+        if @modify
+            ctx = new BrewGear.Logic.MaltPercentage @recipe, @model
+            form.percentage.value = ctx.percentage()
+        else
+            form.percentage.value = ''
 
     renderFermentable: =>
         @source.empty()

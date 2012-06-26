@@ -3,6 +3,7 @@
   loaded = [ 'use' ]
   (mod) ->
     retval = null
+    LiveJS?.addResource url
     if mod not in loaded
       loaded.push mod
       url = mod + '.coffee'
@@ -10,14 +11,7 @@
          url: url
          success: (result) ->
            console.log "use: Loading #{mod} module"
-           try
-               retval = CoffeeScript.run(result)
-           catch err
-             console.log '** ERROR ** loading script on url', url
-             console.log err
-             return
-           finally
-             LiveJS?.addResource url
+           retval = CoffeeScript.run(result)
          error: (jqXHR, textStatus, errorThrown) ->
            console.log "use: Loading of module #{mod} failed: ", textStatus
          async: false

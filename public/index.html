@@ -55,12 +55,16 @@
           </select>
         </fieldset>
         <fieldset>
+         <label for="targetVolume">Doel volume (l)</label>
+	 <input type="number" name="targetVolume" id="targetVolume" value=""/>
+        </fieldset>
+        <fieldset>
          <label for="plannedOg">Gepland OG</label>
-	 <input type="text" name="plannedOg" id="plannedOg" value="${planned_og}"/>
+	 <input type="number" min="0" name="plannedOg" id="plannedOg" value="${planned_og}"/>
         </fieldset>
         <fieldset>
          <label for="plannedOg">Gepland FG</label>
-	 <input type="text" name="plannedFg" id="plannedFg" value="${planned_fg}"/>
+	 <input type="number" min="0" name="plannedFg" id="plannedFg" value="${planned_fg}"/>
         </fieldset>
       </form>
       <ul data-role="listview" data-inset="true">
@@ -88,10 +92,12 @@
          <option value="bitter">Bitter</option>
         </select>
 
+        <label for="targetVolume">Doel volume (l)</label>
+	<input type="number" name="targetVolume" id="targetVolume" value=""/>
         <label for="plannedOg">Gepland OG</label>
-	<input type="text" name="plannedOg" id="plannedOg" value=""/>
+	<input type="number" name="plannedOg" id="plannedOg" value=""/>
         <label for="plannedOg">Gepland FG</label>
-	<input type="text" name="plannedFg" id="plannedFg" value=""/>
+	<input type="number" name="plannedFg" id="plannedFg" value=""/>
         <button name="save" type="submit">Opslaan</button>
         <a data-role="button" data-rel="back" data-icon="back">Sluiten</a>
       </form>
@@ -122,7 +128,7 @@
         </ul>
     </div>
     <script class="template" type="text/x-jquery-tmpl">
-        <li><a href="${hash}"><span class="name">${name}</span><span class="color">${color} EBC</span><span class="weight">${amount} g</span></a></li>
+        <li><a href="${hash}"><span class="name">${name}</span><span class="color">${color} EBC</span><span class="weight">${amount} g / ${percentage} %</span></a></li>
     </script>
   </section>
 
