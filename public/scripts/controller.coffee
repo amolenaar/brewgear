@@ -111,6 +111,7 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
     constructor: ->
         super
         @delegateEvent BrewGear.Model.BeerStyle, ev, @renderBeerStyle for ev in ['refresh', 'change']
+        @delegateEvent @el, 'click a.update', 'update'
         # Modify existing recipe:
         @modify = true if @id
 
@@ -128,7 +129,7 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
         @log "find style for #{style}"
         BrewGear.Model.BeerStyle.findByAttribute('name', style)
 
-    update: =>
+    updateRecipe: =>
         if @isModified
             form = @form.get(0)
             @model.updateAttributes
@@ -138,19 +139,23 @@ class BrewGear.Controller.Recipe extends BaseRecipeController
                 plannedOg: parseFloat form.plannedOg.value
                 plannedFg: parseFloat form.plannedFg.value
                 targetVolume: parseFloat form.targetVolume.value
-            @log "updated #{@model}"
+        @log "updated #{@model}"
 
-    back: =>
-        super
-        @update() if @modify
+    update: (event) =>
+        @log 'updating'
+        event.preventDefault()
+        event.stopPropagation()
+        @updateRecipe()
+        false
 
     submit: (event) =>
-        @update()
+        @updateRecipe()
         super
         # Delay a little and go to the details screen
-        setTimeout =>
-            window.location.hash = "/recipes/#{@id}"
-        , 20
+        unless @modify
+            setTimeout =>
+                window.location.hash = "/recipes/#{@id}"
+            , 20
         false
 
     render: =>
@@ -191,8 +196,9 @@ class BrewGear.Controller.Fermentables extends BaseRecipeController
     render: =>
         @name = @model.name
         @list.empty()
-        console.log ' model: ' + @model.fermentables
+        @log ' model: ', @model.fermentables
         for i, fermentable of @model.fermentables
+            @log 'Add fermentable', fermentable.source.name
             ctx = new BrewGear.Logic.MaltPercentage @model, fermentable
             @list.append @template.tmpl
                 name: fermentable.source.name
